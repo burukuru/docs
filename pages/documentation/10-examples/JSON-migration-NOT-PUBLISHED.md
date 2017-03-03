@@ -150,10 +150,10 @@ Finally, a template to build the relations between the entities:
 To call the migration script on each template:
 
 ```bash
-./bin/migration.sh json -t ./json/book-template.gql  -i ./json/library-data.json
-./bin/migration.sh json -t ./json/author-template.gql  -i ./json/library-data.json
-./bin/migration.sh json -t ./json/subject-template.gql  -i ./json/library-data.json
-./bin/migration.sh json -t ./json/publication-template.gql  -i ./json/library-data.json
+./bin/migration.sh json -t ./json/book-template.gql  -i ./json/library-data.json -k grakn
+./bin/migration.sh json -t ./json/author-template.gql  -i ./json/library-data.json -k grakn
+./bin/migration.sh json -t ./json/subject-template.gql  -i ./json/library-data.json -k grakn
+./bin/migration.sh json -t ./json/publication-template.gql  -i ./json/library-data.json -k grakn
 ```
 
 The resultant Graql for the migration:

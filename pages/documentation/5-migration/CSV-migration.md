@@ -96,7 +96,7 @@ The template will create a `car` entity for each row. It will attach `year` and 
 The template is applied to each row by calling the migration script:
 
 ```bash
-./<grakn-install-location>/bin/migration.sh csv -i ./cars.csv -t ./car-migrator.gql
+./<grakn-install-location>/bin/migration.sh csv -i ./cars.csv -t ./car-migrator.gql -k grakn
 ```
 
 The resulting Graql statement, if printed out, looks as follows:
@@ -124,7 +124,7 @@ air  moon roof   loaded"  4799.00
 This file would be migrated in the same way as the previous example when you specify the separator using the `-s \t` argument:
 
 ```bash
-./<grakn-install-location>/bin/migration.sh csv -i ./cars.tsv -t ./car-migrator.gql -s \t
+./<grakn-install-location>/bin/migration.sh csv -i ./cars.tsv -t ./car-migrator.gql -s \t -k grakn
 ```
 
 ## Where Next?

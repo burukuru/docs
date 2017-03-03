@@ -201,7 +201,7 @@ $x isa <SPECIES>
 To apply the template above to the SQL query and populate the graph with the `pet` entities, we use Grakn migration script:
 
 ```
-migration.sh sql -q "SELECT * FROM pet;" -location jdbc:mysql://localhost:3306/world -user root -pass root -t ./pet-template.gql 
+migration.sh sql -q "SELECT * FROM pet;" -location jdbc:mysql://localhost:3306/world -user root -pass root -t ./pet-template.gql -k grakn
 ```
 
 
@@ -228,7 +228,7 @@ insert $event isa event
 To populate the graph with the `event` entities, we then use the Grakn migration script:
 
 ```
-migration.sh sql -q "SELECT event.name AS name, event.date AS date, event.eventtype AS description FROM event;" -location jdbc:mysql://localhost:3306/world -user root -pass root -t ./pet-template.gql 
+migration.sh sql -q "SELECT event.name AS name, event.date AS date, event.eventtype AS description FROM event;" -location jdbc:mysql://localhost:3306/world -user root -pass root -t ./pet-template.gql -k grakn
 ```
 
 Note: The SQL query is entered into the command line in quotes, although in future releases of Grakn, we plan to allow queries to be saved in a file, which can be specified with an appropriate flag.
