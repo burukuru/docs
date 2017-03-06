@@ -33,20 +33,56 @@ All rule instances are of type inference-rule which can be retrieved by:
 RuleType inferenceRule = graknGraph.getMetaRuleInference();
 ```
 
-Rule instances can be added to the graph both through the Graph API as well as through Graql. Considering the ancestor example, with the use of the Graph API we can add the rules in the following way:
+Rule instances can be added to the graph both through the Graph API as well as through Graql. Let's consider the ancestor example:
+
+```graql
+$R1 isa inference-rule,
+lhs {
+    (parent: $p, child: $c) isa Parent;
+},
+rhs {
+    (ancestor: $p, descendant: $c) isa Ancestor;
+};
+
+$R2 isa inference-rule,
+lhs {
+    (parent: $p, child: $c) isa Parent;
+    (ancestor: $c, descendant: $d) isa Ancestor;
+},
+rhs {
+    (ancestor: $p, descendant: $d) isa Ancestor;
+};
+```
+As there is more than one way to define Graql patterns through the API, there are several ways to construct rules.
+
+Through the Pattern factory:
 
 ```java
-Pattern r1Body = var().rel("parent", "x").rel("child", "y").isa("Parent");
-Pattern r1Head = var().rel("ancestor", "x").rel("descendant", "y").isa("Ancestor");
+Pattern rule1LHS = var().rel("parent", "p").rel("child", "c").isa("Parent");
+Pattern rule1RHS = var().rel("ancestor", "p").rel("descendant", "c").isa("Ancestor");
 
-Pattern r2Body = and(
-        var().rel("parent", "x").rel("child", "y").isa("Parent')"),
-        var().rel("ancestor", "z").rel("descendant", "y").isa("Ancestor")
+Pattern rule2LHS = and(
+        var().rel("parent", "p").rel("child", "c").isa("Parent')"),
+        var().rel("ancestor", "c").rel("descendant", "d").isa("Ancestor")
 );
-Pattern r2Head = var().rel("ancestor", "x").rel("descendant", "y").isa("Ancestor");
+Pattern rule2RHS = var().rel("ancestor", "p").rel("descendant", "d").isa("Ancestor");
+```
 
-Rule rule1 = inferenceRule.addRule(r1Body, r1Head);
-Rule rule2 = inferenceRule.addRule(r2Body, r2Head);
+If we have a specific `GraknGraph graph` already defined, we can use the Graql pattern parser:
+
+```java
+Pattern rule1LHS = and(graph.graql().parsePatterns("(parent: $p, child: $c) isa Parent;"));
+Pattern rule1RHS = and(graph.graql().parsePatterns("(ancestor: $p, descendant: $c) isa Ancestor;"));
+
+Pattern rule2LHS = and(graph.graql().parsePatterns("(parent: $p, child: $c) isa Parent;(ancestor: $c, descendant: $d) isa Ancestor;"));
+Pattern rule2RHS = and(graph.graql().parsePatterns("(ancestor: $p, descendant: $d) isa Ancestor;"));
+```
+
+We conclude the rule creation with defining the rules from their constituent patterns:
+
+```java
+Rule rule1 = inferenceRule.addRule(rule1LHS, rule1RHS);
+Rule rule2 = inferenceRule.addRule(rule2LHS, rule2RHS);
 ```
 
 
@@ -55,4 +91,3 @@ Want to leave a comment? Visit <a href="https://github.com/graknlabs/docs/issues
 
 
 {% include links.html %}
-
