@@ -33,7 +33,7 @@ All rule instances are of type inference-rule which can be retrieved by:
 RuleType inferenceRule = graknGraph.getMetaRuleInference();
 ```
 
-Rule instances can be added to the graph both through the Graph API as well as through Graql. Let's consider the ancestor example:
+Rule instances can be added to the graph both through the Graph API as well as through Graql. Let's consider an example:
 
 ```graql
 $R1 isa inference-rule,
@@ -53,9 +53,8 @@ rhs {
     (ancestor: $p, descendant: $d) isa Ancestor;
 };
 ```
-As there is more than one way to define Graql patterns through the API, there are several ways to construct rules.
 
-Through the Pattern factory:
+As there is more than one way to define Graql patterns through the API, there are several ways to construct rules. One options is through the Pattern factory:
 
 ```java
 Pattern rule1LHS = var().rel("parent", "p").rel("child", "c").isa("Parent");
