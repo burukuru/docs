@@ -29,7 +29,7 @@ On the other hand, advanced querying is better suited for Graql Statments
 
 ## Building An Ontology With The Graph API
 
-In the [Basic Ontology documentation](./basic-ontology.html) section we introduced a simple ontology built using graql.
+In the [Basic Ontology documentation](../building-an-ontology/basic-ontology.html) section we introduced a simple ontology built using graql.
 Lets see how we can build the same ontology exclusively via the graph API.
 First we need a graph. For this example lets just use an in memory graph:
 
@@ -149,3 +149,81 @@ Now lets commit our ontology:
 graph.commitOnClose();
 graph.close();
 ```
+## Loading Data
+
+Now that we have created a we can load in some data using the graph api. 
+Lets compare how a graql statement maps to a graph api call:
+
+```
+insert $x isa person has firstname "Bob";
+```
+    
+With the java graph API will be:    
+
+```java
+Resource bobName = firstname.putResource("Bob"); //Create the resource
+person.addEntity().hasResource(bobName); //Link it to an entity
+```   
+
+What if we want to create a relation between some entities. 
+In graql we know we can do the following:
+
+```
+insert
+    $x isa person has firstname "Bob";
+    $y isa person has firstname "Alice";
+    $z (spouse1: $x, spouse2: $y) isa marriage;
+```
+
+With the Graph API this would be:
+
+```java
+//Create the resources
+Resource bobName = firstname.putResource("Bob"); 
+Resource aliceName = firstname.putResource("Alice");
+
+//Create the entities
+Entity bob = person.addEntity();
+Entity alice = person.addEntity();
+
+//Create the actualt relationships
+Relation bobAndAliceMarriage = marriage.addRelation().putRolePlayer(spouse1, bob).putRolePlayer(spouse2, alice);
+```
+
+Ooops we forgot to add a picture:
+
+```
+$z has picture "www.LocationOfMyPicture.com";
+```
+
+ooops, we wanted to do that using the graph API:
+
+```java
+Resource bobAndAlicePicture = picture.putResource("www.LocationOfMyPicture.com");
+bobAndAliceMarriage.hasResource(bobAndAlicePicture);
+```
+
+The above should enable you to load data into any ontology you create.
+
+## Building A Hierarchical Ontology  
+
+In the [Hierarchical Ontology documentation](../building-an-ontology/hierachical-ontology.html) section we discussed how it is possible to create more expressive ontologies by creating a type hierarchy.
+How can we create the same hierarchy using the graph API.  
+Lets look at a quick example, this graql statement:
+
+```
+insert 
+    event sub entity;
+    wedding sub event;
+```
+
+becomes the following with the Graph API:
+
+```java 
+EntityType event = graph.putEntityType("event");
+EntityType wedding = graph.putEntityType("event").superType(event);
+```
+
+Simple, from there all operations remain the same. 
+It is worth remembering that adding a type hierarchy does allow you to create a more expressive database but you will need to follow more validation rules.  
+Please checkout [this](../advanced-grakn/validation.html) section for more details.
