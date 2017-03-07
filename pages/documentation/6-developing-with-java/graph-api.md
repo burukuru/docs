@@ -21,27 +21,27 @@ Java Graql API?
 Used for Querying - for traversals
 -->
 
-The Java Graph API is the low level API that encapsulates the [Grakn knowledge model](../the-basics/grakn-knowledge-model.html). The API provides Java object constructs for ontological elements (entity types, relation types, etc.) and data instances (entities, relations, etc.), allowing you to build a graph programmatically. 
+The Java Graph API is the low level API that encapsulates the [Grakn knowledge model](../the-fundamentals/grakn-knowledge-model.html). The API provides Java object constructs for ontological elements (entity types, relation types, etc.) and data instances (entities, relations, etc.), allowing you to build a graph programmatically. 
 
-To get set up to use this API, please read through our [Setup Guide](../developing-with-java/development-setup.html) .
+To get set up to use this API, please read through our [Setup Guide](../get-started/setup-guide.html) and guide to [starting Java development with GRAKN.AI](./java-setup.html).
 
 ## Graph API vs Graql
 
 On this page we will focus primarily on the methods provided by the `GraknGraph` interface. All graph mutation operations executed by Graql statements use the `GraknGraph` interface. So if you are primarily interested in mutating the graph, as well as doing simple concept lookups the `GraknGraph` interface will be sufficient. 
 
-It is also possible to interact with the graph using a Java API to form Graql queries via `GraknGraph.graql()`, which is discussed separately [here](../developing-with-java/java-graql.html), and is best suited for advanced querying.
+It is also possible to interact with the graph using a Java API to form Graql queries via `GraknGraph.graql()`, which is discussed separately [here](./java-graql.html), and is best suited for advanced querying.
 
 ## Building an Ontology with the Graph API
 
 In the [Basic Ontology documentation](../building-an-ontology/basic-ontology.html) we introduced a simple ontology built using Graql.
 Let's see how we can build the same ontology exclusively via the graph API.
-First we need a graph. For this example we will just use an [in-memory graph](./developing-with-java/java-setup.html#initialising-a-graph):
+First we need a graph. For this example we will just use an [in-memory graph](./java-setup.html#initialising-a-graph):
 
 ```java
 GraknGraph graph = Grakn.factory(Grakn.IN_MEMORY, "MyGraph").getGraph();
 ```
 
-We need to define our constructs before we can use them. Let's begin by defining our resource types since they are used everywhere. In Graql, they were defined as follows:
+We need to define our constructs before we can use them. We will begin by defining our resource types since they are used everywhere. In Graql, they were defined as follows:
 
 ```graql
 identifier sub resource datatype string;
@@ -68,7 +68,7 @@ ResourceType deathDate = graph.putResourceType("death-date", ResourceType.DataTy
 ResourceType gender = graph.putResourceType("gender", ResourceType.DataType.STRING);
 ```
 
-Now lets take a look at our role and relation types. In Graql:
+Now the role and relation types. In Graql:
 
 ```graql
 marriage sub relation
@@ -144,7 +144,7 @@ person.hasResource(death-date);
 person.hasResource(gender);
 ```
 
-Now lets commit the ontology using the Graph API:
+Now to commit the ontology using the Graph API:
 
 ```java
 graph.commitOnClose();
@@ -208,7 +208,7 @@ bobAndAliceMarriage.hasResource(bobAndAlicePicture);
 
 ## Building A Hierarchical Ontology  
 
-In the [Hierarchical Ontology documentation](../building-an-ontology/hierachical-ontology.html), we discussed how it is possible to create more expressive ontologies by creating a type hierarchy.
+In the [Hierarchical Ontology documentation](../building-an-ontology/hierarchical-ontology.html), we discussed how it is possible to create more expressive ontologies by creating a type hierarchy.
 
 How can we create a hierarchy using the graph API? Well, this graql statement:
 
@@ -227,7 +227,7 @@ EntityType wedding = graph.putEntityType("event").superType(event);
 
 From there, all operations remain the same. 
 
-It is worth remembering that adding a type hierarchy allows you to create a more expressive database but you will need to follow more validation rules. Please check out [this section](../advanced-grakn/validation.html) for more details.
+It is worth remembering that adding a type hierarchy allows you to create a more expressive database but you will need to follow more validation rules. Please check out the section on [validation](../the-fundamentals/grakn-knowledge-model.html#data-validation) for more details.
 
 ### Rule Java API
 
@@ -237,7 +237,7 @@ All rule instances are of type inference-rule which can be retrieved by:
 RuleType inferenceRule = graknGraph.getMetaRuleInference();
 ```
 
-Rule instances can be added to the graph both through the Graph API as well as through Graql. Let's consider an example:
+Rule instances can be added to the graph both through the Graph API as well as through Graql. We will consider an example:
 
 ```graql
 $R1 isa inference-rule,
