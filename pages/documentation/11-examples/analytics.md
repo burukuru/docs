@@ -96,7 +96,7 @@ To load *ontology.gql* into Grakn, make sure the engine is running and choose a 
 We migrated the CSV data using template Graql files, but for ease of use, we provide a single data file that you can load to populate a graph.
 
 ```bash
-<relative-path-to-Grakn>/bin/graql.sh -f ./data.gql
+<relative-path-to-Grakn>/bin/graql.sh -b ./data.gql
 ```		
 
 Spin up the [Grakn visualiser](../grakn-dashboard/visualiser.html) by pointing your browser to [http://localhost:4567/](http://localhost:4567/). You can submit queries to check the data, or explore it using the Types dropdown menu.
@@ -191,6 +191,16 @@ match $x has identifier contains "Elizabeth"; aggregate count;
 
 Compute queries are computationally intensive and run in parallel on a cluster, so are good for big data and can be used to calculate results very fast. However, you can't filter the results by resource in the same way as you can for an `aggregate` query.
 
+
+## Inference
+
+```graql
+
+match $x has powerful contains "TRUE" has economical contains "TRUE";
+match $x has powerful contains "TRUE" has economical contains "TRUE" has model $y;
+$x id "106584" isa manual-car; $y value "Ferrari Dino" isa model; 
+$x id "254120" isa automatic-car; $y value "Pontiac Firebird" isa model; 
+```
 
 ## Where Next?
 
