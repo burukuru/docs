@@ -10,9 +10,6 @@ folder: documentation
 ---
 
 {% include warning.html content="Please note that this page is in progress and subject to revision." %}
-
-
-
 <!--
 What is the difference between the Graph API and Java Graql API?
 Use the Graph API for:
@@ -24,57 +21,41 @@ Java Graql API?
 Used for Querying - for traversals
 -->
 
+The Java Graph API is the low level API that encapsulates the [Grakn knowledge model](../the-basics/grakn-knowledge-model.html). The API provides Java object constructs for ontological elements (entity types, relation types, etc.) and data instances (entities, relations, etc.), allowing you to build a graph programmatically. 
 
+To get set up to use this API, please read through our [Setup Guide](../developing-with-java/development-setup.html) .
 
+## Graph API vs Graql
 
+On this page we will focus primarily on the methods provided by the `GraknGraph` interface. All graph mutation operations executed by Graql statements use the `GraknGraph` interface. So if you are primarily interested in mutating the graph, as well as doing simple concept lookups the `GraknGraph` interface will be sufficient. 
 
-## The Java Graph API
+It is also possible to interact with the graph using a Java API to form Graql queries via `GraknGraph.graql()`, which is discussed separately [here](../developing-with-java/java-graql.html), and is best suited for advanced querying.
 
-The Java Graph API is the low level API which encapsulates the Grakn knowledge model we discussed in the [Knowledge Model](../the-basics/grakn-knowledge-model.html) section.
-It provides java object constructs for both Ontological Elements (Entity Types, Relation Types, etc. . . ) and Data Instances (Entities, Relations, etc . . .).
+## Building an Ontology with the Graph API
 
-Using these constructs allows you to build a graph programmatically. 
-To setup using this API please read through our [Setup Guide](../developing-with-java/development-setup.html) .
-
-## Graph API Vs Graql
-
-In this section we will be focusing primarily on the methods provided by the `GraknGaph` interface. 
-Interacting with Graql queries via `GraknGraph.graql()` will be discussed [here](../developing-with-java/java-graql.html).
-
-You may choose to operate exclusively via graql statements.
-However, all graph mutation operations executed by Graql statements use the `GraknGaph` interface.
-So if you are primarily interested in mutating the graph pragmatically as well as doing simple concept lookups the `GraknGaph` interface will be sufficient. 
-On the other hand, advanced querying is better suited for Graql Statments
-
-## Building An Ontology With The Graph API
-
-In the [Basic Ontology documentation](../building-an-ontology/basic-ontology.html) section we introduced a simple ontology built using graql.
-Lets see how we can build the same ontology exclusively via the graph API.
-First we need a graph. For this example lets just use an in memory graph:
+In the [Basic Ontology documentation](../building-an-ontology/basic-ontology.html) we introduced a simple ontology built using Graql.
+Let's see how we can build the same ontology exclusively via the graph API.
+First we need a graph. For this example we will just use an [in-memory graph](./developing-with-java/java-setup.html#initialising-a-graph):
 
 ```java
 GraknGraph graph = Grakn.factory(Grakn.IN_MEMORY, "MyGraph").getGraph();
 ```
 
-Because we are using an object orientated API which needs to compile we need to define our constructs before we can use them.    
-So lets begin by defining our Resource Types since they are used everywhere:
-
-    
-Now lets take a look at our Role and Relation Types first. In Graql these are:
+We need to define our constructs before we can use them. Let's begin by defining our resource types since they are used everywhere. In Graql, they were defined as follows:
 
 ```graql
-  identifier sub resource datatype string;
-  firstname sub resource datatype string;
-  surname sub resource datatype string;
-  middlename sub resource datatype string;
-  picture sub resource datatype string;
-  age sub resource datatype long;
-  birth-date sub resource datatype string;
-  death-date sub resource datatype string;
-  gender sub resource datatype string;
+identifier sub resource datatype string;
+firstname sub resource datatype string;
+surname sub resource datatype string;
+middlename sub resource datatype string;
+picture sub resource datatype string;
+age sub resource datatype long;
+birth-date sub resource datatype string;
+death-date sub resource datatype string;
+gender sub resource datatype string;
 ```
 
-These resource types can be built with the Graph API with:
+These same resource types can be built with the Graph API as follows:
 
 ```java
 ResourceType identifier = graph.putResourceType("identifier", ResourceType.DataType.STRING);
@@ -87,26 +68,26 @@ ResourceType deathDate = graph.putResourceType("death-date", ResourceType.DataTy
 ResourceType gender = graph.putResourceType("gender", ResourceType.DataType.STRING);
 ```
 
-Now lets take a look at our Role and Relation Types:
+Now lets take a look at our role and relation types. In Graql:
 
 ```graql
-  marriage sub relation
-    has-role spouse1
-    has-role spouse2
-    has-resource picture;
+marriage sub relation
+  has-role spouse1
+  has-role spouse2
+  has-resource picture;
 
-  spouse1 sub role;
-  spouse2 sub role;
+spouse1 sub role;
+spouse2 sub role;
 
-  parentship sub relation
-    has-role parent
-    has-role child;
+parentship sub relation
+  has-role parent
+  has-role child;
 
-  parent sub role;
-  child sub role;
+parent sub role;
+child sub role;
 ```
 
-Using the graph API this is built with: 
+Using the Graph API: 
 
 ```java
 RoleType spouse1 = graph.putRoleType("spouse1");
@@ -124,26 +105,26 @@ RelationType marriage = graph.putRelationType("marriage")
 
 ```
 
-Now our Entity Types:
+Now the entity types. First, in Graql:
 
-```
-  person sub entity
-    has-resource identifier
-    has-resource firstname
-    has-resource surname
-    has-resource middlename
-    has-resource picture
-    has-resource age
-    has-resource birth-date
-    has-resource death-date
-    has-resource gender
-    plays-role parent
-    plays-role child
-    plays-role spouse1
-    plays-role spouse2;
+```graql
+person sub entity
+  has-resource identifier
+  has-resource firstname
+  has-resource surname
+  has-resource middlename
+  has-resource picture
+  has-resource age
+  has-resource birth-date
+  has-resource death-date
+  has-resource gender
+  plays-role parent
+  plays-role child
+  plays-role spouse1
+  plays-role spouse2;
 ```
 
-Again, with the graph API this is:
+Using the Graph API:
 
 ```java
 EntityType person = graph.putEntityType("person")
@@ -162,32 +143,34 @@ person.hasResource(birth-date);
 person.hasResource(death-date);
 person.hasResource(gender);
 ```
-Now lets commit our ontology:
+
+Now lets commit the ontology using the Graph API:
 
 ```java
 graph.commitOnClose();
 graph.close();
 ```
+
 ## Loading Data
 
-Now that we have created a we can load in some data using the graph api. 
-Lets compare how a graql statement maps to a graph api call:
+Now that we have created the ontology, we can load in some data using the Graph API. We can compare how a Graql statement maps to the Graph API. First, the Graql:
 
-```
+```graql
 insert $x isa person has firstname "Bob";
 ```
     
-With the java graph API will be:    
+Now the equivalent Graph API:    
 
 ```java
 Resource bobName = firstname.putResource("Bob"); //Create the resource
 person.addEntity().hasResource(bobName); //Link it to an entity
 ```   
 
-What if we want to create a relation between some entities. 
-In graql we know we can do the following:
+What if we want to create a relation between some entities? 
 
-```
+In Graql we know we can do the following:
+
+```graql
 insert
     $x isa person has firstname "Bob";
     $y isa person has firstname "Alice";
@@ -209,28 +192,27 @@ Entity alice = person.addEntity();
 Relation bobAndAliceMarriage = marriage.addRelation().putRolePlayer(spouse1, bob).putRolePlayer(spouse2, alice);
 ```
 
-Ooops we forgot to add a picture:
+Add a picture, first using Graql:
 
-```
+```graql
 $z has picture "www.LocationOfMyPicture.com";
 ```
 
-ooops, we wanted to do that using the graph API:
+Now the equivalent using the Graph API:
 
 ```java
 Resource bobAndAlicePicture = picture.putResource("www.LocationOfMyPicture.com");
 bobAndAliceMarriage.hasResource(bobAndAlicePicture);
 ```
 
-The above should enable you to load data into any ontology you create.
 
 ## Building A Hierarchical Ontology  
 
-In the [Hierarchical Ontology documentation](../building-an-ontology/hierachical-ontology.html) section we discussed how it is possible to create more expressive ontologies by creating a type hierarchy.
-How can we create the same hierarchy using the graph API.  
-Lets look at a quick example, this graql statement:
+In the [Hierarchical Ontology documentation](../building-an-ontology/hierachical-ontology.html), we discussed how it is possible to create more expressive ontologies by creating a type hierarchy.
 
-```
+How can we create a hierarchy using the graph API? Well, this graql statement:
+
+```graql
 insert 
     event sub entity;
     wedding sub event;
@@ -243,11 +225,12 @@ EntityType event = graph.putEntityType("event");
 EntityType wedding = graph.putEntityType("event").superType(event);
 ```
 
-Simple, from there all operations remain the same. 
-It is worth remembering that adding a type hierarchy does allow you to create a more expressive database but you will need to follow more validation rules.  
-Please checkout [this](../advanced-grakn/validation.html) section for more details.
+From there, all operations remain the same. 
+
+It is worth remembering that adding a type hierarchy allows you to create a more expressive database but you will need to follow more validation rules. Please check out [this section](../advanced-grakn/validation.html) for more details.
 
 ### Rule Java API
+
 All rule instances are of type inference-rule which can be retrieved by:
 
 ```java
