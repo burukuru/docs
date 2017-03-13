@@ -1,7 +1,7 @@
 ---
 title: Graql Overview
 keywords: graql, overview
-last_updated: August 10, 2016
+last_updated: March 2017
 tags: [graql]
 summary: "An introduction to Graql"
 sidebar: documentation_sidebar
@@ -26,34 +26,66 @@ There are five types of queries, which are begun with the follow keywords:
 ## Reserved keywords
 
 The following list Graql's reserved keywords:
-#### Querying an query modifiers
+
+#### Querying and query modifiers
 
 ```graql
-aggregate, asc, askbycompute, containsdelete, desc, distinct
-fromid, in, insertlimitmatchoffset, orderregexselecttovalue
+aggregate, asc, ask
+by
+compute, contains
+delete, desc, distinct
+from
+id, in, insert
+limit
+match
+offset, order
+regex
+select
+to
+value
 ```
 
 #### Datatypes
 
 ```graql
-booleandatatype, doublelongstringTRUE/FALSE
-```#### Ontology definition
+datatype
+boolean, double, long, string
+true, false
+```
+
+#### Ontology definition
 
 ```graql
-has, has-key, has-resource, has-role, has-scopeis-abstract, isaplays, plays-role```
+has, has-key, has-resource, has-role, has-scope
+is-abstract, isa
+plays, plays-role
+```
 
 #### Rules definition
 
 ```graql
-lhs, rhs```
-#### Statistics with `compute` and `aggregate````graql
+lhs, rhs
+```
+
+#### Statistics with `compute` and `aggregate`
+
+```graql
 count
 group
 max, mean, median, min
 std, sum
-```#### Graql templates
-```graql-template
-anddoelse, elseifforif, innot, nullTRUE/FALSE
+```
+
+#### Graql templates
+
+```graql-template
+and
+do
+else, elseif
+for
+if, in
+not, null
+true, false
 ```
 
 ## Cheatsheet reference
