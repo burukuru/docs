@@ -24,11 +24,34 @@ There are five types of queries, which are begun with the follow keywords:
 - [compute](compute-queries.html) - for computing useful information about your graph
 
 ## Reserved keywords
-Here is an alphabetical list of Graql's reserved keywords:
+
+The following list Graql's reserved keywords:
+#### Querying an query modifiers
 
 ```graql
-aggregate, asc, askboolean, bycompute, containsdatatype, delete, desc, distinct, doublefromhas, has-key, has-resource, has-role, has-scopeid, in, insert, is-abstract, isalhs, limit, longmatchof, offset, or, orderplays, plays-roleregex, rhsselect, string, subto, type-namevalueTRUE/FALSE
-```Graql templates also use the following keywords:
+aggregate, asc, askbycompute, containsdelete, desc, distinct
+fromid, in, insertlimitmatchoffset, orderregexselecttovalue
+```
+
+#### Datatypes
+
+```graql
+booleandatatype, doublelongstringTRUE/FALSE
+```#### Ontology definition
+
+```graql
+has, has-key, has-resource, has-role, has-scopeis-abstract, isaplays, plays-role```
+
+#### Rules definition
+
+```graql
+lhs, rhs```
+#### Statistics with `compute` and `aggregate````graql
+count
+group
+max, mean, median, min
+std, sum
+```#### Graql templates
 ```graql-template
 anddoelse, elseifforif, innot, nullTRUE/FALSE
 ```
