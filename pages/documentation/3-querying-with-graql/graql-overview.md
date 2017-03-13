@@ -1,7 +1,7 @@
 ---
 title: Graql Overview
 keywords: graql, overview
-last_updated: August 10, 2016
+last_updated: March 2017
 tags: [graql]
 summary: "An introduction to Graql"
 sidebar: documentation_sidebar
@@ -27,7 +27,7 @@ There are five types of queries, which are begun with the follow keywords:
 
 The following list Graql's reserved keywords:
 
-#### Querying an query modifiers
+#### Querying and query modifiers
 
 ```graql
 aggregate, asc, ask
