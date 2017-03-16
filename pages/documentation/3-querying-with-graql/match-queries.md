@@ -124,9 +124,13 @@ match $x isa person; (spouse1:$x, $y); $x has identifier $xn; $y has identifier 
 </div>
 <div role="tabpanel" class="tab-pane" id="java6">
 <pre>
+qb.match(var("x").isa("person"), var().rel("x").rel("y"));
+qb.match(var("x").isa("person"), var().rel("spouse1", "x").rel("y"));
 qb.match(
   var("x").isa("person"),
-  var().rel("spouse1", "x").rel("y")
+  var().rel("spouse1", "x").rel("x"),
+  var("x").has("identifier", var("xn")),
+  var("y").has("identifier", var("yn"))
 );
 </pre>
 </div> <!-- tab-pane -->
