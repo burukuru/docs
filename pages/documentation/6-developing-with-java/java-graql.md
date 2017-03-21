@@ -33,7 +33,7 @@ A `QueryBuilder` is constructed from a `GraknGraph`:
 
 ```java-test-ignore
 GraknGraph graph = Grakn.factory(Grakn.IN_MEMORY, "MyGraph").getGraph();
-QueryBuilder qb = graknGraph.graql();
+QueryBuilder qb = graph.graql();
 ```
 
 The user can also choose to not provide a graph with `Graql.withoutGraph()`.
