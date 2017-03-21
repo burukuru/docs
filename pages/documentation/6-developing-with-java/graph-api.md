@@ -9,7 +9,6 @@ permalink: /documentation/developing-with-java/graph-api.html
 folder: documentation
 ---
 
-{% include warning.html content="Please note that this page is in progress and subject to revision." %}
 <!--
 What is the difference between the Graph API and Java Graql API?
 Use the Graph API for:
@@ -229,7 +228,7 @@ From there, all operations remain the same.
 
 It is worth remembering that adding a type hierarchy allows you to create a more expressive database but you will need to follow more validation rules. Please check out the section on [validation](../the-fundamentals/grakn-knowledge-model.html#data-validation) for more details.
 
-### Rule Java API
+## Rule Java API
 
 All rule instances are of type inference-rule which can be retrieved by:
 

@@ -8,7 +8,6 @@ sidebar: documentation_sidebar
 permalink: /documentation/developing-with-java/java-setup.html
 folder: documentation
 ---
-{% include warning.html content="Please note that this page is in progress and subject to revision." %}
 
 ## Basic Setup
 
@@ -32,13 +31,13 @@ Please see the [Setup Guide](../get-started/setup-guide.html) on more details on
 
 Depending on the configuration of the Grakn server, your Java application will require one of the following dependencies. When your server is running against a Titan backend: 
 
-````xml   
+```xml   
 <dependency>
     <groupId>ai.grakn</groupId>
     <artifactId>titan-factory</artifactId>
     <version>${project.version}</version> 
 </dependency>
-````    
+```    
 
 When your server is running against a OrientDB backend:
 

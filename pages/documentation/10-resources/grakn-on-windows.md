@@ -10,6 +10,8 @@ folder: documentation
 comment_issue_id: 25
 ---
 
+{% include warning.html content="**Please note that this page is not intended for use at present, but is a rough set of notes for possible support to be added later to GRAKN.AI for Windows.**" %}
+
 ## Instructions
 Grakn needs Java 8 and Cassandra 2.2.x (http://cassandra.apache.org/) at the moment. Our distribution comes bundled with Cassandra and we start everything through Unix shell scripts which haven’t been ported to Windows yet. So our wrapped up setup does not work out of the box on Windows.  
 

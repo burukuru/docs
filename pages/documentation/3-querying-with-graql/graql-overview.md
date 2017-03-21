@@ -16,7 +16,7 @@ Graql](../developing-with-java/java-graql.html).
 
 ## Query types
 
-There are five types of queries, which are begun with the follow keywords:  
+There are five types of queries, which are begun with the following keywords:  
 - [match](match-queries.html) - for matching patterns in the graph  
 - [ask](ask-queries.html) - for querying if certain patterns exist in the graph  
 - [insert](insert-queries.html) - for inserting types and instances  
