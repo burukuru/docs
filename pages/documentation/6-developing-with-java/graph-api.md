@@ -26,7 +26,7 @@ To get set up to use this API, please read through our [Setup Guide](../get-star
 
 ## Graph API vs Graql
 
-On this page we will focus primarily on the methods provided by the `GraknGraph` interface. All graph mutation operations executed by Graql statements use the `GraknGraph` interface. So if you are primarily interested in mutating the graph, as well as doing simple concept lookups the `GraknGraph` interface will be sufficient. 
+On this page we will focus primarily on the methods provided by the `GraknGraph` interface which is used by all graph mutation operations executed by Graql statements. If you are primarily interested in mutating the graph, as well as doing simple concept lookups the `GraknGraph` interface will be sufficient. 
 
 It is also possible to interact with the graph using a Java API to form Graql queries via `GraknGraph.graql()`, which is discussed separately [here](./java-graql.html), and is best suited for advanced querying.
 
@@ -101,7 +101,6 @@ RoleType child = graph.putRoleType("child");
 RelationType marriage = graph.putRelationType("marriage")
                             .hasRole(spouse1);
                             .hasRole(spouse2);
-
 ```
 
 Now the entity types. First, in Graql:
@@ -187,7 +186,7 @@ Resource aliceName = firstname.putResource("Alice");
 Entity bob = person.addEntity();
 Entity alice = person.addEntity();
 
-//Create the actualt relationships
+//Create the actual relationships
 Relation bobAndAliceMarriage = marriage.addRelation().putRolePlayer(spouse1, bob).putRolePlayer(spouse2, alice);
 ```
 

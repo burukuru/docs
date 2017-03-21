@@ -32,7 +32,7 @@ import static ai.grakn.graql.Graql.*;
 A `QueryBuilder` is constructed from a `GraknGraph`:
 
 ```java-test-ignore
-GraknGraph graknGraph = Grakn.factory(Grakn.DEFAULT_URI, "my-graph").getGraph();
+GraknGraph graph = Grakn.factory(Grakn.IN_MEMORY, "MyGraph").getGraph();
 QueryBuilder qb = graknGraph.graql();
 ```
 
@@ -41,7 +41,7 @@ This can be useful if you need to provide the graph later (using `withGraph`),
 or you only want to construct queries without executing them.
 
 The `QueryBuilder` class provides methods for building `match` and `insert`
-queries. `ask`, `insert` and `delete` queries can all be built from `match`
+queries, but `ask`, `insert` and `delete` queries can all be built from `match`
 queries.
 
 ## Match Queries
@@ -51,7 +51,7 @@ Match queries are constructed using the `match` method. This will produce a
 such as `limit` and `distinct`:
 
 ```java
-MatchQuery query = qb.match(var("x").isa("person").has("age", gt(70))).limit(50);
+MatchQuery query = qb.match(var("x").isa("person").has("firstname", "Bob")).limit(50);
 ```
 
 `MatchQuery` is `Iterable` and has a `stream` method. Each result is a
@@ -75,8 +75,8 @@ query.get("x").forEach(x -> System.out.println(x.asResource().getValue()));
 ## Ask Queries
 
 ```java
-if (qb.match(var().isa("person").has("firstname", "Mary")).ask().execute()) {
-  System.out.println("There is someone called Mary!");
+if (qb.match(var().isa("person").has("firstname", "Bob")).ask().execute()) {
+  System.out.println("There is someone called Bob!");
 }
 ```
 

@@ -44,25 +44,6 @@ When the build has completed, you will find it in the `grakn-dist` directory und
 You can find an additional repo on Github containing our [example code](https://github.com/graknlabs/sample-projects), while further information about the examples is [here](../examples/examples-overview.html).
 
 
-## Grakn Java API
-
-Inside the `lib` directory of Grakn.zip are the jars you will need to
-develop with Grakn.
-
-If you would like to start developing with minimal effort you can integrate the jar file, e.g.
-`graql-shell-x.y.z-jar-with-dependencies.jar` into your project. This however
-may be a bit inflexible as all dependencies are compiled in.
-
-If you would like more flexibility, in the `lib` directory all the Grakn
-jars are provided with no dependencies. Using these would require you to use
-Maven to acquire the other dependencies.
-
-Here are some links to guides for adding external jars using different IDEs:
-
-- [IntelliJ](https://www.jetbrains.com/help/idea/2016.1/configuring-module-dependencies-and-libraries.html)
-- [Eclipse](http://www.tutorialspoint.com/eclipse/eclipse_java_build_path.htm)
-- [Netbeans](http://oopbook.com/java-classpath-2/classpath-in-netbeans/)
-
 ## Questions?
 Please see our [FAQ](../resources/faq.html) page if you encounter any problems when installing and running Grakn. If our guide doesn't cover the issue, please do get in touch on our [discussion forums](http://discuss.grakn.ai), on [Stack Overflow](http://www.stackoverflow.com) or via our [Slack channels](https://grakn.ai/slack.html).
 

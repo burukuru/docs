@@ -61,8 +61,7 @@ You can use Mac OS X or Linux right now. We plan to support Windows at a later d
 There are several ways to load data into Grakn. For small amounts of data (<1000 lines), you an load it directly via the Graql shell. For example, the following loads up the an example file called `family-data.gql`:
 
 ```bash
-bin/graql.sh -f examples/family-data
-.gql
+bin/graql.sh -f examples/family-data.gql
 ```
 
 If you have a larger file, you will need to batch load it. The file will be divided in batches that will be committed concurrently. This differs from a regular load, where the whole file is committed in a single chunk when you call commit. See the example below, which loads the Graql file FILENAME.gql, from PATH.

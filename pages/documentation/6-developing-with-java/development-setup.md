@@ -52,6 +52,16 @@ When your server is running against a OrientDB backend:
 
 {% include note.html content="The distribution package comes with a Titan backend configured out of the box. OrientDB support is still in early stages of development. " %}
 
+
+The JAR files you will need to develop with Grakn can be found inside the `lib` directory of the distribution zip file. All the JARs are provided with no dependencies, so using these requires you to use Maven to acquire dependencies.
+
+Here are some links to guides for adding external jars using different IDEs:
+
+- [IntelliJ](https://www.jetbrains.com/help/idea/2016.1/configuring-module-dependencies-and-libraries.html)
+- [Eclipse](http://www.tutorialspoint.com/eclipse/eclipse_java_build_path.htm)
+- [Netbeans](http://oopbook.com/java-classpath-2/classpath-in-netbeans/)
+
+
 ## Initialising a Graph
 
 You can initialise an in memory graph without having the Grakn server running with:  
