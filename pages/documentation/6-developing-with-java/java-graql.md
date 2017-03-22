@@ -17,8 +17,14 @@ To use the API, add the following to your `pom.xml`:
 <dependency>
   <groupId>ai.grakn</groupId>
   <artifactId>grakn-graql</artifactId>
-  <version>0.11.0</version>
+  <version>${project.version}</version>
 </dependency>
+```
+
+and add the following to your imports.
+
+```
+import ai.grakn.graql.QueryBuilder;
 ```
 
 ## QueryBuilder
@@ -41,7 +47,7 @@ This can be useful if you need to provide the graph later (using `withGraph`),
 or you only want to construct queries without executing them.
 
 The `QueryBuilder` class provides methods for building `match` and `insert`
-queries, but `ask`, `insert` and `delete` queries can all be built from `match`
+queries. Additionally, it is possible to build `ask`, `match..insert` and `delete` queries from `match`
 queries.
 
 ## Match Queries

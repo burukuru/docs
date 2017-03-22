@@ -1,9 +1,9 @@
 ---
-title: Java Development Setup
+title: Java Development Overview
 keywords: java
-last_updated: January 2017
+last_updated: March 2017
 tags: [java]
-summary: "How to set up a Java GRAKN.AI environment."
+summary: "Overview guide for Java developers."
 sidebar: documentation_sidebar
 permalink: /documentation/developing-with-java/java-setup.html
 folder: documentation
@@ -27,7 +27,7 @@ This dependency will give you access to the Core API as well as an in-memory gra
 ## Server Dependent Setup
 
 If you require persistence and would like to access the entirety of the Grakn stack, then it is vital to have an instance of engine running.  
-Please see the [Setup Guide](../get-started/setup-guide.html) on more details on how to setup a Grakn server.
+Please see the [Setup Guide](../get-started/setup-guide.html) on more details on how to set up a Grakn server.
 
 Depending on the configuration of the Grakn server, your Java application will require one of the following dependencies. When your server is running against a Titan backend: 
 

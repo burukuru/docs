@@ -113,7 +113,7 @@ entries:
   - title: Develop with Java
     output: web
     folderitems:
-      - title: Java Development Setup
+      - title: Java Development Overview
         output: web
         url: /documentation/developing-with-java/java-setup.html
       - title: Graph API
