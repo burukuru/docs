@@ -23,6 +23,8 @@ The genealogy dataset is widely used across our documentation about GRAKN.AI, be
 
 It is available on the [sample-datasets repo on Github](https://github.com/graknlabs/sample-datasets/tree/master/genealogy-graph), and is also discussed in the ["Family Matters" blog post](https://blog.grakn.ai/family-matters-1bb639396a24#.4gnoaq2hr). 
 
+## Use Cases
+
 ### CSV Migration
 
 There are several examples available:
@@ -35,7 +37,7 @@ There are several examples available:
 
 ### JSON Migration
 
-There is an additional example of using the Java Migration API on the [sample projects repository](https://github.com/graknlabs/sample-projects/tree/master/example-json-migration-giphy) on Github. 
+There is an example of using the Java Migration API for JSON migration on the [sample-projects repository](https://github.com/graknlabs/sample-projects/tree/master/example-json-migration-giphy) on Github. 
 
 ### SQL Migration
 
@@ -43,40 +45,40 @@ There are several examples available:
 
 * A common use-case is to migrate existing SQL data to a graph in Grakn. We walk through a simple example of using the migration script as part of the documentation about [SQL migration](../migration/SQL-migration.html)
 
-* There is a further example of [SQL migration using the Java API](../examples/SQL-migration.html). 
+* There is a an additional example of [SQL migration using the Java API](../examples/SQL-migration.html). 
 
 * We also cover SQL migration in a [blog post](https://blog.grakn.ai/populating-mindmapsdb-with-the-world-5b2445aee60c#).
 
 ### OWL Migration
 
-For more information about migrating OWL to Grakn, please see the [OWL migration example](./OWL-migration.html).
+For more information about migrating OWL to Grakn using the Java migration API, please see the [OWL migration example](./OWL-migration.html).
 
 ### Reasoning with Graql 
 
 We use the genealogy dataset to illustrate how to write rules to infer new information from a dataset. You can find the example [here](./graql-reasoning.html).
 
-### Modern
+### Learn Graql
 
-The [Modern example](./modern.html) is a simple one, designed to test your knowledge of Graql.
+* The [Modern example](./modern.html) is a simple one, designed to test your knowledge of Graql. 
+* We have a [simple Pokemon example](./pokemon.html) to illustrate how to form a range of different Graql queries. 
+* The [philosophers.gql](https://github.com/graknlabs/grakn/blob/master/grakn-dist/src/examples/philosophers.gql) file, also distributed in the Grakn release zip, contains a simple ontology and data, for use as an example.
 
-### Haskell, R and Python bindings
+## Languages
+
+### Haskell, R and Python Bindings
 It is possible to extract data from Grakn and use it as a data science tool for analysis. You can take the results of a Graql query and store the results in a dataframe or similar structure, for use with Haskell, R or Python. 
 
 * Haskell: This [blog post](https://blog.grakn.ai/grakn-ai-and-haskell-c166c7cc1d23#.9jc7xu79l) is the first in a series of posts about combining GRAKN.AI and Haskell.
 * R and Python: This [blog post](https://blog.grakn.ai/there-r-pandas-in-my-graph-b8b5f40a2f99#) explains and gives a simple example. 
 * Python: A further [blog post](https://blog.grakn.ai/grakn-pandas-celebrities-5854ad688a4f#.k5zucfp6f) uses the Python driver to examine our example movie dataset.
 
-### Pokemon
+### Java Examples
 
-We have a [simple Pokemon example](./pokemon.html) to illustrate how to form a range of different Graql queries.
-
-The [sample-projects](https://github.com/graknlabs/sample-projects/tree/master/example-pokemon) repo on Github contains a Java project that uses the Java Graph API on the Pokemon data and ontology. 
-
-### Philosophers
-
-The Grakn repo on Github contains [philosophers.gql](https://github.com/graknlabs/grakn/blob/master/grakn-dist/src/examples/philosophers.gql), which contains a simple ontology and data, for use as an example.
-
-The [sample-projects](https://github.com/graknlabs/sample-projects/tree/master/example-philosophers) repo on Github contains a Java project that uses the Java Graph API on the same Philosophers data and ontology. 
+* Use of the core APIs for creating an ontology, adding data and making basic queries is covered in a [blog post](https://blog.grakn.ai/working-with-grakn-ai-using-java-5f13f24f1269#.giljgrjb3).
+* JSON migration: There is an example of using the [Java Migration API](../developing-with-java/migration-api.html) for JSON migration on the [sample-projects repository](https://github.com/graknlabs/sample-projects/tree/master/example-json-migration-giphy) on Github.
+* SQL migration: We have documented an example of [SQL migration using the Java API](../examples/SQL-migration.html). 
+* Pokemon: The [sample-projects](https://github.com/graknlabs/sample-projects/tree/master/example-pokemon) repo on Github contains a Java project that uses the Java Graph API on Pokemon data and an ontology. 
+* Philosophers: The [sample-projects](https://github.com/graknlabs/sample-projects/tree/master/example-philosophers) repo on Github contains a Java project that uses the Java Graph API on a Philosophers dataset and ontology. 
 
 ### Moogi Movie Database
 
@@ -85,7 +87,6 @@ The [sample-projects](https://github.com/graknlabs/sample-projects/tree/master/e
 ## Where Next?
 
 If you are interested in writing an example on Grakn, maybe as a way of trying it out, please take a look at the [Example Projects](./projects.html) page, which lists some ideas that we have for potential examples or research projects.
-
 
 {% include links.html %}
 

@@ -101,6 +101,19 @@ All graphs are also singletons specific to their keyspaces so be aware that in t
   
 any changes to `graph1`, `graph2`, or `graph3` will all be persisted to the same graph.
 
+## Where Next?
+
+The pages in this section of the documentation cover some of the public APIs available to Java developers:
+
+* [Graph API](./graph-api.html)
+* [Java Graql](./java-graql.html)
+* [Migration API](./migration-api.html)
+* [Loader API](./loader-api.html)
+
+There is also a page (in progress) that discusses advanced topics in Java development, such as transactions and multi-threading.
+
+There is an example described in our [blog](https://blog.grakn.ai/working-with-grakn-ai-using-java-5f13f24f1269#.8df3991rw) that discusses how to get set up to develop using Java, and how to work with the Graph API and Java Graql.
+
 ## Comments
 Want to leave a comment? Visit <a href="https://github.com/graknlabs/docs/issues/23" target="_blank">the issues on Github for this page</a> (you'll need a GitHub account). You are also welcome to contribute to our documentation directly via the "Edit me" button at the top of the page.
 
