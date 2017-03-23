@@ -33,15 +33,13 @@ This will start:
 
 * an instance of Cassandra, which serves as the supported backend for Grakn.
 * Grakn Engine, which is an HTTP server providing batch loading, monitoring and the browser dashboard.
-* Apache Kafka.
-* Apache Zookeeper.
 
 {% include note.html content="**Useful commands**  <br />
 To start Grakn, run `grakn.sh start`.   
 To stop Grakn, run `grakn.sh stop`.    
 To remove all graphs from Grakn, run `grakn.sh clean`" %}
 
-Grakn Engine is configured by default to use port 4567, but this can be changed, as can settings for Kafka and Zookeeper, in the *grakn-engine.properties* file, found within the */conf* directory of the installation.
+Grakn Engine is configured by default to use port 4567, but this can be changed in the *grakn-engine.properties* file, found within the */conf* directory of the installation.
 
 ## Test the Graql Shell
 
