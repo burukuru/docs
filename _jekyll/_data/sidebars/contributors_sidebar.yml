@@ -9,9 +9,19 @@ entries:
     url: /contributors/index.html
   - title: Code of Conduct
     output: web
-    url: /contributors/conduct.html 
+    url: /contributors/conduct.html
+  - title: Developer FAQ
+    output: web
+    url: /contributors/developer-faq.html   
   - title: Back to Documentation
     output: web
     url: /index.html
+     
+
+
+
+
+
+
      
       
