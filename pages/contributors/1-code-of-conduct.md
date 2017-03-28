@@ -29,6 +29,9 @@ In everything we say and do, we expect patience, respect and empathy. We know th
 
 If you believe someone is violating this code of conduct, please let us know.
 
+### Acknowledgements
+We have used the Apache Software Foundation's [Code of Conduct](http://www.apache.org/foundation/policies/conduct.html) as inspiration for the above.
+
 
 
 
