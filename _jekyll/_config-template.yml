@@ -94,6 +94,7 @@ defaults:
 sidebars:
 - documentation_sidebar
 - overview_sidebar
+- contributors_sidebar
 
 description: "A Distributed Knowledge Graph"
 # the description is used in the feed.xml file
