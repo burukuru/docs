@@ -6,5 +6,8 @@ entries:
   items:
   - title: Introduction
     output: web
-    url: /overview/index.html
+    url: /contributors/index.html
+  - title: Code of Conduct
+    output: web
+    url: /contributors/conduct.html  
       
