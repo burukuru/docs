@@ -17,7 +17,7 @@ Take a look around! We hope you find our documentation helpful, but if you need 
 <ul id="profileTabs" class="nav nav-tabs">
     <li class="active"><a href="#getstarted" data-toggle="tab">Get Started</a></li>
     <li><a href="#apireference" data-toggle="tab">API Reference</a></li>
-    <li><a href="#graql" data-toggle="tab">Graql</a></li>
+    <li><a href="#contribute" data-toggle="tab">Contribute</a></li>
     <li><a href="#gethelp" data-toggle="tab">Get Help</a></li>
 </ul>
   <div class="tab-content">
@@ -27,9 +27,9 @@ Take a look around! We hope you find our documentation helpful, but if you need 
 <p>When you're set up, there's an <a href="https://grakn.ai/pages/documentation/get-started/quickstart-tutorial.html">introductory tutorial</a> to show the basics of Graql and how to use the Java API.</p>
 </div>
 
-<div role="tabpanel" class="tab-pane" id="graql">
-    <h2>About</h2>
-    <p>We have a set of pages about <a href="https://grakn.ai/pages/documentation/graql/graql-overview.html">Graql queries</a>, and a <a href="https://grakn.ai/pages/documentation/graql/graql-cheatsheet.html">cheatsheet</a> as a handy reference.</p></div>
+<div role="tabpanel" class="tab-pane" id="contribute">
+    <h2>Contribute</h2>
+    <p>We have a set of pages about <a href="https://grakn.ai/pages/contributors/index.html">Contributing to GRAKN.AI</a>.</p></div>
 
 <div role="tabpanel" class="tab-pane" id="apireference">
 

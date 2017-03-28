@@ -188,3 +188,7 @@ entries:
       - title: Statistical Analysis
         output: web
         url: /documentation/examples/analytics.html
+  items:
+      - title: Contribute to GRAKN.AI
+        output: web
+        url: /contributors/index.html
