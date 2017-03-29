@@ -10,7 +10,7 @@ folder: documentation
 comment_issue_id: 25
 ---
 
-{% include note.html content="This page contains some of the questions were are mostly commonly asked, and is updated regularly. Please feel free to use our [discussion forums](http://discuss.grakn.ai) to ask us for help or advice." %}
+{% include note.html content="This page contains some of the questions were are mostly commonly asked, and is updated regularly. There is also a separate [Contributor FAQ](../../contributors/contributor-faq.html) for those collaborating with us on GRAKN.AI. You may find an answer here but, if you do not, please feel free to use our [discussion forums](http://discuss.grakn.ai) to ask us for help or advice." %}
 
 ## About GRAKN.AI
 
@@ -21,6 +21,10 @@ We are often asked why we have developed a new ontology and query language rathe
 We have written a [substantial explanation](https://blog.grakn.ai/knowledge-graph-representation-grakn-ai-or-owl-506065bd3f24#.5zjvkta9u) to this question on our blog. In summary, our underlying data model is that of a property graph, so in principle we’re able to import and export from/to RDF if needed. However, our ontology language is designed to strike a different and better balance between expressiveness and complexity than offered by the existing OWL profiles, especially in the context of knowledge graph structures. In consequence, our query language, Graql, is aligned with our ontology formalism to enable higher level query capabilities than supported by SPARQL over an RDF data model.
 
 OWL is not well-suited for graph-structures. Because of its formal foundations and computational limitations it is in fact a more natural language for managing tree-shaped data instead. OWL also makes it hard to help validate consistency of data and ensure it is well-structured, and this is what knowledge graph applications require.
+
+### How can I contribute to GRAKN.AI
+
+There are lots of ways you can get involved! Please take a look at our [contributor documentation](../../contributors/index.html). You may be a Java developer and able to help us fix bugs or add new features, but if you're not, there are still loads of projects to get into. We are always keen to see products developed on top of our platform, and have a list of [potential projects](../examples/projects.html) you could work on using Java, Graql, a JVM-language like Groovy, or even something completely different, like Python, R or Haskell.  And if you're not a programmer, you can still contribute. Our documentation changes regularly and needs review or translation. Please just get in touch using one of our [community channels](https://grakn.ai/community.html)!
 
 ## Bugs and strange behaviour
 
@@ -95,7 +99,7 @@ Ignoring these checks allows data to be processed much faster at the risk of bre
 
 The distributed and concurrent nature of the Grakn system means that, sometimes, post processing is required to ensure the data remains consistent. 
 
-**Role Player Optimisation **
+**Role Player Optimisation**
 
 When allocating entities as role players to multiple relations for the first time it is possible to create duplicate associations. These associations do not affect the results of any queries or computations. For example, if in a new system we process simultaneously the following three statements in different transactions:    
 
@@ -107,7 +111,7 @@ When allocating entities as role players to multiple relations for the first tim
 
 It is possible for the system to record that `Brad Pitt` is an actor multiple times. The duplications will later be resolved and merged by Grakn engine.
 
-**Merging Resources **
+**Merging Resources**
 
 {% include note.html content="This only happens when using a batch graph." %}
 

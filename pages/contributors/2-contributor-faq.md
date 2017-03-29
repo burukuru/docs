@@ -1,19 +1,28 @@
 ---
-title: Developer FAQ
+title: Contributor FAQ
 keywords: contributors
 last_updated: March 2017
 summary: This is an FAQ for developers working on the GRAKN.AI platform
 tags: [overview]
 sidebar: contributors_sidebar
-permalink: ./contributors/developer-faq.html
+permalink: ./contributors/contributor-faq.html
 folder: overview
 ---
 
 ## Introduction
 
-This page records technical issues that you may hit upon if you're working on a bug fix or feature request within the GRAKN.AI platform. Feel free to edit the page (or suggest edits via Slack) if you have a 'favourite' issue to share with other contributing developers!
+## General Questions
 
-## How do I resolve this weird exception?
+### How can I contribute to GRAKN.AI?
+
+We are happy to receive contributions of platform or test code, example projects, bug reports, support to other community members, or documentation (fixes or translation). 
+
+
+## Developer FAQs
+
+This section records technical issues that you may hit upon if you're working on a bug fix or feature request in the GRAKN.AI codebase (that is, working on the GRAKN.AI platform). Feel free to edit the page (or suggest edits via Slack) if you have a 'favourite' issue to share with other contributing developers!
+
+### How do I resolve this weird exception?
 
 I used to be able to start GraknEngineServer, but now I get this weird exception when running running the `main` in `GraknEngineServer`. Stack Overflow recommends excluding the Java servlet API for Apache spark, but then those classes are not provided from elsewhere. 
 

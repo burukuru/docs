@@ -10,10 +10,10 @@ entries:
   - title: Code of Conduct
     output: web
     url: /contributors/conduct.html
-  - title: Developer FAQ
+  - title: Contributor FAQ
     output: web
-    url: /contributors/developer-faq.html   
-  - title: Back to Documentation
+    url: /contributors/contributor-faq.html   
+  - title: Documentation
     output: web
     url: /index.html
      
