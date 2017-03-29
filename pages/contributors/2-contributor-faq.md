@@ -55,10 +55,10 @@ Caused by: java.lang.SecurityException: class "javax.servlet.http.HttpSessionIdL
 
 The solution was to include the Titan factory dependency explicitly:
 
-```
+```bash
 <dependency>
     <groupId>ai.grakn</groupId>
     <artifactId>titan-factory</artifactId>
     <version>${project.version}</version>
-    </dependency>
+</dependency>
 ```
