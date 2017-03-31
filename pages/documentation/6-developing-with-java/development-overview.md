@@ -62,12 +62,12 @@ Here are some links to guides for adding external jars using different IDEs:
 - [Netbeans](http://oopbook.com/java-classpath-2/classpath-in-netbeans/)
 
 
-## Initialising a Graph
+## Initialising a Transaction on The Graph
 
 You can initialise an in memory graph without having the Grakn server running with:  
 
 ```java
-GraknGraph graph = Grakn.factory(Grakn.IN_MEMORY, "keyspace").getGraph();
+GraknGraph graph = Grakn.session(Grakn.IN_MEMORY, "keyspace").open(GraknTxType.Write);
 ```    
     
 If you are running the Grakn server locally then you can initialise a graph with:
@@ -79,7 +79,7 @@ GraknGraph graph = Grakn.factory(Grakn.DEFAULT_URI, "keyspace").getGraph();
 If you are running the Grakn server remotely you must initialise the graph by providing the IP address of your server:
 
 ```java
-GraknGraph graph = Grakn.factory("127.6.21.2", "keyspace").getGraph();
+GraknGraph graph = Grakn.session("127.6.21.2", "keyspace").open(GraknTxType.Write);
 ```
     
 The string "keyspace" uniquely identifies the graph and allows you to create different graphs.  
@@ -87,19 +87,28 @@ The string "keyspace" uniquely identifies the graph and allows you to create dif
 Please note that graph keyspaces are **not** case sensitive so the following two graphs are actually the same graph:
 
 ```java
-    GraknGraph graph1 = Grakn.factory("127.6.21.2", "keyspace").getGraph();
-    GraknGraph graph2 = Grakn.factory("127.6.21.2", "KeYsPaCe").getGraph();
+    GraknGraph graph1 = Grakn.session("127.6.21.2", "keyspace").open(GraknTxType.Write);
+    GraknGraph graph2 = Grakn.session("127.6.21.2", "KeYsPaCe").open(GraknTxType.Write);
 ```
    
 All graphs are also singletons specific to their keyspaces so be aware that in the following case:
 
 ```java
-   GraknGraph graph1 = Grakn.factory("127.6.21.2", "keyspace").getGraph();
-   GraknGraph graph2 = Grakn.factory("127.6.21.2", "keyspace").getGraph();
-   GraknGraph graph3 = Grakn.factory("127.6.21.2", "keyspace").getGraph();
+   GraknGraph graph1 = Grakn.session("127.6.21.2", "keyspace").open(GraknTxType.Write);
+   GraknGraph graph2 = Grakn.session("127.6.21.2", "keyspace").open(GraknTxType.Write);
+   GraknGraph graph3 = Grakn.session("127.6.21.2", "keyspace").open(GraknTxType.Write);
 ```
   
 any changes to `graph1`, `graph2`, or `graph3` will all be persisted to the same graph.
+
+## Controlling The Behaviour of Graph Transactions
+  
+When initialising a transaction on a graph it id possible to define the type of transaction with `GraknTxType`.      
+We currently support three types of transactions:
+
+1. `GraknTxType.WRITE` - Is a transaction which allows mutations to be performed on the graph
+2. `GraknTxType.READ` - Prohibits any mutations to be performed to the graph 
+2. `GraknTxType.BATCH` - Allows faster mutations to be performed to the graph at the cost of switching off some internal consistency checks. This option should only be used if you are certain that you are loading a clean dataset. 
 
 ## Where Next?
 
