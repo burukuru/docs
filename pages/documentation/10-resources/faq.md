@@ -60,6 +60,18 @@ this by setting the `checkInternalVertexExistence` property to true. However, th
 
 You can use Mac OS X or Linux right now. We plan to support Windows at a later date.
 
+### Why is there no logger?
+
+The Grakn libraries do not come bundled with a logger. If you are running GRAKN.AI and do not include on a logger dependency, you will see the following message, printed by slf4j.
+
+```
+SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+```
+
+So you need to include a logger dependnecy. In the GRAKN.AI distribution we use [Logback](https://logback.qos.ch/). Take a look at the [`logback.xml`](https://github.com/graknlabs/grakn/blob/master/conf/main/logback.xml) used in the Grakn project for an idea how to configure your own. 
+
 ### How do I load data into Grakn?
 
 There are several ways to load data into Grakn. For small amounts of data (<1000 lines), you an load it directly via the Graql shell. For example, the following loads up the an example file called `family-data.gql`:
