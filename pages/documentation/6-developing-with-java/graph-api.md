@@ -37,7 +37,7 @@ Let's see how we can build the same ontology exclusively via the graph API.
 First we need a graph. For this example we will just use an [in-memory graph](./java-setup.html#initialising-a-graph):
 
 ```java
-GraknGraph graph = Grakn.factory(Grakn.IN_MEMORY, "MyGraph").getGraph();
+GraknGraph graph = Grakn.session(Grakn.IN_MEMORY, "MyGraph").open(GraknTxType.Write);
 ```
 
 We need to define our constructs before we can use them. We will begin by defining our resource types since they are used everywhere. In Graql, they were defined as follows:
@@ -145,9 +145,16 @@ person.hasResource(gender);
 Now to commit the ontology using the Graph API:
 
 ```java
-graph.commitOnClose();
-graph.close();
+graph.commit();
 ```
+
+If you do not wish to commit the ontology you can revert your changes with:
+
+```java
+graph.abort();
+```
+
+*Note:* When using the in-memory graph mutations to the graph are performed directly.
 
 ## Loading Data
 
