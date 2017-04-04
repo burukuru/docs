@@ -62,7 +62,7 @@ You can use Mac OS X or Linux right now. We plan to support Windows at a later d
 
 ### Why is there no logger?
 
-The Grakn libraries do not come bundeled with a logger. If you are running Grakn and do not depend on a logger dependency, you will see the following message, printed by slf4j.
+The Grakn libraries do not come bundled with a logger. If you are running GRAKN.AI and do not include on a logger dependency, you will see the following message, printed by slf4j.
 
 ```
 SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
@@ -70,7 +70,7 @@ SLF4J: Defaulting to no-operation (NOP) logger implementation
 SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
 ```
 
-A solution to this is to include a logger dependnecy. In the Grakn distribution we use [Logback](https://logback.qos.ch/). Take a look at the [`logback.xml`](https://github.com/graknlabs/grakn/blob/master/conf/main/logback.xml) used in the Grakn project for an idea how to configure your own. 
+So you need to include a logger dependnecy. In the GRAKN.AI distribution we use [Logback](https://logback.qos.ch/). Take a look at the [`logback.xml`](https://github.com/graknlabs/grakn/blob/master/conf/main/logback.xml) used in the Grakn project for an idea how to configure your own. 
 
 ### How do I load data into Grakn?
 
