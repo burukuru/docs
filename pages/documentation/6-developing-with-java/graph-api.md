@@ -154,7 +154,8 @@ If you do not wish to commit the ontology you can revert your changes with:
 graph.abort();
 ```
 
-*Note:* When using the in-memory graph mutations to the graph are performed directly.
+{% include note.html content="When using the in-memory graph, mutations to the graph are performed directly." %}
+
 
 ## Loading Data
 
