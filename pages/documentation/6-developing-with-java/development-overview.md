@@ -103,12 +103,12 @@ any changes to `graph1`, `graph2`, or `graph3` will all be persisted to the same
 
 ## Controlling The Behaviour of Graph Transactions
   
-When initialising a transaction on a graph it id possible to define the type of transaction with `GraknTxType`.      
+When initialising a transaction on a graph it is possible to define the type of transaction with `GraknTxType`.      
 We currently support three types of transactions:
 
-1. `GraknTxType.WRITE` - Is a transaction which allows mutations to be performed on the graph
-2. `GraknTxType.READ` - Prohibits any mutations to be performed to the graph 
-2. `GraknTxType.BATCH` - Allows faster mutations to be performed to the graph at the cost of switching off some internal consistency checks. This option should only be used if you are certain that you are loading a clean dataset. 
+* `GraknTxType.WRITE` - A transaction that allows mutations to be performed on the graph
+* `GraknTxType.READ` - Prohibits any mutations to be performed to the graph 
+* `GraknTxType.BATCH` - Allows faster mutations to be performed to the graph at the cost of switching off some internal consistency checks. This option should only be used if you are certain that you are loading a clean dataset. 
 
 ## Where Next?
 
