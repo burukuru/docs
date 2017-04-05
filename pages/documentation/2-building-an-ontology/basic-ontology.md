@@ -78,16 +78,16 @@ In our example, we will add `marriage` and `parentship` relationships. A `marria
 
 ```graql
 marriage sub relation
-  has-role spouse1
-  has-role spouse2
+  relates spouse1
+  relates spouse2
   has-resource picture;
 
 spouse1 sub role;
 spouse2 sub role;
 
 parentship sub relation
-  has-role parent
-  has-role child;
+  relates parent
+  relates child;
 
 parent sub role;
 child sub role;
@@ -148,16 +148,16 @@ insert
  # Roles and Relations
 
   marriage sub relation
-    has-role spouse1
-    has-role spouse2
+    relates spouse1
+    relates spouse2
     has-resource picture;
 
   spouse1 sub role;
   spouse2 sub role;
 
   parentship sub relation
-    has-role parent
-    has-role child;
+    relates parent
+    relates child;
 
   parent sub role;
   child sub role;

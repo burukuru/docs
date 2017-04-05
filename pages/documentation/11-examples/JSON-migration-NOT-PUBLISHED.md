@@ -83,9 +83,9 @@ subjectName sub resource datatype string;
 # Relations and Roles
 
 publication sub relation
-	has-role publication-item
-	has-role publication-author
-	has-role publication-subject;
+	relates publication-item
+	relates publication-author
+	relates publication-subject;
 
 publication-item sub role;
 publication-author sub role;

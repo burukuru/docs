@@ -210,7 +210,7 @@ qb.insert(name("woman").sub("person")).execute();
 </div> <!-- tab-content -->
 
 
-### has-role
+### relates
 Add a role to a relation.
 
 <ul id="profileTabs" class="nav nav-tabs">
@@ -221,14 +221,14 @@ Add a role to a relation.
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell9">
 <pre>
-insert siblings sub relation, has-role sibling1, has-role sibling2;
+insert siblings sub relation, relates sibling1, relates sibling2;
 </pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java9">
 <pre>
 qb.insert(
   name("siblings").sub("relation")
-    .hasRole("sibling1").hasRole("sibling2")
+    .relates("sibling1").relates("sibling2")
 ).execute();
 </pre>
 </div> <!-- tab-pane -->

@@ -42,7 +42,7 @@ If a variable pattern has no properties, then the concept itself is deleted. Oth
 
 ## Properties
 
-### has-role
+### relates
 Removes the given role from the relation.
 <ul id="profileTabs" class="nav nav-tabs">
     <li class="active"><a href="#shell2" data-toggle="tab">Graql</a></li>
@@ -52,12 +52,12 @@ Removes the given role from the relation.
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell2">
 <pre>
-match $x type-name "marriage"; delete $x has-role spouse1;
+match $x type-name "marriage"; delete $x relates spouse1;
 </pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java2">
 <pre>
-qb.match(var("x").name("marriage")).delete(var("x").hasRole("spouse1"));
+qb.match(var("x").name("marriage")).delete(var("x").relates("spouse1"));
 </pre>
 </div> <!-- tab-pane -->
 </div> <!-- tab-content -->
