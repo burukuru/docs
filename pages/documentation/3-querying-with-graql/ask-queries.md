@@ -25,8 +25,8 @@ match marriage sub relation; ask;
 </div>
 <div role="tabpanel" class="tab-pane" id="java1">
 <pre>
-qb.match(name("divorce").sub("relation")).ask().execute();
-qb.match(name("marriage").sub("relation")).ask().execute();
+qb.match(label("divorce").sub("relation")).ask().execute();
+qb.match(label("marriage").sub("relation")).ask().execute();
 </pre>
 </div> <!-- tab-pane -->
 </div> <!-- tab-content -->
