@@ -26,7 +26,7 @@ Here are the queries. Type each one in a separate line and see what happens. Com
 ```
 match $x isa pokemon;
 match $x has name "Articuno";
-match $x value contains "lightning";
+match $x val contains "lightning";
 match $x has pokedex-no < 20;
 
 # A variable pattern query
@@ -44,10 +44,10 @@ match $x plays-role ancestor;
 match $x has-resource name;
 match $x plays-role has-name-owner;
 match $x has height = 19.0, has weight > 1500.0; $x has name $name;
-match $x has description $desc; $desc value contains "underground";
+match $x has description $desc; $desc val contains "underground";
 
 # regex
-match $x value /.*(fast|quick).*/;
+match $x val /.*(fast|quick).*/;
 
 #modifiers
 match $x isa pokemon, has pokedex-no $no, has name $name; select $name, $no; order by $name asc;
@@ -59,7 +59,7 @@ match $p has name "Pichu"; $e has name "electric"; insert (pokemon-with-type: $p
 
 # insert queries 
 insert has name "Totodile" isa pokemon;
-insert value "Ash" isa name;
+insert val "Ash" isa name;
 insert isa pokemon, has name "Pichu" has height 30;
 insert gen2-pokemon sub pokemon;
 insert trained-by sub relation, has-role trainer, has-role pokemon-trained;

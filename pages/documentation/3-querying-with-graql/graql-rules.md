@@ -132,10 +132,10 @@ That means atomic queries contain at most one statement that can potentially app
 | -------------------- |:--- |:--|:--|
 | `isa` | `$x isa person;` | ✓ | x |
 | `id`  | `$x id "264597";` | ✓ | variable needs to be bound within the RHS  |
-| `value` | `$x value contains "Bar";`  | ✓ | indirect only  |
+| `val` | `$x val contains "Bar";`  | ✓ | indirect only  |
 | `has` | `$x has age < 20;` | ✓ | ✓ |
 | `relation` | `(parent: $x, child: $y) isa parentship;` | ✓ | ✓ |
-| resource comparison | `$x value > $y;`  | ✓ | x |
+| resource comparison | `$x val > $y;`  | ✓ | x |
 | `!=` | `$x != $y;` | ✓ | x |
 | `has-scope` | `($x, $y) has-scope $z;$x has-scope $y;`  | ✓ | x |
 

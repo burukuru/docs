@@ -42,7 +42,7 @@ offset, order
 regex
 select
 to
-value
+val
 ```
 
 #### Datatypes

@@ -159,7 +159,7 @@ match (parent: $p, child: $c) isa parentship; $p has identifier $pi; $c has iden
 Find all the people who are named 'Elizabeth':
 
 ```graql
-match $x isa person, has identifier $y; $y value contains "Elizabeth"; 
+match $x isa person, has identifier $y; $y val contains "Elizabeth";
 ```
 
 Querying the graph is more fully described in the [Graql documentation](../graql/graql-overview.html).

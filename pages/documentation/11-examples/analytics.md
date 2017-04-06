@@ -198,8 +198,8 @@ Compute queries are computationally intensive and run in parallel on a cluster, 
 
 match $x has powerful contains "TRUE" has economical contains "TRUE";
 match $x has powerful contains "TRUE" has economical contains "TRUE" has model $y;
-$x id "106584" isa manual-car; $y value "Ferrari Dino" isa model; 
-$x id "254120" isa automatic-car; $y value "Pontiac Firebird" isa model; 
+$x id "106584" isa manual-car; $y val "Ferrari Dino" isa model;
+$x id "254120" isa automatic-car; $y val "Pontiac Firebird" isa model;
 ```
 
 ## Where Next?

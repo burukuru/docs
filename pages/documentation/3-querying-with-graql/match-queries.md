@@ -57,7 +57,7 @@ qb.match(var("x").has("id", "1216728"));
 </div> <!-- tab-pane -->
 </div> <!-- tab-content -->
 
-### value
+### val
 
 Match all resources that have a value matching the given [predicate](#predicates).
 
@@ -69,12 +69,12 @@ Match all resources that have a value matching the given [predicate](#predicates
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell3">
 <pre>
-match $x value contains "Bar";
+match $x val contains "Bar";
 </pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java3">
 <pre>
-qb.match(var("x").value(contains("Bar")))
+qb.match(var("x").val(contains("Bar")))
 </pre>
 </div> <!-- tab-pane -->
 </div> <!-- tab-content -->
@@ -148,15 +148,15 @@ Patterns can be combined into a disjunction ('or') and grouped together with cur
 
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell">
-<pre>match $x isa person, has identifier $y; {$y value contains "Elizabeth";} or {$y value contains "Mary";};</pre>
+<pre>match $x isa person, has identifier $y; {$y val contains "Elizabeth";} or {$y val contains "Mary";};</pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java">
 <pre>
 qb.match(
     var("x").isa("person").has("identifier", var("y")),
     or(
-        var("y").value(contains("Elizabeth")),
-        var("y").value(contains("Mary"))
+        var("y").val(contains("Elizabeth")),
+        var("y").val(contains("Mary"))
     )
 );
 </pre>
@@ -305,7 +305,7 @@ qb.match(var("x").has("age", gt(70));
 If a concept doesn't have a value, all predicates are considered false. The query below matches everything where the predicate `>10` is true. So, it will find all concepts with value greater than 10. However, if a concept does not have a value at all, the predicate is considered false, so it won’t appear in the results.
 
 ```graql
-match $x value >10;
+match $x val >10;
 ``` 
 
 
@@ -320,7 +320,7 @@ Asks if the given string is a substring.
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell13">
 <pre>
-match $x has identifier $id; $id value contains "Niesz";
+match $x has identifier $id; $id val contains "Niesz";
 
 </pre>
 </div>
@@ -328,7 +328,7 @@ match $x has identifier $id; $id value contains "Niesz";
 <pre>
 qb.match(
     var("x").has("identifier", var("id")),
-    var("id").value(contains("Niesz"))
+    var("id").val(contains("Niesz"))
 );
 </pre>
 </div> <!-- tab-pane -->
@@ -347,12 +347,12 @@ surround the expression with `.*`.
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell14">
 <pre>
-match $x value /.*(Mary|Barbara).*/;
+match $x val /.*(Mary|Barbara).*/;
 </pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java14">
 <pre>
-qb.match(var("x").value(regex(".*(Mary|Barbara).*")));
+qb.match(var("x").val(regex(".*(Mary|Barbara).*")));
 </pre>
 </div> <!-- tab-pane -->
 </div> <!-- tab-content -->
