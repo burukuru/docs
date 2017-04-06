@@ -11,8 +11,8 @@ folder: documentation
 
 Here is a [downloadable cheatsheet](../../images/graql-cheatsheet.pdf), which you can print and keep for reference: 
 
-![Graql Cheatsheet page 1](/images/graql-cheatsheet-p1.pdf)
-![Graql Cheatsheet page 2](/images/graql-cheatsheet-p2.pdf)
+![Graql Cheatsheet page 1](/images/graql-cheatsheet-p1.png)
+![Graql Cheatsheet page 2](/images/graql-cheatsheet-p2.png)
 
 
 ## Comments
