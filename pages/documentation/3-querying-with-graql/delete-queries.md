@@ -63,7 +63,7 @@ qb.match(var("x").label("marriage")).delete(var("x").hasRole("spouse1"));
 </div> <!-- tab-content -->
 
 
-### plays-role
+### plays
 Disallows the concept type from playing the given role.
 
 <ul id="profileTabs" class="nav nav-tabs">
@@ -74,7 +74,7 @@ Disallows the concept type from playing the given role.
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell3">
 <pre>
-match $x label person; delete $x plays-role sibling1;
+match $x label person; delete $x plays sibling1;
 </pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java3">

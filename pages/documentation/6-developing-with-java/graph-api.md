@@ -116,10 +116,10 @@ person sub entity
   has birth-date
   has death-date
   has gender
-  plays-role parent
-  plays-role child
-  plays-role spouse1
-  plays-role spouse2;
+  plays parent
+  plays child
+  plays spouse1
+  plays spouse2;
 ```
 
 Using the Graph API:

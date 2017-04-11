@@ -123,8 +123,8 @@ occurs sub relation
 event-occurred sub role;
 pet-in-event sub role;
 
-pet plays-role pet-in-event;
-event plays-role event-occurred;
+pet plays pet-in-event;
+event plays event-occurred;
 ```
 
 To load the ontology into Grakn, we create a single file that contains both sections shown above, named *ontology.gql*. From the Grakn installation folder, invoke the Graql shell, passing the -f flag to indicate the ontology file to load into a graph. This call starts the Graql shell in non-interactive mode, loading the specified file and exiting after the load is complete:

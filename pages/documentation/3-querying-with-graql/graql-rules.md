@@ -144,7 +144,7 @@ That means atomic queries contain at most one statement that can potentially app
 | Description        | Pattern Example   | LHS | RHS
 | -------------------- |:---|:--|:--|
 | `sub`        | `$x sub type;` | ✓| x |
-| `plays-role` | `$x plays-role parent;` |✓| x |
+| `plays` | `$x plays parent;` |✓| x |
 | `has`        | `$x has firstname;` | ✓ | x |  
 | `relates`   | `marriage relates $x;` | ✓ | x |
 | `is-abstract` | `$x is-abstract;` | ✓ | x |
@@ -165,4 +165,3 @@ There is a complete [example of how to work with Graql rules](../examples/graql-
 Want to leave a comment? Visit <a href="https://github.com/graknlabs/docs/issues/42" target="_blank">the issues on Github for this page</a> (you'll need a GitHub account). You are also welcome to contribute to our documentation directly via the "Edit me" button at the top of the page.
 
 {% include links.html %}
-has

@@ -47,10 +47,10 @@ insert
 # Entities
 
 person sub entity
-  plays-role parent
-  plays-role child
-  plays-role spouse1
-  plays-role spouse2
+  plays parent
+  plays child
+  plays spouse1
+  plays spouse2
 
   has identifier
   has firstname

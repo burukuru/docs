@@ -59,10 +59,10 @@ insert
 # Entities
 
 person sub entity
-  plays-role parent
-  plays-role child
-  plays-role spouse1
-  plays-role spouse2
+  plays parent
+  plays child
+  plays spouse1
+  plays spouse2
 
   has identifier
   has firstname
@@ -212,10 +212,10 @@ However, the `person` entity does have a gender resource, and we can use Grakn t
 
 ```graql
 person 
-  plays-role son
-  plays-role daughter
-  plays-role mother
-  plays-role father
+  plays son
+  plays daughter
+  plays mother
+  plays father
 	
 parentship sub relation
   relates mother

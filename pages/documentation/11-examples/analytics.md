@@ -47,7 +47,7 @@ car sub vehicle
 	has wt
 	has gear
 	has carb
-	plays-role made;
+	plays made;
 
 automatic-car sub car;
 manual-car sub car;
@@ -55,7 +55,7 @@ manual-car sub car;
 carmaker sub entity
 	is-abstract
 	has maker-name
-	plays-role maker;
+	plays maker;
 
 japanese-maker sub carmaker;
 american-maker sub carmaker;

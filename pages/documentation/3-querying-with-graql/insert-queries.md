@@ -235,7 +235,7 @@ qb.insert(
 </div> <!-- tab-content -->
 
 
-### plays-role
+### plays
 Allow the concept type to play the given role.
 
 <ul id="profileTabs" class="nav nav-tabs">
@@ -246,8 +246,8 @@ Allow the concept type to play the given role.
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell10">
 <pre>
-insert person plays-role sibling1;
-insert person plays-role sibling2;
+insert person plays sibling1;
+insert person plays sibling2;
 </pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java10">

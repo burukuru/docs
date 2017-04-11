@@ -101,10 +101,10 @@ For this current example we only have one entity type, which can play all our cu
 
 ```graql
 person sub entity
-  plays-role parent
-  plays-role child
-  plays-role spouse1
-  plays-role spouse2
+  plays parent
+  plays child
+  plays spouse1
+  plays spouse2
 ```    
 	    
 We have now completed our basic genealogy ontology.
@@ -128,10 +128,10 @@ insert
     has birth-date
     has death-date
     has gender
-    plays-role parent
-    plays-role child
-    plays-role spouse1
-    plays-role spouse2;
+    plays parent
+    plays child
+    plays spouse1
+    plays spouse2;
 
  # Resources
 

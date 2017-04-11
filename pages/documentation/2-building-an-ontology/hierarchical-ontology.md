@@ -36,10 +36,10 @@ insert
     has birth-date
     has death-date
     has gender
-    plays-role parent
-    plays-role child
-    plays-role spouse1
-    plays-role spouse2;
+    plays parent
+    plays child
+    plays spouse1
+    plays spouse2;
 
 # Resources
 
@@ -101,8 +101,8 @@ event sub entity
   has date
   has identifier
   has notes
-  plays-role conclusion
-  plays-role happening;
+  plays conclusion
+  plays happening;
     
 wedding sub event;
  
@@ -195,10 +195,10 @@ insert
     has firstname
     has middlename
     has surname
-    plays-role spouse
-    plays-role parent
-    plays-role child
-    plays-role sibling;
+    plays spouse
+    plays parent
+    plays child
+    plays sibling;
         
     gender sub resource datatype string;
     birth-date sub date;
@@ -216,8 +216,8 @@ insert
     has date
     has identifier
     has notes
-    plays-role conclusion
-    plays-role happening;
+    plays conclusion
+    plays happening;
     
   wedding sub event;
     

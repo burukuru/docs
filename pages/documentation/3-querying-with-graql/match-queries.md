@@ -215,7 +215,7 @@ qb.match(label("parentship").hasRole(var("x")));
 </div> <!-- tab-content -->
 
 
-### plays-role
+### plays
 Match concept types that play the given role.
 <ul id="profileTabs" class="nav nav-tabs">
     <li class="active"><a href="#shell9" data-toggle="tab">Graql</a></li>
@@ -225,7 +225,7 @@ Match concept types that play the given role.
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell9">
 <pre>
-match $x plays-role child;
+match $x plays child;
 </pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java9">
@@ -266,7 +266,7 @@ The above is equivalent to:
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell11">
 <pre>
-match $x plays-role has-firstname-owner;
+match $x plays has-firstname-owner;
 </pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java11">

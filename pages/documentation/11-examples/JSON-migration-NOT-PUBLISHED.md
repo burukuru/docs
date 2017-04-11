@@ -62,15 +62,15 @@ insert
 book sub entity
 	has bookId
 	has title
-	plays-role publication-item;
+	plays publication-item;
 
 author sub entity
 	has authorName
-	plays-role publication-author;
+	plays publication-author;
 
 subject sub entity
 	has subjectName
-	plays-role publication-subject; 
+	plays publication-subject; 
 
 
 # Resources

@@ -40,9 +40,9 @@ match $x sub relation; # List all relations
 
 match $x isa pokemon; (ancestor: $x, $y); $x has name $xn; $y has name $yn;
 match evolution relates $x;
-match $x plays-role ancestor;
+match $x plays ancestor;
 match $x has name;
-match $x plays-role has-name-owner;
+match $x plays has-name-owner;
 match $x has height = 19.0, has weight > 1500.0; $x has name $name;
 match $x has description $desc; $desc val contains "underground";
 
@@ -63,7 +63,7 @@ insert val "Ash" isa name;
 insert isa pokemon, has name "Pichu" has height 30;
 insert gen2-pokemon sub pokemon;
 insert trained-by sub relation, relates trainer, relates pokemon-trained;
-insert pokemon plays-role pokemon-trained;
+insert pokemon plays pokemon-trained;
 insert pokemon has pokedex-no;
 
 # delete queries

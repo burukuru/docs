@@ -77,8 +77,8 @@ Let's first define the relationship between people. The diagram shows that marko
 ```graql
 insert knower sub role;
 insert known-about sub role;
-insert person plays-role knower;
-insert person plays-role known-about;
+insert person plays knower;
+insert person plays known-about;
 insert knows sub relation, relates knower, relates known-about, has weight;
 ```
 
@@ -90,8 +90,8 @@ We can set up a similar relationship between software and the people that create
 insert programmer sub role;
 insert programmed sub role;
 
-insert person plays-role programmer;
-insert software plays-role programmed;
+insert person plays programmer;
+insert software plays programmed;
 
 insert programming sub relation, relates programmer, relates programmed, has weight;
 ```
@@ -182,8 +182,8 @@ weight sub resource datatype double;
 knower sub role;
 known-about sub role;
 
-person plays-role knower;
-person plays-role known-about;
+person plays knower;
+person plays known-about;
 
 knows sub relation
 	relates knower
@@ -206,8 +206,8 @@ $ripple has lang "java", has name "ripple";
 programmer sub role;
 programmed sub role;
 
-person plays-role programmer;
-software plays-role programmed;
+person plays programmer;
+software plays programmed;
 
 programming sub relation
 	relates programmer

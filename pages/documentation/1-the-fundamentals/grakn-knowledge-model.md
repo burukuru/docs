@@ -85,11 +85,11 @@ We introduce a relation between a `company` and a `person`:
 insert
   person sub entity,
   has name,
-  plays-role employee;
+  plays employee;
     
   company sub entity,
   has name,
-  plays-role employer;
+  plays employer;
   
   customer sub person,
   has rating;
@@ -121,9 +121,9 @@ In the simple example above, we have illustrated the four constructs that relate
 
 * For example, `person has name`.    
 
-**`plays-role`**: expresses that instances of a given concept type are allowed to play a specific role. 
+**`plays`**: expresses that instances of a given concept type are allowed to play a specific role. 
 
-* For example, `person plays-role employee`, `company plays-role employer`.    
+* For example, `person plays employee`, `company plays employer`.    
 
 **`relates`**: expresses that a given relation type involves a specific role.
 
@@ -137,11 +137,11 @@ Relationships are inherently non-directional and are defined in terms of roles o
 insert
   person sub entity,
   has name,
-  plays-role employee;
+  plays employee;
     
   company sub entity,
   has name,
-  plays-role employer;  
+  plays employer;  
   
   name sub resource, datatype string;
   date sub resource, datatype string;
@@ -178,9 +178,9 @@ insert
 
 As in object-oriented programming, the inheritance mechanism in Grakn enables subtypes to automatically take on some of the properties of their supertypes. This simplifies the construction of ontologies and helps keep them succinct. 
 
-<br />The Grakn knowledge model imposes inheritance of all `has` and `plays-role` constraints on entity, relation and resource types. As a result, the entity type `customer` inherits `has name` and `plays-role employee` from the `person` supertype, as shown in the diagram below. 
+<br />The Grakn knowledge model imposes inheritance of all `has` and `plays` constraints on entity, relation and resource types. As a result, the entity type `customer` inherits `has name` and `plays employee` from the `person` supertype, as shown in the diagram below. 
 
-Likewise, the `startup` entity type inherits `relates name` and `plays-role employer` from the `company` supertype.
+Likewise, the `startup` entity type inherits `relates name` and `plays employer` from the `company` supertype.
 
 <br /> <img src="/images/knowledge-model5.png" style="width: 400px;"/> <br />
 
@@ -274,7 +274,7 @@ insert
   husband sub role;
   wife sub role;
   
-  woman plays-role wife;
+  woman plays wife;
     
   $x has name 'Bob' isa man;
   $y has name 'Alice' isa woman;
@@ -318,8 +318,8 @@ insert
   
   husband sub role;
   wife sub role;
-  man plays-role husband; # Fix (4)
-  woman plays-role wife;  
+  man plays husband; # Fix (4)
+  woman plays wife;  
 
   $x has name 'Bob' isa man;
   $y has name 'Alice' isa woman;
