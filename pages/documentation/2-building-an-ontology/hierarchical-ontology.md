@@ -27,15 +27,15 @@ insert
 # Entities
     
   person sub entity
-    has-resource identifier
-    has-resource firstname
-    has-resource surname
-    has-resource middlename
-    has-resource picture
-    has-resource age
-    has-resource birth-date
-    has-resource death-date
-    has-resource gender
+    has identifier
+    has firstname
+    has surname
+    has middlename
+    has picture
+    has age
+    has birth-date
+    has death-date
+    has gender
     plays-role parent
     plays-role child
     plays-role spouse1
@@ -58,7 +58,7 @@ insert
   marriage sub relation
     relates spouse1
     relates spouse2
-    has-resource picture;
+    has picture;
 
   spouse1 sub role;
   spouse2 sub role;
@@ -96,31 +96,31 @@ We can model this as follows:
 ```graql    
 event sub entity
   is-abstract
-  has-resource degree
-  has-resource confidence
-  has-resource date
-  has-resource identifier
-  has-resource notes
+  has degree
+  has confidence
+  has date
+  has identifier
+  has notes
   plays-role conclusion
   plays-role happening;
     
 wedding sub event;
  
 funeral sub event
-  has-resource death-date;
+  has death-date;
     	
 christening sub event
-  has-resource birth-date;
+  has birth-date;
     
 birth sub event
-  has-resource firstname
-  has-resource middlename
-  has-resource surname
-  has-resource gender
-  has-resource birth-date;
+  has firstname
+  has middlename
+  has surname
+  has gender
+  has birth-date;
     	
 death sub event
-  has-resource death-date;
+  has death-date;
 ``` 	      
   	    
 Notice that for the `event` entity type we added `is-abstract`, this is an optional additional restriction to ensure that we do not create any instances of `event`, but instead use the most granular definitions provided, i.e. `birth`, `death`, etc . . .  
@@ -140,7 +140,7 @@ marriage sub relatives
   relates spouse2
   relates husband
   relates wife
-  has-resource date;
+  has date;
 	    
 spouse sub role is-abstract;
 spouse1 sub spouse;
@@ -188,13 +188,13 @@ insert
 # Entities
 
   person sub entity
-    has-resource gender
-    has-resource birth-date
-    has-resource death-date
-    has-resource identifier
-    has-resource firstname
-    has-resource middlename
-    has-resource surname
+    has gender
+    has birth-date
+    has death-date
+    has identifier
+    has firstname
+    has middlename
+    has surname
     plays-role spouse
     plays-role parent
     plays-role child
@@ -211,31 +211,31 @@ insert
     
   event sub entity
     is-abstract
-    has-resource degree
-    has-resource confidence
-    has-resource date
-    has-resource identifier
-    has-resource notes
+    has degree
+    has confidence
+    has date
+    has identifier
+    has notes
     plays-role conclusion
     plays-role happening;
     
   wedding sub event;
     
   funeral sub event
-    has-resource death-date;
+    has death-date;
         
   christening sub event
-    has-resource birth-date;
+    has birth-date;
     
   birth sub event
-    has-resource firstname
-    has-resource middlename
-    has-resource surname
-    has-resource gender
-    has-resource birth-date;
+    has firstname
+    has middlename
+    has surname
+    has gender
+    has birth-date;
         
   death sub event
-    has-resource death-date;   	    
+    has death-date;   	    
     
 ## Relations
     
@@ -247,7 +247,7 @@ insert
     relates spouse2
     relates husband
     relates wife
-    has-resource date;
+    has date;
     
   spouse sub role is-abstract;
   spouse1 sub spouse;
@@ -281,3 +281,4 @@ You can find the complete ontology for our genealogy graph project, the dataset 
 
 ## Comments
 Want to leave a comment? Visit <a href="https://github.com/graknlabs/docs/issues/22" target="_blank">the issues on Github for this page</a> (you'll need a GitHub account). You are also welcome to contribute to our documentation directly via the "Edit me" button at the top of the page.
+has

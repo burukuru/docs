@@ -67,10 +67,10 @@ Here is the ontology for the example:
 insert
 
 car sub entity
-  has-resource name
-  has-resource year
-  has-resource description
-  has-resource price;
+  has name
+  has year
+  has description
+  has price;
 
 name sub resource datatype string;
 year sub resource datatype string;

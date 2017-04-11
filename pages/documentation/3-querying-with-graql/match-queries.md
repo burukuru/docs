@@ -1,7 +1,7 @@
 ---
 title: Match Queries
 keywords: graql, query, match
-last_updated: August 11, 2016
+last_updated: April 2017
 tags: [graql]
 summary: "Graql Match Queries"
 sidebar: documentation_sidebar
@@ -235,7 +235,7 @@ qb.match(var("x").playsRole("child"));
 </div> <!-- tab-pane -->
 </div> <!-- tab-content -->
 
-### has-resource
+### has
 Match concept types that can have the given resource.
 
 <ul id="profileTabs" class="nav nav-tabs">
@@ -246,7 +246,7 @@ Match concept types that can have the given resource.
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell10">
 <pre>
-match $x has-resource firstname; <!--JCS: Why so many duplicates?-->
+match $x has firstname; <!--JCS: Why so many duplicates?-->
 </pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java10">

@@ -44,15 +44,15 @@ Philosophical debates aside let us go with something simple. A `person` typicall
 
 ```graql
 person sub entity
-  has-resource identifier
-  has-resource firstname
-  has-resource surname    
-  has-resource middlename
-  has-resource picture
-  has-resource age
-  has-resource birth-date
-  has-resource death-date
-  has-resource gender;
+  has identifier
+  has firstname
+  has surname    
+  has middlename
+  has picture
+  has age
+  has birth-date
+  has death-date
+  has gender;
     
   identifier sub resource datatype string;
   firstname sub resource datatype string;
@@ -80,7 +80,7 @@ In our example, we will add `marriage` and `parentship` relationships. A `marria
 marriage sub relation
   relates spouse1
   relates spouse2
-  has-resource picture;
+  has picture;
 
 spouse1 sub role;
 spouse2 sub role;
@@ -119,15 +119,15 @@ insert
  # Entities
  
   person sub entity
-    has-resource identifier
-    has-resource firstname
-    has-resource surname
-    has-resource middlename
-    has-resource picture
-    has-resource age
-    has-resource birth-date
-    has-resource death-date
-    has-resource gender
+    has identifier
+    has firstname
+    has surname
+    has middlename
+    has picture
+    has age
+    has birth-date
+    has death-date
+    has gender
     plays-role parent
     plays-role child
     plays-role spouse1
@@ -150,7 +150,7 @@ insert
   marriage sub relation
     relates spouse1
     relates spouse2
-    has-resource picture;
+    has picture;
 
   spouse1 sub role;
   spouse2 sub role;
@@ -179,3 +179,4 @@ We will continue to explore the development of an ontology in the next section o
 
 ## Comments
 Want to leave a comment? Visit <a href="https://github.com/graknlabs/docs/issues/22" target="_blank">the issues on Github for this page</a> (you'll need a GitHub account). You are also welcome to contribute to our documentation directly via the "Edit me" button at the top of the page.
+has

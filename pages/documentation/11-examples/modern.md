@@ -62,10 +62,10 @@ To assign resources to the entities, which you can think of as attributes, we us
 ```graql
 insert age sub resource datatype long;
 insert name sub resource datatype string;
-insert person has-resource age, has-resource name;
+insert person has age, has name;
 
 insert lang sub resource datatype string;
-insert software has-resource lang has-resource name;
+insert software has lang has name;
 
 insert weight sub resource datatype double;
 ```
@@ -79,7 +79,7 @@ insert knower sub role;
 insert known-about sub role;
 insert person plays-role knower;
 insert person plays-role known-about;
-insert knows sub relation, relates knower, relates known-about, has-resource weight;
+insert knows sub relation, relates knower, relates known-about, has weight;
 ```
 
 Note that the  `knows` relation also has an attribute, in the form of a resource called `weight` (though it's not clear from the TinkerPop example what this represents).
@@ -93,7 +93,7 @@ insert programmed sub role;
 insert person plays-role programmer;
 insert software plays-role programmed;
 
-insert programming sub relation, relates programmer, relates programmed, has-resource weight;
+insert programming sub relation, relates programmer, relates programmed, has weight;
 ```
 
 And that's it. At this point, we have defined the schema of the graph.
@@ -166,7 +166,7 @@ insert
 age sub resource datatype long;
 name sub resource datatype string;
 person sub entity;
-person has-resource age, has-resource name;
+person has age, has name;
 
 $marko isa person;
 $vadas isa person;
@@ -188,14 +188,14 @@ person plays-role known-about;
 knows sub relation
 	relates knower
 	relates known-about
-	has-resource weight;
+	has weight;
 
 (knower: $marko, known-about: $josh) isa knows has weight 1.0;
 (knower: $marko, known-about: $vadas) isa knows has weight 0.5;
 
 lang sub resource datatype string;
 software sub entity;
-software has-resource lang, has-resource name;
+software has lang, has name;
 
 $lop isa software;
 $ripple isa software;
@@ -212,7 +212,7 @@ software plays-role programmed;
 programming sub relation
 	relates programmer
 	relates programmed
-	has-resource weight;
+	has weight;
 
 
 (programmer: $marko, programmed: $lop) isa programming has weight 0.4;

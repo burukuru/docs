@@ -41,10 +41,10 @@ We define two entities, `person` and `company`, each of which have a `name` reso
 ```graql
 insert
   person sub entity,
-  has-resource name;
+  has name;
   
   company sub entity,
-  has-resource name;
+  has name;
   
   name sub resource, datatype string;
   
@@ -59,16 +59,16 @@ We subtype the entities:
 ```graql
 insert
   person sub entity,
-  has-resource name;
+  has name;
     
   company sub entity,
-  has-resource name;
+  has name;
   
   customer sub person,
-  has-resource rating;
+  has rating;
 
   startup sub company,
-  has-resource funding;
+  has funding;
   
   name sub resource, datatype string;
   rating sub resource, datatype double;
@@ -84,18 +84,18 @@ We introduce a relation between a `company` and a `person`:
 ```graql
 insert
   person sub entity,
-  has-resource name,
+  has name,
   plays-role employee;
     
   company sub entity,
-  has-resource name,
+  has name,
   plays-role employer;
   
   customer sub person,
-  has-resource rating;
+  has rating;
 
   startup sub company,
-  has-resource funding;
+  has funding;
   
   name sub resource, datatype string;
   rating sub resource, datatype double;
@@ -117,9 +117,9 @@ In the simple example above, we have illustrated the four constructs that relate
 
 * For example, `customer sub person`, `startup sub company`.    
 
-**`has-resource`**: expresses that a concept type can be associated with a given resource type. 
+**`has`**: expresses that a concept type can be associated with a given resource type. 
 
-* For example, `person has-resource name`.    
+* For example, `person has name`.    
 
 **`plays-role`**: expresses that instances of a given concept type are allowed to play a specific role. 
 
@@ -136,11 +136,11 @@ Relationships are inherently non-directional and are defined in terms of roles o
 ```graql
 insert
   person sub entity,
-  has-resource name,
+  has name,
   plays-role employee;
     
   company sub entity,
-  has-resource name,
+  has name,
   plays-role employer;  
   
   name sub resource, datatype string;
@@ -148,7 +148,7 @@ insert
   
   employment sub relation,
     relates employee, relates employer,
-    has-resource date; 
+    has date; 
     	
   employee sub role;
   employer sub role;
@@ -178,7 +178,7 @@ insert
 
 As in object-oriented programming, the inheritance mechanism in Grakn enables subtypes to automatically take on some of the properties of their supertypes. This simplifies the construction of ontologies and helps keep them succinct. 
 
-<br />The Grakn knowledge model imposes inheritance of all `has-resource` and `plays-role` constraints on entity, relation and resource types. As a result, the entity type `customer` inherits `has-resource name` and `plays-role employee` from the `person` supertype, as shown in the diagram below. 
+<br />The Grakn knowledge model imposes inheritance of all `has` and `plays-role` constraints on entity, relation and resource types. As a result, the entity type `customer` inherits `has name` and `plays-role employee` from the `person` supertype, as shown in the diagram below. 
 
 Likewise, the `startup` entity type inherits `relates name` and `plays-role employer` from the `company` supertype.
 
@@ -262,7 +262,7 @@ This will be our first attempt:
 ```graql
 insert
   person is-abstract sub entity;
-  person has-resource name;
+  person has name;
   name sub resource datatype string;
   
   man is-abstract sub person;
@@ -306,7 +306,7 @@ Let's fix these issues and try again:
 ```graql
 insert
   person is-abstract sub entity;                   
-  person has-resource name;
+  person has name;
   name sub resource datatype string;
   
   man sub person; # Fix (3)

@@ -259,7 +259,7 @@ qb.insert(label("person").playsRole("sibling2")).execute();
 </div> <!-- tab-content -->
 
 
-### has-resource
+### has
 
 Allow the concept type to have the given resource.
 
@@ -273,7 +273,7 @@ This is done by creating a specific relation relating the concept and resource.
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell11">
 <pre>
-insert person has-resource nickname;
+insert person has nickname;
 </pre>
 </div>
 
@@ -289,3 +289,4 @@ Want to leave a comment? Visit <a href="https://github.com/graknlabs/docs/issues
 
 
 {% include links.html %}
+has

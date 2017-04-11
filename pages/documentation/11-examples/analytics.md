@@ -39,14 +39,14 @@ vehicle sub entity
 car sub vehicle
 	is-abstract
 
-	has-resource model
-	has-resource mpg
-	has-resource cyl
-	has-resource disp
-	has-resource hp
-	has-resource wt
-	has-resource gear
-	has-resource carb
+	has model
+	has mpg
+	has cyl
+	has disp
+	has hp
+	has wt
+	has gear
+	has carb
 	plays-role made;
 
 automatic-car sub car;
@@ -54,7 +54,7 @@ manual-car sub car;
 
 carmaker sub entity
 	is-abstract
-	has-resource maker-name
+	has maker-name
 	plays-role maker;
 
 japanese-maker sub carmaker;

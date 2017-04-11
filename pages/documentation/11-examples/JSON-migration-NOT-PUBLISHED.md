@@ -60,16 +60,16 @@ insert
 # Entities
 
 book sub entity
-	has-resource bookId
-	has-resource title
+	has bookId
+	has title
 	plays-role publication-item;
 
 author sub entity
-	has-resource authorName
+	has authorName
 	plays-role publication-author;
 
 subject sub entity
-	has-resource subjectName
+	has subjectName
 	plays-role publication-subject; 
 
 

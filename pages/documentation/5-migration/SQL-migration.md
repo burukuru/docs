@@ -84,11 +84,11 @@ We can define an ontology that corresponds to the SQL tables as follows:
 
 insert
 pet sub entity
-  has-resource name
-  has-resource owner
-  has-resource sex
-  has-resource birth
-  has-resource death
+  has name
+  has owner
+  has sex
+  has birth
+  has death
   is-abstract;
 
 cat sub pet;
@@ -105,9 +105,9 @@ death sub resource datatype string;
 count sub resource datatype long;
 
 event sub entity,
-  has-resource name,
-  has-resource date,
-  has-resource description;
+  has name,
+  has date,
+  has description;
 ```
 
 The ontology is not complete at this point, as we have not included any relationship between pets and their events. In SQL, a `foreign key` is a column that references another column, as seen in the SQL schema line `ALTER TABLE event ADD FOREIGN KEY ( name ) REFERENCES pet ( name );`.

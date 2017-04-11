@@ -52,22 +52,22 @@ person sub entity
   plays-role spouse1
   plays-role spouse2
 
-  has-resource identifier
-  has-resource firstname
-  has-resource surname
-  has-resource middlename
-  has-resource picture
-  has-resource age
-  has-resource birth-date
-  has-resource death-date
-  has-resource gender;
+  has identifier
+  has firstname
+  has surname
+  has middlename
+  has picture
+  has age
+  has birth-date
+  has death-date
+  has gender;
 
 # Roles and Relations
 
 marriage sub relation
   relates spouse1
   relates spouse2
-  has-resource picture;
+  has picture;
 
 spouse1 sub role;
 spouse2 sub role;
