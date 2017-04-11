@@ -52,8 +52,8 @@ Different concept types can be related to each other via four constructs (see Fi
 	* For example, `person has-resource name`.
 * **plays-role**: expressing that instances of a given concept type are allowed to play a specific role.
 	* For example, `woman plays-role wife`, `man plays-role husband`.
-* **has-role**: expressing that a given relation type involves a specific role.
-	* For example, `marriage has-role wife`, `marriage has-role husband`.
+* **relates**: expressing that a given relation type involves a specific role.
+	* For example, `marriage relates wife`, `marriage relates husband`.
 
 Additionally, all concept types can be declared as `abstract`, meaning that they cannot have any direct instances. For example, `person is-abstract` expresses that the only instances of `person` can be those that belong to more specialised subtypes of `person`, e.g., `man` or `woman`.
 
@@ -108,11 +108,11 @@ Note, that because of the transitivity of the `sub` construct, the type declarat
 * `wife sub partner1`
 * `husband sub partner2`
 * `partnership has-resource since`
-* `partnership has-role partner1`
-* `partnership has-role partner2`
+* `partnership relates partner1`
+* `partnership relates partner2`
 * `marriage sub partnership`
-* `marriage has-role wife`
-* `marriage has-role husband`
+* `marriage relates wife`
+* `marriage relates husband`
 
 **Inherited constraints**:
 
@@ -154,8 +154,8 @@ woman has-resource name,
 marriage sub entity;
 
 marriage has-resource since,
-	has-role wife,
-	has-role husband;
+	relates wife,
+	relates husband;
 ```
 
  A data instance `inst` of a concept type `C` is valid, whenever the following conditions are satisfied:
@@ -163,7 +163,7 @@ marriage has-resource since,
  * `inst` instantiates only `C` (called the base type of `inst`) and indirectly all supertypes of `C`,
  * all types of resources associated with `inst` belong to the schema template of `C`,
  * for every role type `R` that `inst` plays in any relation instance in the data, there is a constraint `plays-role R` in the schema template of `C`,
- * whenever `inst` is a relation instance involving the role type `R` there is a constraint `has-role R` in the schema template of `C`.
+ * whenever `inst` is a relation instance involving the role type `R` there is a constraint `relates R` in the schema template of `C`.
 
 For example, data illustrated in Figure 3 violates the ontology from Figure 2, by:
 

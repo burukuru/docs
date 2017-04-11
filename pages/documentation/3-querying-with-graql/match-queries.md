@@ -193,7 +193,7 @@ qb.match(var("x").sub("concept"))
 </div> <!-- tab-content -->
 
 
-### has-role
+### relates
 Match roles to a given relation.
 
 <ul id="profileTabs" class="nav nav-tabs">
@@ -204,7 +204,7 @@ Match roles to a given relation.
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell8">
 <pre>
-match parentship has-role $x;
+match parentship relates $x;
 </pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java8">

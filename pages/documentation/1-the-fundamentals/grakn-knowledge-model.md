@@ -102,7 +102,7 @@ insert
   funding sub resource, datatype long;
   
   employment sub relation,
-    has-role employee, has-role employer; 	
+    relates employee, relates employer;
   employee sub role;
   employer sub role;
 ``` 
@@ -125,9 +125,9 @@ In the simple example above, we have illustrated the four constructs that relate
 
 * For example, `person plays-role employee`, `company plays-role employer`.    
 
-**`has-role`**: expresses that a given relation type involves a specific role. 
+**`relates`**: expresses that a given relation type involves a specific role.
 
-* For example, `employment has-role employee`, `employment has-role employer`.    
+* For example, `employment relates employee`, `employment relates employer`.
 
 ### Relations
 
@@ -147,7 +147,7 @@ insert
   date sub resource, datatype string;
   
   employment sub relation,
-    has-role employee, has-role employer,
+    relates employee, relates employer,
     has-resource date; 
     	
   employee sub role;
@@ -163,9 +163,9 @@ N-ary relationships are also allowed by Grakn. For example, a three way `employm
 ```graql
 insert
   employment sub relation,
-    has-role employee, 
-    has-role employer, 
-    has-role office; 
+    relates employee,
+    relates employer,
+    relates office;
     	
   employee sub role;
   employer sub role; 
@@ -180,7 +180,7 @@ As in object-oriented programming, the inheritance mechanism in Grakn enables su
 
 <br />The Grakn knowledge model imposes inheritance of all `has-resource` and `plays-role` constraints on entity, relation and resource types. As a result, the entity type `customer` inherits `has-resource name` and `plays-role employee` from the `person` supertype, as shown in the diagram below. 
 
-Likewise, the `startup` entity type inherits `has-role name` and `plays-role employer` from the `company` supertype.
+Likewise, the `startup` entity type inherits `relates name` and `plays-role employer` from the `company` supertype.
 
 <br /> <img src="/images/knowledge-model5.png" style="width: 400px;"/> <br />
 
@@ -269,7 +269,7 @@ insert
   woman sub person;
   
   marriage sub relation;
-  marriage has-role husband;
+  marriage relates husband;
 
   husband sub role;
   wife sub role;
@@ -286,10 +286,10 @@ On commit we will see an error similar to this:
 
 ```bash
 A structural validation error has occurred. Please correct the [`5`] errors found.
-RoleType ['wife'] does not have exactly one has-role connection to any RelationType.
+RoleType ['wife'] does not have exactly one relates connection to any RelationType.
 The abstract Type ['man'] should not have any instances
 Relation Type ['marriage'] does not have two or more roles
-The relation ['RELATION-marriage-2b58b138-2c33-478c-8e8c-e7b357a20941'] has an invalid structure. This is either due to having more role players than roles or the Relation Type ['marriage'] not having the correct has-role connection to one of the provided roles. The provided roles('2'): ['husband,wife,']The provided role players('2'): ['husband,wife,']
+The relation ['RELATION-marriage-2b58b138-2c33-478c-8e8c-e7b357a20941'] has an invalid structure. This is either due to having more role players than roles or the Relation Type ['marriage'] not having the correct relates connection to one of the provided roles. The provided roles('2'): ['husband,wife,']The provided role players('2'): ['husband,wife,']
 The type ['man'] of role player ['ENTITY-man-2482cb91-1f12-40ea-b659-49d07d06ddf1'] is not allowed to play RoleType ['husband']
 ```
     
@@ -313,8 +313,8 @@ insert
   woman sub person;
   
   marriage sub relation;
-  marriage has-role husband;
-  marriage has-role wife; # Fix (1) and (2) and part of (5)
+  marriage relates husband;
+  marriage relates wife; # Fix (1) and (2) and part of (5)
   
   husband sub role;
   wife sub role;
@@ -354,7 +354,7 @@ insert
   location sub entity;
   
   located-in sub relation,
-    has-role located-subject, has-role subject-location;
+    relates located-subject, relates subject-location;
     	
   located-subject sub role;
   subject-location sub role;

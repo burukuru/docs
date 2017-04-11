@@ -89,16 +89,16 @@ gender sub resource datatype string;
 # Roles and Relations
 
 marriage sub relation
-  has-role spouse1
-  has-role spouse2
+  relates spouse1
+  relates spouse2
   has-resource picture;
 
 spouse1 sub role;
 spouse2 sub role;
 
 parentship sub relation
-  has-role parent
-  has-role child;
+  relates parent
+  relates child;
 
 parent sub role;
 child sub role;
@@ -218,10 +218,10 @@ person
   plays-role father
 	
 parentship sub relation
-  has-role mother
-  has-role father
-  has-role son
-  has-role daughter;
+  relates mother
+  relates father
+  relates son
+  relates daughter;
 
 mother sub parent;
 father sub parent;

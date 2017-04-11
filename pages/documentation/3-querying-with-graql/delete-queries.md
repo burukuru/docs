@@ -42,7 +42,7 @@ If a variable pattern has no properties, then the concept itself is deleted. Oth
 
 ## Properties
 
-### has-role
+### relates
 Removes the given role from the relation.
 <ul id="profileTabs" class="nav nav-tabs">
     <li class="active"><a href="#shell2" data-toggle="tab">Graql</a></li>

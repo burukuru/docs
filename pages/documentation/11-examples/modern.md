@@ -79,7 +79,7 @@ insert knower sub role;
 insert known-about sub role;
 insert person plays-role knower;
 insert person plays-role known-about;
-insert knows sub relation, has-role knower, has-role known-about, has-resource weight;	
+insert knows sub relation, relates knower, relates known-about, has-resource weight;
 ```
 
 Note that the  `knows` relation also has an attribute, in the form of a resource called `weight` (though it's not clear from the TinkerPop example what this represents).
@@ -93,7 +93,7 @@ insert programmed sub role;
 insert person plays-role programmer;
 insert software plays-role programmed;
 
-insert programming sub relation, has-role programmer, has-role programmed, has-resource weight;
+insert programming sub relation, relates programmer, relates programmed, has-resource weight;
 ```
 
 And that's it. At this point, we have defined the schema of the graph.
@@ -186,8 +186,8 @@ person plays-role knower;
 person plays-role known-about;
 
 knows sub relation
-	has-role knower
-	has-role known-about
+	relates knower
+	relates known-about
 	has-resource weight;
 
 (knower: $marko, known-about: $josh) isa knows has weight 1.0;
@@ -210,8 +210,8 @@ person plays-role programmer;
 software plays-role programmed;
 
 programming sub relation
-	has-role programmer
-	has-role programmed
+	relates programmer
+	relates programmed
 	has-resource weight;
 
 

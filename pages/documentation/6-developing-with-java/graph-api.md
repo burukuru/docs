@@ -71,16 +71,16 @@ Now the role and relation types. In Graql:
 
 ```graql
 marriage sub relation
-  has-role spouse1
-  has-role spouse2
+  relates spouse1
+  relates spouse2
   has-resource picture;
 
 spouse1 sub role;
 spouse2 sub role;
 
 parentship sub relation
-  has-role parent
-  has-role child;
+  relates parent
+  relates child;
 
 parent sub role;
 child sub role;
@@ -92,15 +92,15 @@ Using the Graph API:
 RoleType spouse1 = graph.putRoleType("spouse1");
 RoleType spouse2 = graph.putRoleType("spouse2");
 RelationType marriage = graph.putRelationType("marriage")
-                            .hasRole(spouse1);
-                            .hasRole(spouse2);
+                            .relates(spouse1);
+                            .relates(spouse2);
 marriage.hasResource(picture);
                            
 RoleType parent = graph.putRoleType("parent");
 RoleType child = graph.putRoleType("child");
 RelationType marriage = graph.putRelationType("marriage")
-                            .hasRole(spouse1);
-                            .hasRole(spouse2);
+                            .relates(spouse1);
+                            .relates(spouse2);
 ```
 
 Now the entity types. First, in Graql:

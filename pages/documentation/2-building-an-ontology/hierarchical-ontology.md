@@ -56,16 +56,16 @@ insert
 # Roles and Relations
 
   marriage sub relation
-    has-role spouse1
-    has-role spouse2
+    relates spouse1
+    relates spouse2
     has-resource picture;
 
   spouse1 sub role;
   spouse2 sub role;
 
   parentship sub relation
-    has-role parent
-    has-role child;
+    relates parent
+    relates child;
 
   parent sub role;
   child sub role;
@@ -136,10 +136,10 @@ relatives sub relation
   is-abstract;
 
 marriage sub relatives
-  has-role spouse1
-  has-role spouse2
-  has-role husband
-  has-role wife
+  relates spouse1
+  relates spouse2
+  relates husband
+  relates wife
   has-resource date;
 	    
 spouse sub role is-abstract;
@@ -158,12 +158,12 @@ Lets expand this even further:
 
 ```graql
 parentship sub relatives
-  has-role parent
-  has-role mother
-  has-role father
-  has-role child
-  has-role son
-  has-role daughter;
+  relates parent
+  relates mother
+  relates father
+  relates child
+  relates son
+  relates daughter;
     
 parent sub role;
 mother sub parent;
@@ -243,10 +243,10 @@ insert
     is-abstract;
     
   marriage sub relatives
-    has-role spouse1
-    has-role spouse2
-    has-role husband
-    has-role wife
+    relates spouse1
+    relates spouse2
+    relates husband
+    relates wife
     has-resource date;
     
   spouse sub role is-abstract;
@@ -256,12 +256,12 @@ insert
   wife sub spouse;
     
   parentship sub relatives
-    has-role parent
-    has-role mother
-    has-role father
-    has-role child
-    has-role son
-    has-role daughter;
+    relates parent
+    relates mother
+    relates father
+    relates child
+    relates son
+    relates daughter;
   
   parent sub role;
   mother sub parent;

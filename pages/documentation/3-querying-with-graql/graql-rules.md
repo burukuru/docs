@@ -146,7 +146,7 @@ That means atomic queries contain at most one statement that can potentially app
 | `sub`        | `$x sub type;` | ✓| x |
 | `plays-role` | `$x plays-role parent;` |✓| x |
 | `has-resource`        | `$x has-resource firsname;` | ✓ | x |  
-| `has-role`   | `marriage has-role $x;` | ✓ | x |
+| `relates`   | `marriage relates $x;` | ✓ | x |
 | `is-abstract` | `$x is-abstract;` | ✓ | x |
 | `datatype` | `$x isa resource, datatype string;` | ✓| x |
 | `regex` | `$x isa resource, regex /hello/;` | ✓ | x |

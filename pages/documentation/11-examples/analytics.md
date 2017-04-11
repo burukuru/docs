@@ -76,8 +76,8 @@ carb sub resource datatype long;
 # Roles and Relations
 
 manufactured sub relation
-	has-role maker
-	has-role made;
+	relates maker
+	relates made;
 
 maker sub role;
 made sub role;
