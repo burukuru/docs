@@ -133,10 +133,10 @@ As with any query language, you use a variable to receive the results of the mat
 ```graql
 >>> match $x isa person, has name $n; select $n;
 
-$n value "vadas" isa name; 
-$n value "marko" isa name; 
-$n value "josh" isa name; 
-$n value "peter" isa name; 
+$n val "vadas" isa name;
+$n val "marko" isa name;
+$n val "josh" isa name;
+$n val "peter" isa name;
 ```
  
 In Graql, a match is formed of three parts: the `match` statement, an optional `select` statement, and any other optional [modifiers](../graql/match-queries.html#modifiers) that you choose to apply to the listing of results. Only the first part of a match query is needed: the modifier parts are optional.   

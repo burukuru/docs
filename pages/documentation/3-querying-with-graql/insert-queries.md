@@ -99,7 +99,7 @@ graph.commit();
 </div> <!-- tab-content -->
 
 
-### value
+### val
 
 Set the value of the concept.
 <ul id="profileTabs" class="nav nav-tabs">
@@ -110,13 +110,13 @@ Set the value of the concept.
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell4">
 <pre>
-insert value "Ash" isa surname;
+insert val "Ash" isa surname;
 commit
 </pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java4">
 <pre>
-qb.insert(var().value("Ash").isa("surname")).execute();
+qb.insert(var().val("Ash").isa("surname")).execute();
 graph.commit();
 </pre>
 </div> <!-- tab-pane -->

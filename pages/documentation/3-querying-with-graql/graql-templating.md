@@ -20,7 +20,7 @@ Templates are used to expand Graql queries, given data. They allow you to contro
 Accessing a single value:
 
 ```graql-template
-$x isa thing has value <value>
+$x isa thing has val <value>
 ```
 
 Value in a nested context:
@@ -162,31 +162,31 @@ insert $x isa @noescp(<species>)-species;
 **`int`** converts the contents of the data to an integer. Exactly one argument accepted. 
 
 ```graql-template
-match $x isa thing has value @int(<value>);
+match $x isa thing has val @int(<value>);
 ```
 
 **`long`** converts the contents of the data to an long. Exactly one argument accepted. 
 
 ```graql-template
-match $x isa thing has value @long(<value>);
+match $x isa thing has val @long(<value>);
 ```
 
 **`double`** converts the contents of the data to a double. Exactly one argument accepted. 
 
 ```graql-template
-match $x isa thing has value @double(<value>);
+match $x isa thing has val @double(<value>);
 ```
 
 **`boolean`** converts the contents of the data to a boolean. Exactly one argument accepted. 
 
 ```graql-template
-match $x isa thing has value @boolean(<value>);
+match $x isa thing has val @boolean(<value>);
 ```
 
 **`equals`** returns a boolean with a value specified by the gievn string. The boolean represents a `true` value if the string argumetn is not null and is equal, ignoring case, to the string "true". Can be used in conditional statements. Requires at least two arguments. 
 
 ```graql-template
-insert $x isa thing value @equals(<this>, <that>, <other>)
+insert $x isa thing val @equals(<this>, <that>, <other>)
 ```
 
 ```graql-template
@@ -196,23 +196,23 @@ if (@equals(<this>, <that>)) do { equals }"
 **`date`** `(<value>, fromFormat, toFormat)` converts a date string from the given format to another format. If the third argument is missing, converts to epoch time. Date format specifications can be found [here](https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html). Returns a string. 
 
 ```graql-template
-insert $x value @date(<date>, "mm/dd/yyyy", "dd/mm/yyyy");
+insert $x val @date(<date>, "mm/dd/yyyy", "dd/mm/yyyy");
 ```
 
 ```graql-template
-insert $x value @date(<date>, "mm/dd/yyyy");
+insert $x val @date(<date>, "mm/dd/yyyy");
 ```
 
 **`lower`** converts the contents of the data to lower case. 
 
 ```graql-template
-match $x isa thing has value @lower(<value>);
+match $x isa thing has val @lower(<value>);
 ```
 
 **`upper`** converts the contents of the data to upper case.
 
 ```graql-template
-match $x isa thing has value @upper(<value>);
+match $x isa thing has val @upper(<value>);
 ```
 
 **`split`** splits the given string around the matches of the given regular expression. More information about regular expressions can be found [here](https://docs.oracle.com/javase/8/docs/api/java/util/regex/Pattern.html#sum). Returns a list of strings.
@@ -227,7 +227,7 @@ insert $x
 **`concat`** concatenates all of the given arguments into a single string. If the arguments are not strings, it converts them to strings before concatenating. Returns a string.
 
 ```graql-template
-insert $x has value @concat(<forname>, " ", <surname>);
+insert $x has val @concat(<forname>, " ", <surname>);
 ```
 
 #### Nesting macros
@@ -237,7 +237,7 @@ When writing a template, you can nest macros inside other macros. When doing so,
 For example, the `date` macro returns a string, but many people will want to convert to epoch time and store the value as a long. If that is the case you can:
 
 ```graql-template
-insert $x value @long(@date(<date> "mm/dd/yyyy"));
+insert $x val @long(@date(<date> "mm/dd/yyyy"));
 ```
 
 #### User-defined Macros
