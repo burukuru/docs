@@ -39,7 +39,7 @@ match $x sub role; # List all roles
 match $x sub relation; # List all relations
 
 match $x isa pokemon; (ancestor: $x, $y); $x has name $xn; $y has name $yn;
-match evolution has-role $x;
+match evolution relates $x;
 match $x plays-role ancestor;
 match $x has-resource name;
 match $x plays-role has-name-owner;
@@ -62,7 +62,7 @@ insert has name "Totodile" isa pokemon;
 insert value "Ash" isa name;
 insert isa pokemon, has name "Pichu" has height 30;
 insert gen2-pokemon sub pokemon;
-insert trained-by sub relation, has-role trainer, has-role pokemon-trained;
+insert trained-by sub relation, relates trainer, relates pokemon-trained;
 insert pokemon plays-role pokemon-trained;
 insert pokemon has-resource pokedex-no;
 

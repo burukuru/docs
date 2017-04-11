@@ -117,8 +117,8 @@ For Grakn, we can use the following:
 ```graql-test-ignore
 insert
 occurs sub relation
-  has-role event-occurred
-  has-role pet-in-event;
+  relates event-occurred
+  relates pet-in-event;
 
 event-occurred sub role;
 pet-in-event sub role;
