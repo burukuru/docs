@@ -52,7 +52,7 @@ Removes the given role from the relation.
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell2">
 <pre>
-match $x label marriage; delete $x has-role spouse1;
+match $x label marriage; delete $x relates spouse1;
 </pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java2">
