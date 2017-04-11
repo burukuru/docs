@@ -203,8 +203,8 @@ insert woman sub person;
 </div>
 <div role="tabpanel" class="tab-pane" id="java8">
 <pre>
-qb.insert(name("man").sub("person")).execute();
-qb.insert(name("woman").sub("person")).execute();
+qb.insert(label("man").sub("person")).execute();
+qb.insert(label("woman").sub("person")).execute();
 </pre>
 </div> <!-- tab-pane -->
 </div> <!-- tab-content -->
@@ -227,8 +227,8 @@ insert siblings sub relation, relates sibling1, relates sibling2;
 <div role="tabpanel" class="tab-pane" id="java9">
 <pre>
 qb.insert(
-  name("siblings").sub("relation")
-    .relates("sibling1").relates("sibling2")
+  label("siblings").sub("relation")
+    .hasRole("sibling1").hasRole("sibling2")
 ).execute();
 </pre>
 </div> <!-- tab-pane -->
@@ -252,8 +252,8 @@ insert person plays-role sibling2;
 </div>
 <div role="tabpanel" class="tab-pane" id="java10">
 <pre>
-qb.insert(name("person").playsRole("sibling1")).execute();
-qb.insert(name("person").playsRole("sibling2")).execute();
+qb.insert(label("person").playsRole("sibling1")).execute();
+qb.insert(label("person").playsRole("sibling2")).execute();
 </pre>
 </div> <!-- tab-pane -->
 </div> <!-- tab-content -->
@@ -279,7 +279,7 @@ insert person has-resource nickname;
 
 <div role="tabpanel" class="tab-pane" id="java11">
 <pre>
-qb.insert(name("person").hasResource("nickname")).execute();
+qb.insert(label("person").hasResource("nickname")).execute();
 </pre>
 </div> <!-- tab-pane -->
 </div> <!-- tab-content -->

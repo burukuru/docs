@@ -209,7 +209,7 @@ match parentship relates $x;
 </div>
 <div role="tabpanel" class="tab-pane" id="java8">
 <pre>
-qb.match(name("parentship").relates(var("x")));
+qb.match(label("parentship").hasRole(var("x")));
 </pre>
 </div> <!-- tab-pane -->
 </div> <!-- tab-content -->

@@ -58,18 +58,18 @@ You can see the code to answer these questions in the function `printInformation
 
 ```
 Migrated Types:
-[24800] - Base Type [ENTITY_TYPE] - Id [24800]  - Name [protest] - Abstract [false] 
-[28896] - Base Type [ENTITY_TYPE] - Id [28896]  - Name [municipality] - Abstract [false] 
-[37104] - Base Type [ENTITY_TYPE] - Id [37104]  - Name [suburab] - Abstract [false] 
-[122888416] - Base Type [ENTITY_TYPE] - Id [122888416]  - Name [district] - Abstract [false] 
-[122900704] - Base Type [ENTITY_TYPE] - Id [122900704]  - Name [country] - Abstract [false] 
-[20600] - Base Type [ENTITY_TYPE] - Id [20600]  - Name [province] - Abstract [false] 
-[24600] - Base Type [ENTITY_TYPE] - Id [24600]  - Name [origin] - Abstract [false] 
-[28792] - Base Type [ENTITY_TYPE] - Id [28792]  - Name [city] - Abstract [false] 
-[32888] - Base Type [ENTITY_TYPE] - Id [32888]  - Name [police-station] - Abstract [false] 
-[81924200] - Base Type [ENTITY_TYPE] - Id [81924200]  - Name [region] - Abstract [false] 
-[122892488] - Base Type [ENTITY_TYPE] - Id [122892488]  - Name [continent] - Abstract [false] 
-[122933272] - Base Type [ENTITY_TYPE] - Id [122933272]  - Name [language] - Abstract [false] 
+[24800] - Base Type [ENTITY_TYPE] - Id [24800]  - Label [protest] - Abstract [false]
+[28896] - Base Type [ENTITY_TYPE] - Id [28896]  - Label [municipality] - Abstract [false]
+[37104] - Base Type [ENTITY_TYPE] - Id [37104]  - Label [suburab] - Abstract [false]
+[122888416] - Base Type [ENTITY_TYPE] - Id [122888416]  - Label [district] - Abstract [false]
+[122900704] - Base Type [ENTITY_TYPE] - Id [122900704]  - Label [country] - Abstract [false]
+[20600] - Base Type [ENTITY_TYPE] - Id [20600]  - Label [province] - Abstract [false]
+[24600] - Base Type [ENTITY_TYPE] - Id [24600]  - Label [origin] - Abstract [false]
+[28792] - Base Type [ENTITY_TYPE] - Id [28792]  - Label [city] - Abstract [false]
+[32888] - Base Type [ENTITY_TYPE] - Id [32888]  - Label [police-station] - Abstract [false]
+[81924200] - Base Type [ENTITY_TYPE] - Id [81924200]  - Label [region] - Abstract [false]
+[122892488] - Base Type [ENTITY_TYPE] - Id [122892488]  - Label [continent] - Abstract [false]
+[122933272] - Base Type [ENTITY_TYPE] - Id [122933272]  - Label [language] - Abstract [false]
 
 239 countries in our world
 

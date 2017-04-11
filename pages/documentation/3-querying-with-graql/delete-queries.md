@@ -52,12 +52,12 @@ Removes the given role from the relation.
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell2">
 <pre>
-match $x type-name "marriage"; delete $x relates spouse1;
+match $x label marriage; delete $x has-role spouse1;
 </pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java2">
 <pre>
-qb.match(var("x").name("marriage")).delete(var("x").relates("spouse1"));
+qb.match(var("x").label("marriage")).delete(var("x").hasRole("spouse1"));
 </pre>
 </div> <!-- tab-pane -->
 </div> <!-- tab-content -->
@@ -74,12 +74,12 @@ Disallows the concept type from playing the given role.
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell3">
 <pre>
-match $x type-name "person"; delete $x plays-role sibling1;
+match $x label person; delete $x plays-role sibling1;
 </pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java3">
 <pre>
-qb.match(var("x").name("person")).delete(var("x").playsRole("sibling1"));
+qb.match(var("x").label("person")).delete(var("x").playsRole("sibling1"));
 </pre>
 </div> <!-- tab-pane -->
 </div> <!-- tab-content -->
