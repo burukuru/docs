@@ -16,7 +16,7 @@ All Grakn applications require the following Maven dependency:
 
 ```xml
 <properties>
-  <grakn.version>0.11.0</grakn.version>
+  <grakn.version>0.12.0</grakn.version>
 </properties>
 
 <dependencies>
