@@ -56,9 +56,11 @@ true, false
 #### Ontology definition
 
 ```graql
-has, has-key, has-resource, relates, has-scope
-is-abstract, isa
-plays, plays-role
+has, has-scope, 
+is-abstract, isa, 
+key,
+plays,
+relates
 ```
 
 #### Rules definition
