@@ -111,10 +111,10 @@ match $x has model contains "Merc";
 match $x has gear > 4;
 
 # Japanese-made cars that are manual
-match $x isa manual-car; $y isa japanese-maker;
+match $x isa manual-car has model $s; $y isa japanese-maker; (made: $x, maker:$y);
 
 # European cars that are automatic
-match $x isa automatic-car; $y isa european-maker;
+match $x isa automatic-car has model $s; $y isa european-maker; (made: $x, maker:$y);
 
 ```
 
@@ -134,21 +134,20 @@ match $x isa car; aggregate count; # 32
 match $x isa american-maker; aggregate count; # 6
 
 # Maximum MPG for an automatic car
-match $x isa automatic-car, has mpg $a; aggregate max $a;
+match $x isa automatic-car, has mpg $a; aggregate max $a; # 24.4
 
 # Minimum HP for all cars
-match $x isa car, has hp $hp; aggregate min $hp;
+match $x isa car, has hp $hp; aggregate min $hp; # 52
 
 # Mean MPG for manual and automatic cars
 match $x isa manual-car has mpg $mpg; aggregate mean $mpg; # 24.39
 match $x isa automatic-car has mpg $mpg; aggregate mean $mpg; # 17.15
 
 # Median number of cylinders (all Mercedes cars)
-match $x isa carmaker has maker-name contains "Mercedes"; 
-$y isa car has cyl $c; (maker:$x, made:$y); aggregate median $c; # 6
+match $x isa carmaker has maker-name contains "Mercedes"; $y isa car has cyl $c; (maker:$x, made:$y); aggregate median $c; # 6
 
 # Or...
-match $x has model contains "Merc", has cyl $c; aggregate median $c;# 6
+match $x has model contains "Merc", has cyl $c; aggregate median $c; # 6
 
 # Maximum number of carburetors (all Chrysler cars) 
 match $x isa carmaker has maker-name contains "Chrysler"; $y isa car has carb $c; (maker:$x, made:$y); aggregate max $c; # 4
@@ -178,6 +177,19 @@ compute min of gear; # 3
 
 # Maximum number of carburetors (all cars)
 compute max of carb; # 8
+
+# Mean MPG for an automatic car
+compute mean of mpg in automatic-car; # 17.15
+
+# Mean MPG for a manual car
+compute mean of mpg in manual-car; # 24.39
+
+# Median number of cylinders (all Japanese cars)
+
+
+# Maximum number of carburetors (all American cars) 
+
+
 ```
 
 
@@ -186,7 +198,7 @@ compute max of carb; # 8
 Aggregate queries are computationally light and run single-threaded on a single machine, and are more flexible than the equivalent compute query (for example, you can use an aggregate query to filter results by resource). 
 
 ```graql
-match $x has identifier contains "Elizabeth"; aggregate count;
+match $x isa car has model contains "Merc"; aggregate count; # 7
 ```
 
 Compute queries are computationally intensive and run in parallel on a cluster, so are good for big data and can be used to calculate results very fast. However, you can't filter the results by resource in the same way as you can for an `aggregate` query.
@@ -195,9 +207,7 @@ Compute queries are computationally intensive and run in parallel on a cluster, 
 ## Inference
 
 ```graql
-
-match $x has powerful contains "TRUE" has economical contains "TRUE";
-match $x has powerful contains "TRUE" has economical contains "TRUE" has model $y;
+match $x has model $s, has powerful "TRUE" has economical "TRUE";
 $x id "106584" isa manual-car; $y val "Ferrari Dino" isa model;
 $x id "254120" isa automatic-car; $y val "Pontiac Firebird" isa model;
 ```
