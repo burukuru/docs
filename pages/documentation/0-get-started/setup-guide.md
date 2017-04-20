@@ -43,22 +43,21 @@ Grakn Engine is configured by default to use port 4567, but this can be changed 
 
 ## Test the Graql Shell
 
-To test that the installation is working correctly, we will load a simple ontology and some data from a file, *basic-genealogy.gql* and test it in the Graql shell and Grakn Visualiser. The *basic-genealogy.gql* file will be included in the */examples* folder of the Grakn installation zip from release 0.11.0 and onwards. You can also download it from the [Grakn repo on Github](https://github.com/graknlabs/grakn/blob/master/grakn-dist/src/examples/basic-genealogy.gql). In the code below, we assume that the file is in the */examples* folder. 
+To test that the installation is working correctly, we will load a simple ontology and some data from a file and test it in the Graql shell and Grakn visualiser. The file we will use is *basic-genealogy.gql*, which is included in the */examples* folder of the Grakn installation zip.
 
-Type in the following to load the example graph. This starts the Graql shell in non-interactive mode, loading the specified file and exiting after the load is complete.
+Type in the following in the terminal to load the example graph. This starts the Graql shell in non-interactive mode, loading the specified file and exiting after the load is complete.
 
 ```bash
 ./bin/graql.sh -f ./examples/basic-genealogy.gql
 ```
 
-Then type the following to start the Graql shell in its interactive (REPL) mode, type:
+Then type the following to start the Graql shell in its interactive (REPL) mode:
 
 ```bash
 ./bin/graql.sh
 ```
 
-The Graql shell starts and you see a `>>>` prompt. Graql is our knowledge-oriented query language, which allows you to interface with Grakn. We will type in a query to check that everything is working. 
-
+The Graql shell starts and you see a `>>>` prompt. Graql is our knowledge-oriented query language, which allows you to interface with Grakn. We will enter a query to check that everything is working. 
 
 ```graql   
 match $x isa person, has identifier $n;
@@ -70,11 +69,11 @@ If you see the above output then congratulations! You have set up Grakn.
 
 ## Test the Visualiser
 
-The [Grakn visualiser](../grakn-dashboard/visualiser.html) provides a graphical tool to inspect and query your graph data. You can open the visualiser by navigating to [localhost:4567](http://localhost:4567) in your web browser. The visualiser allows you to make queries or simply browse the knowledge ontology within the graph. The screenshot below shows a basic query (`match $x isa person; offset 0; limit 100`) typed into the form at the top of the main pane, and visualised by pressing ">" to submit the query:
+The [Grakn visualiser](../grakn-dashboard/visualiser.html) provides a graphical tool to inspect and query your graph data. You can open the visualiser by navigating to [localhost:4567](http://localhost:4567) in your web browser. The visualiser allows you to make queries or simply browse the knowledge ontology within the graph. The screenshot below shows a basic query (`match $x isa person;`) typed into the form at the top of the main pane, and visualised by pressing ">" to submit the query:
 
 ![Person query](/images/match-$x-isa-person.png)
 
-You can zoom the display in and out, and move the nodes around for better visibility. Please see our [Grakn visualiser](../grakn-dashboard/visualiser.html) documentation for further details.
+You can zoom the display in and out, and move the nodes around for better visibility. Please see our [visualiser](../grakn-dashboard/visualiser.html) documentation for further details.
 
 ### Troubleshooting  
 If you are having trouble getting Grakn running, please check our [FAQ page](../resources/faq.html), and if you have any questions, do ask them on our [discussion forum](http://discuss.grakn.ai), on [Stack Overflow](http://stackoverflow.com) or on our [Slack channel](https://grakn.ai/slack.html).

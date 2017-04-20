@@ -307,7 +307,7 @@ The migration will take a minute or two, and the terminal will report which file
 
 We have completed the data import, and the graph can now be queried. For example, from the Graql shell:
 
-```
+```graql
 match $x isa person, has identifier $i; aggregate count;
 ```
 
