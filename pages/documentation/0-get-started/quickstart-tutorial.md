@@ -16,8 +16,8 @@ This example takes a simple genealogy dataset and briefly reviews its ontology, 
 
 ## Introduction 
 
-If you have not yet set up GRAKN.AI, please see the [Setup guide](../get-started/setup-guide.html). In this tutorial, we will load a simple ontology and some data from a file, *basic-genealogy.gql* and test it in the Graql shell and Grakn Visualiser. The *basic-genealogy.gql* file will be included in the */examples* folder of the Grakn installation zip from release 0.11.0 and onwards. It can also be downloaded from the [Grakn repo on Github](https://github.com/graknlabs/grakn/blob/master/grakn-dist/src/examples/basic-genealogy.gql). In the code below, we assume that it is in the */examples* folder. 
-
+If you have not yet set up GRAKN.AI, please see the [Setup guide](../get-started/setup-guide.html). In this tutorial, we will load a simple ontology and some data from a file, *basic-genealogy.gql* and use the Graql shell and Grakn visualiser to illustrate some key features of GRAKN.AI.
+ 
 ## The Graql Shell
 
 The first few steps mirror those in the [Setup Guide](./setup-guide.html), and you can skip to [The Ontology](#the-ontology) if you have already run through that example. Start Grakn and load the example graph:
@@ -43,7 +43,6 @@ match $x isa person, has identifier $n;
 ```
 
 You should see a printout of a number of lines of text, each of which includes a name, such as "William Sanford Titus" or "Elizabeth Niesz".
-
 
 ### The Ontology
 
@@ -166,7 +165,7 @@ Querying the graph is more fully described in the [Graql documentation](../graql
 
 ## Extending the Graph
 
-Besides making `match` queries, it is also possible to `insert` [(see further documentation)](../graql/insert-queries.html) and `delete`[(see further documentation)](../graql/delete-queries.html) items in the graph through the Graql shell. To illustrate inserting a fictional person:
+Besides making `match` queries, it is also possible to `insert` items [(see further documentation)](../graql/insert-queries.html) and `delete` items [(see further documentation)](../graql/delete-queries.html) through the Graql shell. To illustrate inserting a fictional person:
 
 ```graql
 insert $g isa person has firstname "Titus" has identifier "Titus Groan" has surname "Groan" has gender "male";
@@ -322,14 +321,6 @@ The mean age at death can be calculated using `compute mean` as follows, enterin
 compute mean of age in person; # returns 78.23 (rounded to 2 decimal places)
 ```
 
-You can take a look at the values of age at death for the person entities in the genealogy dataset as follows:
-
-```graql
-match $x isa person, has age $a;
-```
-
-![Mean ages calculated](/images/compute-mean-age.png)
-
 Other statistical values can be calculated similarly, e.g. values for `count`:
 
 ```graql
@@ -367,7 +358,7 @@ To narrow the path to specific relations between specific entities:
 compute path from "id1" to "id2" in person, parentship;
 ```
 
-The above limits the path to blood relations (parent/child relations) thus excludes marriage. As a result, the shortest path between the two people is now longer: Barbara Shafner and Jacob J. Niesz are cousins (their mothers, Mary Young and Catherine Young, are sisters, their father being Jacob Young).
+The above limits the path to blood relations (parent/child relations) thus excludes marriage. As a result, the shortest path between the two people is now longer: Barbara Shafner and Jacob J. Niesz are cousins (their mothers, Mary Young and Catherine Young, are sisters, with *their* father being Jacob Young).
 
 ![Shortest path between people](/images/analytics_path_parentship.png)
 

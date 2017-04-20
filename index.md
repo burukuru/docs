@@ -16,21 +16,21 @@ toc: false
 </ul>
   <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="getstarted">
-<p>Check out our guide to <b><a href="https://grakn.ai/pages/documentation/get-started/setup-guide.html">download and set up Grakn</a></b>.</p>
-<p>When you're set up, there's an <a href="https://grakn.ai/pages/documentation/get-started/quickstart-tutorial.html">introductory tutorial</a> to show the basics of Graql and how to use the Java API.</p>
+<p>Check out our guide to <b><a href="./documentation/get-started/setup-guide.html">download and set up Grakn</a></b>.</p>
+<p>When you're set up, there's an <a href="./documentation/get-started/quickstart-tutorial.html">introductory tutorial</a> to show the basics of Graql and how to use the Java API.</p>
 </div>
 
 <div role="tabpanel" class="tab-pane" id="contribute">
     <h2>Contribute</h2>
-    <p>We have a set of pages about <a href="https://grakn.ai/pages/contributors/index.html">Contributing to GRAKN.AI</a>.</p></div>
+    <p>We have a set of pages about <a href="./contributors/index.html">Contributing to GRAKN.AI</a>.</p></div>
 
 <div role="tabpanel" class="tab-pane" id="apireference">
 
 <a href="https://javadoc.io/doc/ai.grakn/grakn"><img src="https://javadoc.io/badge/ai.grakn/grakn.svg" alt="Javadocs"></a>
 
 <br /> <br />
-<p>The API reference is also available in the Grakn distribution that you can download from <a href="https://grakn.ai/pages/documentation/resources/downloads.html">here</a>, in the <code>docs</code> directory.</p>
-    <p>Additional API reference documents can be found <a target="_blank" href="https://grakn.ai/pages/documentation/api-reference/api-reference.html">here</a>. </p>
+<p>The API reference is also available in the Grakn distribution that you can download from <a href="./documentation/resources/downloads.html">here</a>, in the <code>docs</code> directory.</p>
+    <p>Additional API reference documents can be found <a target="_blank" href="./documentation/api-reference/api-reference.html">here</a>. </p>
 </div>
 
 <div role="tabpanel" class="tab-pane" id="gethelp">
