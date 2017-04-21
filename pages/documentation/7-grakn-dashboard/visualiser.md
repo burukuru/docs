@@ -10,6 +10,8 @@ folder: documentation
 comment_issue_id: 17
 ---
 
+{% include warning.html content="<b>These instructions refer to the 0.11 release of GRAKN.AI. The latest version has some differences to its look and feel, and you may find that some instructions are currently inaccurate. Apologies! We will update this information very shortly.</b>" %}
+
 ## Introduction
 The Grakn visualiser provides a graphical tool to inspect and query your graph data. This article shows how to get it up and running on a basic example and introduces the visualiser's key features.
 
@@ -59,7 +61,7 @@ match $x isa person, has firstname "John";
 
 ![John query](/images/john-query.png)
 
-Note that the `offset 0; limit 100` values are applied automatically, but the default values can be changed.
+Note that the `offset 0; limit 30` values are applied automatically, but the default values can be changed via the Query Settings, accessed under the cog icon at the right hand of the icon set.
 
 ## Working With The Visualiser
 
@@ -67,6 +69,10 @@ There are a number of horizontal tabs on the left hand side of the screen, descr
 
 ### Graph
 This is the main section of the visualiser that you will use to explore the graph. 
+
+<!-- TO DO - this is where text about using the visualiser should go -->
+
+<!--Add this back in when it works as expected
 
 We have already shown an example of how to examine `person` entities using the entity selector. As another example, select "Types", followed by "Relations" and filter on `marriage` relations. The query will be shown in the query section at the top of the main pane, as previously, and the visualiser displays all the `marriage` relations in the graph. 
 
@@ -77,11 +83,14 @@ A short video illustrates the process:
 <iframe width="640" height="360" src="https://www.youtube.com/embed/OLuVwjPrhbc" frameborder="0" allowfullscreen></iframe>
 
 <br />
+-->
+
 
 #### Inference
 
-There are 3 query settings that can be changed using the 'cog' button (on the far right hand side of the horizontal icon menu at the top of the screen):
+There are 4 query settings that can be changed using the 'cog' button (on the far right hand side of the horizontal icon menu at the top of the screen):
 
+* Lock nodes position - 
 * Activate inference - activates inference, per query.
 * Materialise inference - persists the inference into the graph, per query.
 * Materialise All: activate and persist all inference across the graph.
