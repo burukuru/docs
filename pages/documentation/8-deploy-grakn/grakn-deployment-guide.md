@@ -65,7 +65,7 @@ The database layer will need to be configured similarly to the [Clustered databa
 
 Grakn Engine uses the [Apache Kafka](https://kafka.apache.org/) streaming platform for distributed task execution. Kafka keeps track of its brokers' state in [Zookeeper](https://zookeeper.apache.org/).
 
-Kafka version: 2.10-0.10.1.0
+Kafka version: 2.11-0.10.1.0
 
 Zookeeper version: 3.4.9
 
