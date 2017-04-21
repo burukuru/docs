@@ -69,9 +69,9 @@ Kafka version: 2.10-0.10.1.0
 
 Zookeeper version: 3.4.9
 
-Configure Grakn to use an external Kafka and Zookeeper cluster in `conf/main/grakn-engine.properties`:
+Configure Grakn to use an external Kafka and Zookeeper cluster in `conf/main/grakn.properties`:
 
-* `tasks.kafka.bootstrap-servers`: eg. 10.0.20.1:9092,10.0.20.2:9092,10.0.20.3:9092
+* `bootstrap-servers`: eg. 10.0.20.1:9092,10.0.20.2:9092,10.0.20.3:9092
 * `tasks.zookeeper.servers`: eg. 10.0.30.1:2181,10.0.30.2:2181,10.0.3.30:2181
 
 Once the configuration files are correct, you can start Grakn Engine only with `bin/grakn-engine.sh start`.
