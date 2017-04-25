@@ -1,72 +1,79 @@
 ---
-title: Grakn Overview
+title: GRAKN.AI FAQs
 keywords: overview
-last_updated: September 13, 2016
+last_updated: April 2017
 tags: [overview, faq]
 sidebar: overview_sidebar
-permalink: /overview/faq.html
+permalink: /overview/faqs.html
 folder: overview
 ---
 
-### What is a Graph Database?
-As [Wikipedia](https://en.wikipedia.org/wiki/Graph_database) explains, a graph database is "*...a database that uses graph structures for semantic queries with nodes, edges and properties to represent and store data. A key concept of the system is the graph (or edge or relationship), which directly relates data items in the store. The relationships allow data in the store to be linked together directly, and in most cases retrieved with a single operation.*".
+*The following FAQ is taken from a [blog post](https://blog.grakn.ai/grakn-ai-q-a-episode-1-33455f9549c8) published in April 2017.*    
 
-Put another way: a graph database can store, manage and query complex and highly-connected data (that is, data where there are a high number of relationships between the elements). A graph database is well-suited for uncovering common attributes and anomalies within a given volume of data, and are designed to express the relatedness of that data, allowing them to  uncover patterns that are otherwise difficult to detect.    
+*If you have other questions or want to clarify any of the following, please do reach out to us via [Slack](https://grakn.ai/slack.html), [Twitter](https://twitter.com/graknlabs) or our [discussion forums](https://discuss.grakn.ai/).*
 
-A graph is a structure composed of vertices and edges, which can have an arbitrary number of key/value-pairs called properties.
+### What is GRAKN.AI?
 
-Vertices represent entities: discrete objects such as a person, a place, or an event.
+GRAKN.AI is a distributed [knowledge base](https://en.wikipedia.org/wiki/Knowledge_base) (Grakn) with a reasoning query language (Graql) that enables you to query for explicitly stored data and implicitly derived information.   
 
-Edges represent relationships between those objects. For instance, a person may know another person, have been involved in an event, or lives at a particular place.
+Grakn uses an intuitive [ontology](https://blog.grakn.ai/what-is-an-ontology-c5baac4a2f6c) as a data model that allows you to define a set of types, properties, and relationship types. The ontology allows you to model extremely complex datasets, and functions as a data schema constraint to guarantee data consistency, i.e. [logical integrity](https://en.wikipedia.org/wiki/Data_integrity). The ontology modelling constructs include: type hierarchies, n-ary relationships, and higher-order modelling constructs. Grakn allows you to model the real world and all the hierarchies and hyper-relationships contained within it.   
 
-Properties express non-relational information about the vertices and edges. Example properties include a vertex having a name, an age and an edge having a timestamp and/or a weight.
+Grakn is built using several graph computing and distributed computing platforms, such as [Apache TinkerPop](https://tinkerpop.apache.org/) and [Apache Spark](http://spark.apache.org/) and is designed to be sharded and replicated over a network of distributed machines. Internally, it stores data in a way that allows machines to understand the meaning of information in the complete context of their relationships. Consequently, Grakn allows computers to process complex information more intelligently, with less human intervention.   
 
+Graql is a [declarative](https://en.wikipedia.org/wiki/Declarative_programming), knowledge-oriented graph query language that uses machine reasoning to retrieve explicitly stored and implicitly derived information from Grakn. On other database systems, queries have to define the data patterns they are looking for explicitly. Graql, on the other hand, will translate a query pattern into all its logical equivalents and execute them against the database. This includes the inference of types, relationships, context, and pattern combination.   
 
+Graql allows you to derive implicit information that is hidden in your dataset, and makes finding new knowledge easy.
+In combination, Grakn and Graql are what makes GRAKN.AI, the knowledge base for working with complex data.
 
-### What is the difference between relational databases and graph databases?
+### Can you explain GRAKN.AI’s “ontology-first” model?
 
-Relational and graph databases differ in the way data is stored and accessed. The primary difference is how relationships between objects are prioritized and managed. A relational database connects entities in a secondary fashion using foreign keys, but in a graph database, the relationships between them (the 'edges') are of first order importance. The ability to map any-to-any relationships is what makes graph databases so powerful. A graph database can be likened to a pre-joined RDBMS.
+In Grakn, the ontology is the formal specification of all the relevant concepts and their meaningful associations in a given domain. It allows objects and relationships to be categorised into distinct types, and for generic properties of those types to be expressed. Specifying the ontology enables [automated reasoning](https://en.wikipedia.org/wiki/Inference_engine) over the [represented knowledge](https://en.wikipedia.org/wiki/Knowledge_representation_and_reasoning), such as the extraction of implicit information from explicit data ([inference](https://grakn.ai/pages/documentation/the-fundamentals/grakn-knowledge-model.html#rule-and-sub-type-inference)) or discovery of inconsistencies in the data ([validation](https://grakn.ai/pages/documentation/the-fundamentals/grakn-knowledge-model.html#data-validation)). For this reason, the ontology must be clearly defined before loading data into the graph.
 
-Graph computing can offer algorithms that support complex reasoning: path analysis, vertex clustering and ranking, subgraph identification, and more.
+### Won’t that cause extra complexity?
 
-<!--
-**Temporary graphic - would need to redraw**
-![](http://www.pwc.com/content/dam/pwc/us/en/technology-forecast/2015/remapping-database-landscape/features/assets/mw-15-1351-the-power-of-graph-databases-in-public-health-modal-chart-2-modal.png)
--->
+We don’t think so! To model the world accurately, you need to model type hierarchies, since without that level of representation, you cannot interpret data or knowledge accurately, and you cannot build a model that is easily extensible. On GRAKN.AI, since the type system exists in the ontology rather than in the data, you have control over what goes into the model. Wild streams of input data cannot mess up the model, and type definitions can only go out of control if you explicitly mess up the ontology. You face fewer hurdles when ingesting your data and you spend less time and effort on data cleanup and integration.   
 
-### What is the difference between other NoSQL databases and graph databases?   
+If you didn’t model your data in an ontology, you would have to do it in your system application layer. But modelling your data domain within code is difficult, hard to scale, maintain and extend. Our approach allows you to keep your data model and code separate.
 
-<!--**<<< to do - Another short section to describe the difference in brief (maybe just use a diagram) >>>**
+### What are the advantages compared to relational schema?
 
-**Temporary graphic - discuss and redraw**
+GRAKN.AI’s ontology modelling approach differs from relational schema because:
 
-![](https://www.datastax.com/wp-content/uploads/2016/07/databases.jpg)
+* It can model type hierarchies.
+* It can model hyper-relationships, such as relations in relations, N-ary relations, and virtual relations.
+* It can be updated easily even after you’ve added data.
+* It provides more granular access control at a single type level.
+* It is interpretable by a computer/reasoner, such that querying can infer relationships and can compress complex queries.
+* If you model your relationships in a relational schema, it doesn’t mean that you can query long sequences of relationships since the sql-joins involved would severely impact performance.
 
--->
+In this we explain modelling with GRAKN.AI (via Data Day Texas 2017)
 
-### Why would you use a graph database?
+<iframe style="width: 100%; height: 400px" src="https://www.youtube.com/embed/OeFrudRlXAM?list=PLDaQNzoeb9L7UZDPq7z1Gd2Rc0m_oeSDQ" frameborder="0" allowfullscreen></iframe>
 
-As we've discussed above, relationships are explicit in a graph data model.  If tracking the relationships between your data entities is a primary concern, it is often a good fit to use a graph database.
+### Isn’t it limiting to have to model data before it is ingested? I’m sure my data will change.
 
-Some common use cases for graph databases include:
+If you have new data that requires a new model, which you have not considered before, then, yes, you will need to extend your ontology. However, Grakn’s ontology/data model:
 
-- Recommendation and Personalization   - Security and Fraud Detection   
-- IoT and Networking
+* is as robust as relational schemas.
+* is as easy to extend/update as adding in data. It gives you more control on new data models that goes into your system and maintains higher quality data.
+* allows you to retain logical integrity of your data, which is one of the purposes of the ontology.
+* can be circumvented if you want to. You can still add data that doesn’t fit your ontology, by creating a generic entity-relationship-resource model to ingest general information that doesn’t have any particular type. Imagine it to be “an abstract type”, but not really “abstract”. You will still get the benefit of having an intelligent and simple query language, but you won’t get the benefit of deep/advanced inference.
+* allows you to ask previously unimagined questions about the data because the ontology provides a reasoning model for the query language to interpret future questions in the most flexible and expressive manner. Without the ontology, you would be limited in this respect.
 
-### Why would you specifically choose Grakn?   
-<!--
-**<<< to do - Not a promotional thing here - what is the technical reason for choosing it rather than orientdb or neo4j? What are the problems that we specifically solve? >>> **-->
+### Is it practical to have to define an ontology before I’ve worked with the data. Why can’t I just put it into a graph as a set of entities and relationships?
 
+In the past, it hasn’t been practical with other technologies that use an ontology, but that is the main mission for us at GRAKN.AI: to make ontologies and knowledge representation practical for the very first time, by integrating seamlessly with a database. Our goal is to ensure that users don’t worry about perceived “baggage”, but simply get expressive modelling abilities without having to worry about how to implement data structure and constraints.
 
-### When a graph database is not a good solution   
+And yes, you could just use a graph database, but with GRAKN.AI, your data sits in a knowledge base, which enables automation, pattern matching, inference and discovery with very little human intervention. You can uncover hidden patterns in the data that are too complex for human cognition.
 
-Much depends on your use case.  If the goal is to model or integrate large, interconnected systems, a graph store is invaluable.
+### How can I visualise my data?
 
-As described by [PWC's recent database technology forecast](http://www.pwc.com/us/en/technology-forecast/2015/remapping-database-landscape/public-health-graph--databases.html): "*Depending on the use case, native graph stores can be overkill. If the immediate purpose is to capture or cache the data, then a key-value or column store is more appropriate. If the purpose is aggregation, then a document store may be best, at least for initial data ingestion. If transactional integrity and concurrency are critical requirements, then an RDBMS or a NewSQL store fits best.*"
+[GRAKN.AI’s UI](../documentation/grakn-dashboard/visualiser.html) is a relatively new addition to our platform, and has only been in development for several months. It allows you to view a portion of your dataset, by filtering it using Graql queries.  
 
+We’re committed to extending our UI over the years to come. This year alone, we plan to collaborating with other technologies in the industry on building a WebGL-based graph visualiser, which uses the GPU to render tens of thousands of nodes on the screen.  
 
-### Database types compared   
+The visualiser is a way to show relationships structures of specific portions of data, but ultimately is not the final place for users to analyse data. For that kind of work, we’re building a Knowledge Discovery Terminal, allowing users to visualise and analyse their data through different views: tabular, charts, diagrams and custom combinations thereof. Similarly, we’re also developing a Knowledge Development Environment for users to visualise, edit, and develop advanced data models using visual aids.
 
-<!--**Temporary graphic - discuss and redraw**   
+### Can you support a high volume of data?
 
-![](https://www.datastax.com/wp-content/uploads/2016/07/rdbmsgraphcompare2.jpg)-->
+[Apache Cassandra](http://cassandra.apache.org) is the distributed database behind Facebook, Netflix, and other giant systems, which says a lot about its scalability. GRAKN.AI scales completely horizontally with Cassandra under-the-hood: we shard and replicate data easily, unlike some other graph DBs. We will publish some benchmark data soon!

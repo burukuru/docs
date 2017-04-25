@@ -15,7 +15,13 @@ entries:
       url: /overview/applications.html
     - title: System Properties
       output: web
-      url: /overview/system-properties.html  
+      url: /overview/system-properties.html
+    - title: The GRAKN.AI Ideology
+      output: web
+      url: /overview/ideology.html      
+    - title: FAQs
+      output: web
+      url: /overview/faqs.html
     # - title: Database Comparison
     #   output: web
     #   url: /overview/comparison.html
