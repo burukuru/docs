@@ -15,11 +15,17 @@ This section will discuss how to start developing with Grakn using the Java API.
 All Grakn applications require the following Maven dependency: 
 
 ```xml
-<dependency>
+<properties>
+  <grakn.version>0.12.0</grakn.version>
+</properties>
+
+<dependencies>
+  <dependency>
     <groupId>ai.grakn</groupId>
     <artifactId>grakn-graph</artifactId>
-    <version>${project.version}</version>
-    </dependency>
+    <version>${grakn.version}</version>
+  </dependency>
+</dependencies>
 ```
     
 This dependency will give you access to the Core API as well as an in-memory graph, which serves as a toy graph, should you wish to use the stack without having to have an instance of the Grakn server running.
@@ -35,7 +41,7 @@ Depending on the configuration of the Grakn server, your Java application will r
 <dependency>
     <groupId>ai.grakn</groupId>
     <artifactId>titan-factory</artifactId>
-    <version>${project.version}</version> 
+    <version>${grakn.version}</version>
 </dependency>
 ```    
 
@@ -45,7 +51,7 @@ When your server is running against a OrientDB backend:
 <dependency>
     <groupId>ai.grakn</groupId>
     <artifactId>orientdb-factory</artifactId>
-    <version>${project.version}</version> 
+    <version>${grakn.version}</version>
 </dependency>
 ```    
     
@@ -54,6 +60,24 @@ When your server is running against a OrientDB backend:
 
 
 The JAR files you will need to develop with Grakn can be found inside the `lib` directory of the distribution zip file. All the JARs are provided with no dependencies, so using these requires you to use Maven to acquire dependencies.
+
+Alternatively, you may include a reference to the snapshot repository, which contains the third-party dependencies. Add the following to your `pom.xml`:
+
+```xml
+<repositories>
+  <!--Snapshot repository for 3rd party libraries -->
+  <repository>
+    <id>grakn-development-snapshots</id>
+    <url>https://maven.grakn.ai/content/repositories/snapshots/</url>
+    <releases>
+      <enabled>false</enabled>
+    </releases>
+    <snapshots>
+      <enabled>true</enabled>
+    </snapshots>
+  </repository>
+</repositories>
+```
 
 Here are some links to guides for adding external jars using different IDEs:
 
