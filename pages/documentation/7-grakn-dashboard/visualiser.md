@@ -10,12 +10,12 @@ folder: documentation
 comment_issue_id: 17
 ---
 
-{% include warning.html content="<b>These instructions refer to the 0.11 release of GRAKN.AI. The latest version has some differences to its look and feel, and you may find that some instructions are currently inaccurate. Apologies! We will update this information very shortly.</b>" %}
+{% include note.html content="These instructions refer to the <b>[0.12.1](https://github.com/graknlabs/grakn/releases/tag/v0.12.1)</b> release of GRAKN.AI. Later versions of the product may include some changes to the user experience, and you may find that some instructions become out-dated. We will endeavour to update information on this page as soon after a release as is possible. The instructions here refer to use of the visualiser on macOS, and screen grabs were taken in Safari." %}
 
 ## Introduction
-The Grakn visualiser provides a graphical tool to inspect and query your graph data. This article shows how to get it up and running on a basic example and introduces the visualiser's key features.
+The Grakn visualiser provides a graphical tool to inspect and query your graph data. This article shows how to run it with a basic example and introduces the visualiser's key features.
 
-## Loading and Visualising a Graph
+## Loading an Example Graph
 If you have not yet set up the Grakn environment, please see the [Setup guide](../get-started/setup-guide.html).
 
 You can find the *basic-genealogy.gql* example that we will work with in the *examples* directory of the Grakn distribution zip. You can also find this file on [Github](https://github.com/graknlabs/grakn/blob/master/grakn-dist/src/examples/basic-genealogy.gql). 
@@ -27,33 +27,31 @@ The first step is to load the ontology and data into Grakn. You need to use your
 <relative-path-to-Grakn>/bin/graql.sh -f ./examples/basic-genealogy.gql -k "family"
 ```
 
-{% include note.html content="To illustrate the use of different keyspaces, will we use a keyspace called `family` in this example, but you can simply use the default keyspace if you prefer, if it is not already in use, by omitting the -k argument." %}
+To illustrate the use of different keyspaces we will use a keyspace called `family` in this example. You can simply use the default (`grakn`) keyspace if you prefer, by omitting the -k argument.
 
 You can test in the Graql shell that all has loaded correctly. For example:
 
 ```bash
 <relative-path-to-Grakn>/bin/graql.sh -k family
-match $p isa person, has identifier $i;
+>>>match $p isa person, has identifier $i;
 ```
 
-Now open the visualiser by browsing to [localhost:4567](http://localhost:4567). 
+If all is well, you can open the visualiser by browsing to [localhost:4567](http://localhost:4567). 
 
-To visualise your graph, go to the keyspace selector on the top right and select the appropriate keyspace, e.g. `family`.
+There are a number of horizontal tabs on the left hand side of the screen, which open panes, described as follows.
 
-The main pane of your graph will be empty at this point. Click the Types dropdown in the top menu, then Entities and `person`. 
-The query for your selection will be displayed in the form with a default limit of 100 results applied. In this case:
+## Graph Pane
 
-```graql
-match $x isa person; offset 0; limit 100;
-```
+This is the default section of the visualiser, and is the main pane that you will use to explore a graph with GRAKN.AI. 
 
-If you click and hold on any of the entities - a pop-up will open to allow you to select the labels shown on each node in the graph. In the screenshot below, we have selected to show the identifiers of each person.
+Go to the keyspace selector at the top right and select the appropriate keyspace, e.g. `family`.
 
-![Person query](/images/match-$x-isa-person.png)
+![Visualiser UI](/images/visualiser-ui-0.12.png)
 
-To clear the graph, press Shift + the "Clear" button (the circle with the cross through it). 
+### Make a Query
 
-You can also submit queries by typing them into the form, then pressing ">" to visualise the graph. You can zoom the display in and out, and move the nodes around for better visibility. For example:
+The main pane of your graph will be empty at this point. You can submit queries by typing them into the form in the middle of the top menu bar. You will then need to click '>' to visualise the graph. For example:
+
 
 ```graql
 match $x isa person, has firstname "John"; 
@@ -61,101 +59,155 @@ match $x isa person, has firstname "John";
 
 ![John query](/images/john-query.png)
 
-Note that the `offset 0; limit 30` values are applied automatically, but the default values can be changed via the Query Settings, accessed under the cog icon at the right hand of the icon set.
+You can zoom the display in and out, and move the nodes around for better visibility. 
 
-## Working With The Visualiser
+Alternatively, for simple visualisation, you can click the Types dropdown in the top menu to list out what is in the ontology. For our example, go to the Entities dropdown and choose `person`. The query specific to your selection will be displayed in the form with a default offset and result limit, which is applied by the visualiser (`offset 0; limit 30`). 
 
-There are a number of horizontal tabs on the left hand side of the screen, described as follows.
+```graql
+match $x isa person; offset 0; limit 30;
+```
 
-### Graph
-This is the main section of the visualiser that you will use to explore the graph. 
+You can change the offset and limit on the number of results as [described below](#query-limit). 
 
-<!-- TO DO - this is where text about using the visualiser should go -->
+![Person query](/images/match-$x-isa-person.png)
 
-<!--Add this back in when it works as expected
+If you click and hold on any of the entities, a pop-up will open to allow you to select the labels shown on each node in the graph. In the screenshot below, we have selected to show the identifiers of each person.
+
+### Save a Query
+
+If you make a query that you think you'll need to repeat regularly, and don't want to type it, or copy and paste it each time, you can save your query. The small plus sign in a circle on the right hand side of the form will bring up a summary of the query, allowing you to assign it a name and save it. Saved queries can then be retrieved using the star button on the left hand side of the horizontal icon set.
+
+
+### Clear the Graph
+To clear the query from the form, press the "Clear" button (the circle with the cross through it).  
+
+To clear the entire graph area, press Shift + the "Clear" button.
+
+### Investigate a Node
+
+A single click on any node in the graph brings up a pane of information about the node at the top right hand side of the screen. The information displayed includes the ID of the node, its type and any resources associated with it, as shown in the figure below. 
+
+![Single click](/images/single-click-info-pane.png)
+
+Holding shift and making a click on a node also brings up the resources associated with it, displaying them in the graph, as shown.
+
+![Single click](/images/shift-click.png)
+
+A double click on a node will bring up the relations associated with the node, as shown below.
+
+![Double click](/images/double-click.png)
+
+### Change the Display
+
+A single click and hold on a node in the graph brings up a pane on the lower left hand side of the screen. You can use this to show different information about a node on the graph and change the colour of the nodes.
+
+<!--Add this back in when it works as expected in release 0.13 or beyond
+### Explore Types
 
 We have already shown an example of how to examine `person` entities using the entity selector. As another example, select "Types", followed by "Relations" and filter on `marriage` relations. The query will be shown in the query section at the top of the main pane, as previously, and the visualiser displays all the `marriage` relations in the graph. 
 
 ![Marriages query](/images/marriages.png)
 
-A short video illustrates the process:
-
-<iframe width="640" height="360" src="https://www.youtube.com/embed/OLuVwjPrhbc" frameborder="0" allowfullscreen></iframe>
-
-<br />
 -->
 
 
-#### Inference
+### Query Settings
 
-There are 4 query settings that can be changed using the 'cog' button (on the far right hand side of the horizontal icon menu at the top of the screen):
+Query Settings can be accessed under the cog icon at the right hand of the horizontal icon set. The following settings are available
 
-* Lock nodes position - 
-* Activate inference - activates inference, per query.
-* Materialise inference - persists the inference into the graph, per query.
-* Materialise All: activate and persist all inference across the graph.
+![Person query](/images/query-settings.png)
 
-#### Analytics Queries - Shortest Path
-You will notice a 'pencil' icon (on the far left of the horizontal icon menu at the top of the screen) that can be used to build Graql queries. The following video illustrates how to build a shortest path query:
+#### Lock Nodes Position   
+
+This option allows you to organise your nodes, lock them into position, and then use the visualiser to explore the graph, clicking to reveal connections and details about the nodes without them jumping out of place.  
+
+If you want to tidy your nodes by aligning them all horizontally or vertically, you can do this through the Query Builder menu, described below. You need to first unlock the nodes so they can be automatically aligned for you.
+
+#### Inference   
+
+There are 3 inference settings that can be changed.
+
+* Activate inference - activates inference, per query. It is off by default, but turn this on when you need to run queries that use inference.
+* Materialise inference - persists the inference into the graph, per query. This is off by default, but should be turned on when running a query when you want to add the results of inference back into the graph.
+* Materialise All: Off by default. Activates and persists all inference across the graph.
+
+#### Query Limit   
+
+You can change the offset and limit on the number of results returned by editing the value directly in the submission form, or by adjusting the Query Limit setting.  
+
+### Query Builder menu
+
+Right-clicking the mouse brings up the Query Builder menu, which allows you to further explore the graph, as follows.
+
+#### Shortest Path
+{% include note.html content="Make sure to [activate inference](#inference) before running a shortest path query!" %}
+
+<!-- The following video illustrates how to build a shortest path query:
+
+NEEDS UPDATING
 
 <iframe width="640" height="360" src="https://www.youtube.com/embed/OLuVwjPrhbc" frameborder="0" allowfullscreen></iframe>
 
-<br />
+<br /> -->
 
-We will walk through what is shown in the video. 
-
-The first step is to clear the graph, then choose two people from the genealogy dataset, to determine the shortest path between them. For example, use the following query, and enter it into the form in the visualiser:
+The first step is to clear the graph, then choose two people from the genealogy dataset, to determine the shortest path between them. For example, use the following query, and enter it into the form in the visualiser, to bring up two nodes:
 
 ```graql
-match $x isa person has firstname "Susan" has surname "Dudley";
-$y isa person has firstname "Barbara" has surname "Herchelroth";
+match $x isa person has firstname "Susan" has surname "Dudley"; $y isa person has firstname "Barbara" has surname "Herchelroth";
 ```
 
-1. Submit the query by pressing ">" to visualise the graph. Just the two people in question (Susan Dudley and Barbara Herchelroth) should be visible in the graph. 
-
-2. Use the pencil button to open the Query Builders menu. We will use the first item in the drop-down, which is "Shortest Path". Click the "Start" button, then click first one node in the graph, and then click the other node (thus connecting the two people). 
-
-3. Submit the shortest path query, which you will see in the form at the top of the visualiser, but pressing ">". 
-
-The visualiser submits a query as follows: 
+1. Submit the query by pressing '>' to visualise the graph. The two people in question (Susan Dudley and Barbara Herchelroth) should be shown. 
+2. Holding down the *cmd* key, single click on each of the two nodes.
+3. Right click the mouse to bring up the Query Builder menu, and select *Shortest path* from the menu.
+4. The submission form will now contain the shortest path query for those two nodes, for example: 
 
 ```graql
 compute path from "102432" to "192584"; # (The ID values in the strings will be different for each graph)
 ```
  
-The graph will display the relations, and nodes, that connect the two by the shortest path. If you chose Susan Dudley and Barbara Herchelroth, you should discover that Barbara is the great-grandmother of Susan’s husband.
+Submit the query as usual by clicking '>' and the graph will display the relations and nodes that connect the two by the shortest path. For Susan Dudley and Barbara Herchelroth, you should discover that Barbara is the great-grandmother of Susan’s husband.
+
+![Person query](/images/shortest-path.png)
 
 #### Explore Relations
 
 {% include note.html content="Make sure to [activate inference](#inference) before exploring relations!" %}
 
-The Query Builder menu also has an "Explore Relations" option, which allows you to determine the relations between nodes. To illustrate that, clear the graph and submit a query as follows:
+The Query Builder menu that is brought up from a right click of the mouse also has an "Explore Relations" option. This option allows you to determine the relations between nodes. To illustrate that, clear the graph and submit a query as follows:
 
 ```graql
 match $x isa person has surname "Niesz"; offset 0; limit 100; # Find everyone with surname Niesz
 ```
 
-1. Use the pencil button to open the Query Builders menu. We will use the "Explore Relations" option. Click the "Start" button, then click first one node in the graph, and then click another node (thus connecting two people with the same surname - it doesn't matter too much who you choose). 
+1. Select any two people with surname Niesz (it doesn't matter who) by single left clicking on two nodes while holding down the *cmd* key.
+2. Open the Query Builder menu by right clicking the mouse. 
+3. The submission form will now contain a query for those two nodes, for example:
 
-3. Submit the shortest path query, which you will see in the form at the top of the visualiser, but pressing ">". 
-
-The visualiser submits a query as follows (the ID values will differ for every graph):
-
-```graql 
-match $x id "102432"; $y id "192584"; $r($x, $y); offset 0; limit 100;
+```graql
+match $x id "651472"; $y id "889000"; $r ($x, $y);
 ```
 
-The visualiser will display the relations between the two nodes you selected (e.g. siblings).
+Submit the query as usual by clicking '>' and the graph will display the relations, and nodes, that connect the two. The visualiser will display the relations between the two nodes you selected (e.g. siblings).
 
-### Console
+#### Align Nodes
+
+If you want to tidy your graph to align the nodes horizontally or vertically, you can do this from the Query Builder menu.
+
+1. To select the nodes you want to tidy, you need to 'capture' them in a selection area. Bring up the selector by holding down *ctrl* and clicking on the blank canvas (not on a node).  
+2. A green movable square will be illuminated: pull it over the nodes you wish to capture.
+3. Right click the mouse to pull up the Query Builder menu.
+4. Select Align nodes horizontally or vertically, as required.
+
+## Console
 You can use this console to make queries instead of running a Graql shell in your terminal. You can run `match` and `compute` queries, but because the visualiser is read-only, you cannot make insertions.
 
-### Config
-Shows a view on the Grakn configuration file. 
+## Tasks
 
-### Documentation
+## Config
+Displays a view on the Grakn configuration file. 
+
+## Documentation
 This opens a separate tab in your browser and points it to the Grakn documentation portal. It may be how you ended up on this page!
-
 
 ## Where Next?
 
