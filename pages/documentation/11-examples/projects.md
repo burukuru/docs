@@ -3,7 +3,7 @@ title: Example Projects
 keywords: examples, projects
 last_updated: October 7, 2016
 tags: 
-summary: "A list of potential projects that use Grakn."
+summary: "A list of potential projects that could use GRAKN.AI."
 sidebar: documentation_sidebar
 permalink: /documentation/examples/projects.html
 folder: documentation
