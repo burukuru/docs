@@ -65,6 +65,23 @@ The first thing to do is connect to the running engine instance and check that t
 
 ```java
 private static void testConnection() {
+    // initialise the connection to Grakn engine
+    try (GraknSession session = Grakn.session(Grakn.DEFAULT_URI, "genealogy")) {
+
+        // open a graph (database transaction)
+        try (GraknGraph graph = session.open(GraknTxType.READ)) {
+
+            // construct a match query to find people
+            MatchQuery query = graph.graql().match(var("x").isa("person"));
+
+            // execute the query
+            List<Map<String, Concept>> result = query.limit(10).execute();
+
+            // write the results to the console
+            result.forEach(System.out::println);
+            }
+        }
+    }
 }
 ```
 
@@ -74,10 +91,25 @@ Now that we have established the connection to Grakn engine works we can obtain 
 
 ```java
 private static Map<String, Set<String>> computeClusters() {
-}
+    // initialise the connection to Grakn engine
+    try (GraknSession session = Grakn.session(Grakn.DEFAULT_URI, "genealogy")) {
+
+        // open a graph (database transaction)
+        try (GraknGraph graph = session.open(GraknTxType.READ)) {
+
+            // construct the analytics cluster query
+            ClusterQuery<Map<String, Set<String>>> query = graph.graql().compute().cluster().in("person", "marriage").members();
+
+            // execute the analytics query
+            Map<String, Set<String>> clusters = query.execute();
+
+            return clusters;
+            }
+        }
+    }
 ```
 
-Here we have used the `in` syntax to specify that we want to compute the clusters while only considering instances of the types marriage and person. The graph that we are effectively working on can be seen in the image below. We can see three clusters, but there are more in the basic genealogy example. The code above will have found all of the clusters and returned a `Map` from the unique cluster label to a set containing the ids of the instances in the cluster.
+Here we have used the `in` syntax to specify that we want to compute the clusters while only considering instances of the types `marriage` and `person`. The graph that we are effectively working on can be seen in the image below. We can see three clusters, but there are more in the basic genealogy example. The code above will have found all of the clusters and returned a `Map` from the unique cluster label to a set containing the ids of the instances in the cluster.
 
 If we had not used the members syntax we would only know the size of the clusters not the members.
 
@@ -97,6 +129,30 @@ Now that we have information about the clusters, it would be useful to add it to
 
 ```java
 private static void mutateOntology() {
+    // initialise the connection to Grakn engine
+    try (GraknSession session = Grakn.session(Grakn.DEFAULT_URI, "genealogy")) {
+
+        // open a graph (database transaction)
+        try (GraknGraph graph = session.open(GraknTxType.WRITE)) {
+
+            // create set of vars representing the mutation
+            Var group = Graql.var("group").label("group").sub("role");
+            Var member = Graql.var("member").label("member").sub("role");
+            Var grouping = Graql.var("grouping").label("grouping").sub("relation").relates(group).relates(member);
+            Var cluster = Graql.var("cluster").label("cluster").sub("entity").plays(group);
+            Var personPlaysRole = Graql.var("person").label("person").plays("member");
+            Var marriagePlaysRole = Graql.var("marriage").label("marriage").plays("member");
+
+            // construct the insert query
+            InsertQuery query = graph.graql().insert(group, member, grouping, cluster, personPlaysRole, marriagePlaysRole);
+
+            // execute the insert query
+            query.execute();
+
+            // don't forget to commit the changes
+            graph.commit();
+        }
+    }
 }
 ```
 
@@ -106,6 +162,35 @@ Now all that is left is to populate the graph with the clusters and grouping rel
 
 ```java
 private static void persistClusters(Map<String, Set<String>> results) {
+
+    // initialise the connection to Grakn engine
+    try (GraknSession session = Grakn.session(Grakn.DEFAULT_URI, "genealogy")) {
+
+        // iterate through results of cluster query
+        results.forEach((clusterID, memberSet) -> {
+
+            // open a graph (database transaction)
+            try (GraknGraph graph = session.open(GraknTxType.WRITE)) {
+
+                    // collect the vars to insert
+                    Set<Var> insertVars = new HashSet<>();
+
+                    // create the cluster
+                    Var cluster = Graql.var().isa("cluster");
+                    insertVars.add(cluster);
+
+                    // attach the members
+                    memberSet.forEach(member -> {
+                        Var memberVar = Graql.var().id(ConceptId.of(member));
+                        insertVars.add(Graql.var().isa("grouping").rel("group", cluster).rel("member",memberVar));
+                    });
+
+                // execute query and commit
+                graph.graql().insert(insertVars).execute();
+                graph.commit();
+            }
+        });
+    }
 }
 ```
 
@@ -125,6 +210,21 @@ When using the visualiser it is probably quite useful to be able to see the size
 
 ```java
 private static Map<Long, Set<String>> degreeOfClusters() {
+    // initialise the connection to Grakn engine
+    try (GraknSession session = Grakn.session(Grakn.DEFAULT_URI, "genealogy")) {
+
+        // open a graph (database transaction)
+        try (GraknGraph graph = session.open(GraknTxType.READ)) {
+
+            // construct the analytics cluster query
+            DegreeQuery query = graph.graql().compute().degree().in("cluster", "grouping").of("cluster");
+
+            // execute the analytics query
+            Map<Long, Set<String>> degrees = query.execute();
+
+            return degrees;
+        }
+    }
 }
 ```
 
@@ -141,7 +241,40 @@ As we did when computing the clusters, we need to put the information back into 
 
 ```java
 private static void persistDegrees(Map<Long, Set<String>> degrees) {
-}
+    // initialise the connection to Grakn engine
+    try (GraknSession session = Grakn.session(Grakn.DEFAULT_URI, "genealogy")) {
+
+        try (GraknGraph graph = session.open(GraknTxType.WRITE)) {
+
+            // mutate the ontology
+            Var degree = Graql.var().label("degree").sub("resource").datatype(ResourceType.DataType.LONG);
+            Var cluster = Graql.var().label("cluster").has("degree");
+
+            // execute the query
+            graph.graql().insert(degree, cluster).execute();
+
+            // don't forget to commit
+            graph.commit();
+            }
+
+            try (GraknGraph graph = session.open(GraknTxType.WRITE)) {
+
+            // add the degrees to the cluster
+            Set<Var> degreeMutation = new HashSet<>();
+            degrees.forEach((degree, concepts) -> {
+                concepts.forEach(concept -> {
+                    degreeMutation.add(Graql.var().id(ConceptId.of(concept)).has("degree",degree));
+                });
+            });
+
+            // execute the query
+            graph.graql().insert(degreeMutation).execute();
+
+            // don't forget to commit
+            graph.commit();
+            }
+        }
+    }
 ```
 
 We used a single transaction for this because it is a small graph.
