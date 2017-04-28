@@ -63,6 +63,13 @@ We use the genealogy dataset to illustrate how to write rules to infer new infor
 * We have a [simple Pokemon example](./pokemon.html) to illustrate how to form a range of different Graql queries. 
 * The [philosophers.gql](https://github.com/graknlabs/grakn/blob/master/grakn-dist/src/examples/philosophers.gql) file, also distributed in the Grakn release zip, contains a simple ontology and data, for use as an example.
 
+### Analytics
+
+We have two examples to illustrate how to use Graql analytics:
+
+* [Statistical Analysis](./analytics.html) describes using the `compute` and `aggregate` methods on a familar R dataset (MTCars) to compare them and illustrate them.
+* [Analytics using Java APIs](./java-analytics.html) uses the Java APIs to show how to calculate clusters and degrees using the familar genealogy example set.
+
 ## Languages
 
 ### Haskell, R and Python Bindings
@@ -79,6 +86,7 @@ It is possible to extract data from Grakn and use it as a data science tool for 
 * SQL migration: We have documented an example of [SQL migration using the Java API](../examples/SQL-migration.html). 
 * Pokemon: The [sample-projects](https://github.com/graknlabs/sample-projects/tree/master/example-pokemon) repo on Github contains a Java project that uses the Java Graph API on Pokemon data and an ontology. 
 * Philosophers: The [sample-projects](https://github.com/graknlabs/sample-projects/tree/master/example-philosophers) repo on Github contains a Java project that uses the Java Graph API on a Philosophers dataset and ontology. 
+* [Analytics using Java APIs](./java-analytics.html) uses the Java APIs to show how to calculate clusters and degrees using the familar genealogy example set.
 
 ### Moogi Movie Database
 
