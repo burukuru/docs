@@ -10,10 +10,14 @@ folder: documentation
 comment_issue_id: 27
 ---
 
-If you have not yet set up the Grakn environment, please see the [Setup guide](../get-started/setup-guide.html).
+In this example, we are going to introduce the analytics package using the basic genealogy example. We will use Java APIs to determine clusters and degrees in the data - specifically we will determine clusters of people who are related by marriage and how large those clusters are using two graph algorithms:
 
-## Introduction
-In this example, we are going to introduce the analytics package using the basic genealogy example. You can find *basic-genealogy.gql* in the *examples* directory of the Grakn distribution zip. You can also find it on [Github](https://github.com/graknlabs/grakn/blob/master/grakn-dist/src/examples/basic-genealogy.gql). 
+* the cluster algorithm - to identify which people are related 
+* the degree algorithm - to count the size of the cluster.
+
+<!-- TO DO - Put this back in 0.13 
+
+You can find *basic-genealogy.gql* in the *examples* directory of the Grakn distribution zip. You can also find it on [Github](https://github.com/graknlabs/grakn/blob/master/grakn-dist/src/examples/basic-genealogy.gql). 
 
 The first step is to load it into Grakn using the terminal. Start Grakn, and load the file as follows:
 
@@ -28,16 +32,20 @@ You can test in the Graql shell that all has loaded correctly. For example:
 <relative-path-to-Grakn>/bin/graql.sh -k genealogy
 >>>match $p isa person, has identifier $i;
 ```
+-->
 
 
-## Using Java APIs to Determine Clusters and Degree
+## Getting Started
 
-We are going to determine clusters of people who are related by marriage and how large those clusters are using two graph algorithms:
+If you have not yet set up the Grakn environment, please see the [Setup guide](../get-started/setup-guide.html).
 
-* the cluster algorithm will identify which people are related 
-* the degree algorithm will count the size of the cluster.
+First, we start Grakn Engine using the terminal:
 
-The maven dependencies for this project are:
+```bash
+<relative-path-to-Grakn>/bin/grakn.sh start
+```
+
+The rest of the project is contained in the Java example code, which can be found on [Github](https://github.com/graknlabs/grakn/blob/master/grakn-dist/src/examples/basic-genealogy.gql). The maven dependencies for this project are:
 
 ```java
 <dependency>
@@ -59,9 +67,27 @@ The maven dependencies for this project are:
 
 The Titan factory is required because engine is configured with Titan as the backend. The `slf4j-nop` dependency is a work around because we are using a later version of Spark. The spring framework dependency is a current bug workaround in GRAKN.AI version 0.12.0.
 
+First, we load the ontology and data we will be working with, which is the familiar *basic-genealogy.gql* dataset.
+
+```java
+private static void loadBasicGenealogy() {
+    ClassLoader classLoader = Main.class.getClassLoader();
+    try (GraknSession session = Grakn.session(Grakn.DEFAULT_URI, "genealogy")) {
+        try (GraknGraph graph = session.open(GraknTxType.WRITE)) {
+            try {
+                graph.graql().parse(IOUtils.toString(classLoader.getResourceAsStream("basic-genealogy.gql"))).execute();
+                } catch (IOException e) {
+                    e.printStackTrace();
+            }
+            graph.commit();
+        }
+    }
+}
+```
+
 ## Connect to Grakn Engine
 
-The first thing to do is connect to the running engine instance and check that the graph contains the data that we expect. This can be achieved with the following code:
+The next thing to do is connect to the running engine instance and check that the graph contains the data that we expect. This can be achieved with the following code:
 
 ```java
 private static void testConnection() {
@@ -112,13 +138,6 @@ private static Map<String, Set<String>> computeClusters() {
 Here we have used the `in` syntax to specify that we want to compute the clusters while only considering instances of the types `marriage` and `person`. The graph that we are effectively working on can be seen in the image below. We can see three clusters, but there are more in the basic genealogy example. The code above will have found all of the clusters and returned a `Map` from the unique cluster label to a set containing the ids of the instances in the cluster.
 
 If we had not used the members syntax we would only know the size of the clusters not the members.
-
-```graql
-match
-$x isa cluster has degree 3;
-$y isa cluster has degree 5;
-limit 2;
-```
 
 ![Visualiser UI](/images/java-analytics-1.png)
 
@@ -230,9 +249,6 @@ private static Map<Long, Set<String>> degreeOfClusters() {
 
 The `in` syntax has again been used here to restrict the algorithm to the graph shown below. Further, the `of` syntax has been used to compute the degree for the cluster alone. What is returned from this calculation is a `Map` from the degree which is a `long` to the ids of the instances that have that degree.
 
-```graql
-match $x isa cluster; $y ($x);
-```
 
 ## Persist the Degrees
 
