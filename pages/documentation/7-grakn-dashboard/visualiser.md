@@ -50,7 +50,7 @@ Go to the keyspace selector at the top right and select the appropriate keyspace
 
 ### Make a Query
 
-The main pane of your graph will be empty at this point. You can submit queries by typing them into the form in the middle of the top menu bar. You will then need to click '>' to visualise the graph. For example:
+The main pane of your graph will be empty at this point. You can submit queries by typing them into the form in the middle of the top menu bar. You will then need to click '>' (or *Enter*) to visualise the graph. For example:
 
 
 ```graql
@@ -156,8 +156,8 @@ The first step is to clear the graph, then choose two people from the genealogy 
 match $x isa person has firstname "Susan" has surname "Dudley"; $y isa person has firstname "Barbara" has surname "Herchelroth";
 ```
 
-1. Submit the query by pressing '>' to visualise the graph. The two people in question (Susan Dudley and Barbara Herchelroth) should be shown. 
-2. Holding down the *cmd* key, single click on each of the two nodes.
+1. Submit the query by pressing '>' (or *Enter*) to visualise the graph. The two people in question (Susan Dudley and Barbara Herchelroth) should be shown. 
+2. Holding down the *control* key, single click on each of the two nodes.
 3. Right click the mouse to bring up the Query Builder menu, and select *Shortest path* from the menu.
 4. The submission form will now contain the shortest path query for those two nodes, for example: 
 
@@ -165,7 +165,7 @@ match $x isa person has firstname "Susan" has surname "Dudley"; $y isa person ha
 compute path from "102432" to "192584"; # (The ID values in the strings will be different for each graph)
 ```
  
-Submit the query as usual by clicking '>' and the graph will display the relations and nodes that connect the two by the shortest path. For Susan Dudley and Barbara Herchelroth, you should discover that Barbara is the great-grandmother of Susan’s husband.
+Submit the query as usual by clicking '>' (or *Enter*) and the graph will display the relations and nodes that connect the two by the shortest path. For Susan Dudley and Barbara Herchelroth, you should discover that Barbara is the great-grandmother of Susan’s husband.
 
 ![Person query](/images/shortest-path.png)
 
@@ -179,7 +179,7 @@ The Query Builder menu that is brought up from a right click of the mouse also h
 match $x isa person has surname "Niesz"; offset 0; limit 100; # Find everyone with surname Niesz
 ```
 
-1. Select any two people with surname Niesz (it doesn't matter who) by single left clicking on two nodes while holding down the *cmd* key.
+1. Select any two people with surname Niesz (it doesn't matter who) by single left clicking on two nodes while holding down the *control* key.
 2. Open the Query Builder menu by right clicking the mouse. 
 3. The submission form will now contain a query for those two nodes, for example:
 
@@ -187,7 +187,7 @@ match $x isa person has surname "Niesz"; offset 0; limit 100; # Find everyone wi
 match $x id "651472"; $y id "889000"; $r ($x, $y);
 ```
 
-Submit the query as usual by clicking '>' and the graph will display the relations, and nodes, that connect the two. The visualiser will display the relations between the two nodes you selected (e.g. siblings).
+Submit the query as usual by clicking '>' or *Enter* and the graph will display the relations, and nodes, that connect the two. The visualiser will display the relations between the two nodes you selected (e.g. siblings).
 
 #### Align Nodes
 
@@ -203,8 +203,10 @@ You can use this console to make queries instead of running a Graql shell in you
 
 ## Tasks
 
+The tasks page is used to monitor the asynchronous tasks run by Grakn engine, and stop them if necessary. Tasks shown are those that perform loading or post processing, which is triggered after loading. It is possible to list, filter, sort and stop tasks.
+
 ## Config
-Displays a view on the Grakn configuration file. 
+This pane displays a view on the Grakn configuration file, showing configurable properties and their values.
 
 ## Documentation
 This opens a separate tab in your browser and points it to the Grakn documentation portal. It may be how you ended up on this page!
