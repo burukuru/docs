@@ -29,6 +29,12 @@ You can run all these components separately depending on the redundancy levels y
 
 ## Setting up Grakn
 
+### Minimum Requirements
+
+Grakn can run on default Java settings (heap of 768MB, 1GB machine) if the graph is small enough. Recommended production settings are at least 4GB machine with 3GB heap.
+
+Cassandra will need at least 1GB of memory by itself if run on same machine.
+
 ### Standalone Grakn
 
 You can start a standalone instance of Grakn by running `grakn.sh start`. This will produce a working environment for importing and analysing your data.

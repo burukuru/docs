@@ -10,7 +10,6 @@ folder: documentation
 comment_issue_id: 16
 ---
 
-
 ## First: Download GRAKN.AI
 
 [![download](/images/download.png)](https://grakn.ai/download/latest)
@@ -19,8 +18,11 @@ For more information on how to download older versions of GRAKN.AI, compile from
 
 ## Install GRAKN.AI
 {% include note.html content="**Prerequisites**   <br />
-GRAKN.AI requires Java 8 (Standard Edition) with the `$JAVA_HOME` set accordingly. If you don't already have this installed, you can find it [here](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html).  
-If you intend to build Grakn from source code, or develop on top of it, you will also need Maven 3." %}
+GRAKN.AI requires Java 8 (Standard Edition) with the `$JAVA_HOME` set accordingly. If you don't already have this installed, you can find it [here](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html).
+<br /> 
+If you intend to build Grakn from source code, or develop on top of it, you will also need Maven 3.
+<br /> 
+If you are looking for information about setting up a production deployment of GRAKN.AI, please see the [deployment guide](./deploy-grakn/grakn-deployment-guide.html)." %}
 
 Unzip the download into your preferred location and run the following in the terminal to start Grakn:
 
