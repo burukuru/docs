@@ -36,7 +36,7 @@ compute, contains
 delete, desc, distinct
 from
 id, in, insert
-limit
+label, limit
 match
 offset, order
 regex
@@ -69,7 +69,8 @@ relates
 lhs, rhs
 ```
 
-#### Statistics with `compute` and `aggregate`
+#### Statistics 
+Used with `compute` and `aggregate`:
 
 ```graql
 count
@@ -82,11 +83,12 @@ std, sum
 
 ```graql-template
 and
+concat
 do
 else, elseif
 for
 if, in
-not, null
+noescp, not, null
 true, false
 ```
 

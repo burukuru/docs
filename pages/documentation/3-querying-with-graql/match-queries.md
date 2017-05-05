@@ -276,6 +276,19 @@ qb.match(var("x").playsRole("has-firstname-owner"));
 </div> <!-- tab-pane -->
 </div> <!-- tab-content -->
 
+### label
+Allows you to refer to a specific types by its typename. For example:
+
+```
+match $x isa $type;$type label 'person';
+```
+
+This is equivalent to the following:
+
+```
+match $x isa person;
+``` 
+
 ## Predicates
 
 A predicate is a boolean function applied to values. If a concept doesn't have a value, all predicates are considered false.
