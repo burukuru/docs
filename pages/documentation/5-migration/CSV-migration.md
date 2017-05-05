@@ -81,14 +81,14 @@ price sub resource datatype double;
 
 And the Graql template, *car-migrator.gql*:   
 
-```graql-template
-insert 
+```graql-template 
+insert                                                                                                                             
 
-$x isa car 
-  has name <Make>-<Model>
+$x isa car
+  has name @concat(<Make>, "-", <Model>)
   has year <Year>
   has price @double(<Price>)
-  if (ne <Description> null) do { has description <Description>};
+  if (<Description> != "") do { has description <Description>};  
 ```
 
 The template will create a `car` entity for each row. It will attach `year` and `price` resources to each of these entities. If the `description` resource is present in the data, it will attach the appropriate `description` to the `car`.
