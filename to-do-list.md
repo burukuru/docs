@@ -26,6 +26,6 @@ If you're keen to contribute documentation, this is the place to find a project!
 
 These sites contain contributor documentation that may suggest structure and content. Also check out Apache sites:
 
-- (Mozilla)[https://developer.mozilla.org/en-US/docs/Mozilla/Developer_guide/Introduction]
-- (Neo4J)[https://neo4j.com/developer/contribute/]
-- (Sailfish)[https://sailfishos.org/wiki/Collaborative_Development#Contributing_The_Change]
+- [Mozilla](https://developer.mozilla.org/en-US/docs/Mozilla/Developer_guide/Introduction)
+- [Neo4J](https://neo4j.com/developer/contribute/)
+- [Sailfish](https://sailfishos.org/wiki/Collaborative_Development#Contributing_The_Change)
