@@ -10,15 +10,15 @@ folder: documentation
 comment_issue_id: 25
 ---
 
-{% include warning.html content="**Please note that this page is not intended for use at present as there is no official support for Windows, although we expect it to be added later to GRAKN.AI.**" %}
+{% include warning.html content="**Please note that there is no official support for Windows, although we expect it to be added later to GRAKN.AI. This is a suggested workaround.**" %}
 
-##Running on Bash on Ubuntu on Windows
+## Running on Bash on Ubuntu on Windows
 
-You can run Grakn.ai on Windows, using <a href"https://msdn.microsoft.com/en-us/commandline/wsl/about" target="_blank">Bash on Ubuntu on Windows</a>
+You can run GRAKN.AI on Windows, using <a href"https://msdn.microsoft.com/en-us/commandline/wsl/about" target="_blank">Bash on Ubuntu on Windows</a>
 
 Follow the <a href="https://grakn.ai/pages/documentation/get-started/setup-guide.html" target="_blank">Grakn Setup Guide</a>.
 
-To install Oracle JDK8, you can use apt-get as outined <a href="https://www.digitalocean.com/community/tutorials/how-to-install-java-with-apt-get-on-ubuntu-16-04" target="_blank">here</a>
+To install Oracle JDK8, you can use `apt-get` as outlined <a href="https://www.digitalocean.com/community/tutorials/how-to-install-java-with-apt-get-on-ubuntu-16-04" target="_blank">here</a>
 
 
 ## Comments
