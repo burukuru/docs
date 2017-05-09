@@ -188,6 +188,9 @@ entries:
       - title: Statistical Analysis
         output: web
         url: /documentation/examples/analytics.html
+      - title: Graph API for Java developers
+        output: web
+        url: /documentation/examples/graph-api-example.html
       - title: Analytics using Java APIs
         output: web
         url: /documentation/examples/java-analytics.html  

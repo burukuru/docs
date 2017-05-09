@@ -9,17 +9,6 @@ permalink: /documentation/developing-with-java/graph-api.html
 folder: documentation
 ---
 
-<!--
-What is the difference between the Graph API and Java Graql API?
-Use the Graph API for:
-
-* Manipulating and inserting
-* A more efficient but advanced construction API for building API
-
-Java Graql API?
-Used for Querying - for traversals
--->
-
 The Java Graph API is the low level API that encapsulates the [Grakn knowledge model](../the-fundamentals/grakn-knowledge-model.html). The API provides Java object constructs for ontological elements (entity types, relation types, etc.) and data instances (entities, relations, etc.), allowing you to build a graph programmatically. 
 
 To get set up to use this API, please read through our [Setup Guide](../get-started/setup-guide.html) and guide to [starting Java development with GRAKN.AI](./java-setup.html).
@@ -162,14 +151,14 @@ graph.abort();
 Now that we have created the ontology, we can load in some data using the Graph API. We can compare how a Graql statement maps to the Graph API. First, the Graql:
 
 ```graql
-insert $x isa person has firstname "Bob";
+insert $x isa person has firstname "John";
 ```
     
 Now the equivalent Graph API:    
 
 ```java
-Resource bobName = firstname.putResource("Bob"); //Create the resource
-person.addEntity().hasResource(bobName); //Link it to an entity
+Resource johnName = firstname.putResource("John"); //Create the resource
+person.addEntity().hasResource(johnName); //Link it to an entity
 ```   
 
 What if we want to create a relation between some entities? 
@@ -178,8 +167,8 @@ In Graql we know we can do the following:
 
 ```graql
 insert
-    $x isa person has firstname "Bob";
-    $y isa person has firstname "Alice";
+    $x isa person has firstname "John";
+    $y isa person has firstname "Mary";
     $z (spouse1: $x, spouse2: $y) isa marriage;
 ```
 
@@ -187,15 +176,15 @@ With the Graph API this would be:
 
 ```java
 //Create the resources
-Resource bobName = firstname.putResource("Bob"); 
-Resource aliceName = firstname.putResource("Alice");
+Resource johnName = firstname.putResource("John"); 
+Resource maryName = firstname.putResource("Mary");
 
 //Create the entities
-Entity bob = person.addEntity();
-Entity alice = person.addEntity();
+Entity john = person.addEntity();
+Entity mary = person.addEntity();
 
 //Create the actual relationships
-Relation bobAndAliceMarriage = marriage.addRelation().putRolePlayer(spouse1, bob).putRolePlayer(spouse2, alice);
+Relation theMarriage = marriage.addRelation().putRolePlayer(spouse1, john).putRolePlayer(spouse2, mary);
 ```
 
 Add a picture, first using Graql:
@@ -207,8 +196,8 @@ $z has picture "www.LocationOfMyPicture.com";
 Now the equivalent using the Graph API:
 
 ```java
-Resource bobAndAlicePicture = picture.putResource("www.LocationOfMyPicture.com");
-bobAndAliceMarriage.hasResource(bobAndAlicePicture);
+Resource weddingPicture = picture.putResource("www.LocationOfMyPicture.com");
+theMarriage.hasResource(weddingPicture);
 ```
 
 
