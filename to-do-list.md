@@ -1,12 +1,12 @@
 ## GRAKN.AI Documentation "To Do" List
 
-This is a list of items that need to be created or extended in the GRAKN.AI documentation set. Feel free to add to the list to suggest other items.
-If you're keen to contribute documentation, this is the place to find a project!
+This is a list of items that need to be created or extended in the GRAKN.AI documentation set. Feel free to add to the list to suggest other items. If you're keen to contribute documentation, this is the place to find a project!
 
 ### Documentation for Developers Using the Platform
 
 - Graql cheatsheet for SQL developers
 - Graql cheatsheet for Cypher developers
+- JSON migration: needs a better example and documentation (when Graql changes permit)
 
 #### Examples & Tutorials
 
@@ -16,6 +16,17 @@ If you're keen to contribute documentation, this is the place to find a project!
 - Writing inference rules
 - How to "recipes"
 
+#### Regular Items
+
+- Updates  as syntax changes in Graql (e.g. LHS/RHS)
+- Add FAQs as they are asked/answered on Discuss or Slack
+- Keep on top of daily updates and ask individuals about documentation needed (create tickets on TP as needed)
+- Create examples to illustrate new features/functionality, and update existing examples as needed
+
+#### Reference API
+
+- JavaDocs
+- Documentation about the REST API
 
 ### Contributor Documentation
 
