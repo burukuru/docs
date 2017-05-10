@@ -219,7 +219,7 @@ We prepare a Graql template *event-template.gql*:
 ```graql-test-ignore
 match $pet has name <name>
 insert $event isa event 
-  has date <date>
+  has "date" <date>
   has description <description>;
   (event-occurred: $event, pet-in-event: $pet) isa occurs;
 

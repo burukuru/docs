@@ -49,8 +49,8 @@ insert
   middlename sub resource datatype string;
   picture sub resource datatype string;
   age sub resource datatype long;
-  birth-date sub resource datatype string;
-  death-date sub resource datatype string;
+  birth-date sub resource datatype date;
+  death-date sub resource datatype date;
   gender sub resource datatype string;
 
 # Roles and Relations
@@ -98,7 +98,7 @@ event sub entity
   is-abstract
   has degree
   has confidence
-  has date
+  has "date"
   has identifier
   has notes
   plays conclusion
@@ -140,7 +140,7 @@ marriage sub relatives
   relates spouse2
   relates husband
   relates wife
-  has date;
+  has "date";
 	    
 spouse sub role is-abstract;
 spouse1 sub spouse;
@@ -201,8 +201,8 @@ insert
     plays sibling;
         
     gender sub resource datatype string;
-    birth-date sub date;
-    death-date sub date;
+    birth-date sub "date";
+    death-date sub "date";
     name sub resource datatype string;
     firstname sub name;
     middlename sub name;
@@ -213,7 +213,7 @@ insert
     is-abstract
     has degree
     has confidence
-    has date
+    has "date"
     has identifier
     has notes
     plays conclusion
@@ -247,7 +247,7 @@ insert
     relates spouse2
     relates husband
     relates wife
-    has date;
+    has "date";
     
   spouse sub role is-abstract;
   spouse1 sub spouse;

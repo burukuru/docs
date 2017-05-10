@@ -69,9 +69,9 @@ name = graph.putResourceType("name", ResourceType.DataType.STRING);
 firstname = graph.putResourceType("firstname", ResourceType.DataType.STRING).superType(name);
 surname = graph.putResourceType("surname", ResourceType.DataType.STRING).superType(name);
 middlename = graph.putResourceType("middlename", ResourceType.DataType.STRING).superType(name);
-date = graph.putResourceType("date", ResourceType.DataType.STRING);
-birthDate = graph.putResourceType("birth-date", ResourceType.DataType.STRING).superType(date);
-deathDate = graph.putResourceType("death-date", ResourceType.DataType.STRING).superType(date);
+date = graph.putResourceType("date", ResourceType.DataType.DATE);
+birthDate = graph.putResourceType("birth-date", ResourceType.DataType.DATE).superType(date);
+deathDate = graph.putResourceType("death-date", ResourceType.DataType.DATE).superType(date);
 gender = graph.putResourceType("gender", ResourceType.DataType.STRING);
 ```
 
@@ -143,7 +143,7 @@ The code goes on to create another `person` entity, named `maryYoung`, and then 
 
 ```java
 Relation theMarriage = marriage.addRelation().addRolePlayer(spouse1, johnNiesz).addRolePlayer(spouse2, maryYoung);
-Resource marriageDate = date.putResource("12/08/1880");
+Resource marriageDate = date.putResource(LocalDateTime.of(1880, 8, 12, 0, 0, 0));
 theMarriage.resource(marriageDate);
 ```
 
