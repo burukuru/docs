@@ -6,6 +6,8 @@ This is a list of items that need to be created or extended in the GRAKN.AI docu
 
 - Graql cheatsheet for SQL developers
 - Graql cheatsheet for Cypher developers
+- Benchmarking data
+- Configuration files and deployment guide
 - JSON migration: needs a better example and documentation (when Graql changes permit)
 
 #### Examples & Tutorials
