@@ -2,6 +2,18 @@
 
 [![Code Triagers Badge](https://www.codetriage.com/graknlabs/docs/badges/users.svg)](https://www.codetriage.com/graknlabs/docs)
 
+## TL;DR
+
+**How to update and build the docs**
+
+* Install `bundler` and `rake` (one time only task)
+* Pull down documentation repo
+* Make changes to markdown
+* `rake serve` in terminal and browse to [http://127.0.0.1:4005](http://127.0.0.1:4005)
+* If you need to make some extra changes to the markdown after you have the server running, just change the files and save them. `rake` will pick up the changes and rebuild the docs so you don't need to do anything.
+* When you're happy, push to the docs repo
+* Go to the graknlabs website repo when you're ready to deploy...
+
 ## Dependencies
 
 You need to install the following dependencies to be able to build HTML pages in the documentation repository. **NOTE:** this is *not* necessary for updating the documentation itself.
