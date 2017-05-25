@@ -25,6 +25,11 @@ To use the loader client API, add the following to your pom.xml:
 	<version>${grakn.version}</version>
 </dependency>
 ```
+ and add the following to your imports:
+ 
+```
+import ai.grakn.client.LoaderClient;
+```
 
 ## Basic Usage
 
