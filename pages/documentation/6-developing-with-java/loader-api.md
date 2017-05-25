@@ -24,7 +24,7 @@ The loader client can be found in the grakn-client package. You can access it us
 <dependency>
 	<groupId>ai.grakn</groupId>
 	<artifactId>grakn-client</artifactId>
-	<version>${project.version}</version>
+	<version>${grakn.version}</version>
 </dependency>
 ```
 
