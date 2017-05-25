@@ -31,7 +31,7 @@ To use the loader client API, add the following to your pom.xml:
 import ai.grakn.client.LoaderClient;
 ```
 
-## Basic Usage
+# Basic Usage
 
 The loader client provides two constructors. The first accepts only the keyspace to load data into and the URI endpoint where Grakn Engine Server is running.
 
@@ -59,9 +59,9 @@ loader.waitToFinish();
 
 The user should call `waitToFinish()`, which will flush the last batch of queries and block until all batches have executed. 
 
-## Configuring the client
+# Configuring the client
 
-### Batch Size 
+## Configuring Batch Size 
 
 The batch size represents the number of tasks that will be executed in a single transaction when batch loading.
 
@@ -108,7 +108,7 @@ loader.waitToFinish();
 
 This batch size property can directly effect loading times. If you find that your data is loading too slowly, try increasing the size of the batch. 
 
-### Number Active Tasks
+## Configuring Active Tasks
 The number of active tasks represents the capcity beyond which no additional inserts can be added without blocking. 
 
 The default number of active tasks is **25**.
@@ -127,7 +127,7 @@ loader.add(insert);
 
 In the above scenario, the loader will block the calling thread when adding the second transaction. Only when the first transaction completes execution will the second transaction be sent to the server. 
 
-### Task Completion Callback
+## Task Completion Callback
 
 Specify a callback function that will execute over the server response after batch completion. 
 
@@ -161,7 +161,7 @@ loader.setTaskCompletionConsumer((Json json) -> {
 
 This callback is executed whenever a terminal response from the server is received, even if an exception was thrown. In the case of an execption, the Json argument will be either empty or contain the errored response from the server including the server-side exception. 
 
-### Retry policy
+## Retry policy
 Allows the user to specify whether the client should retry sending requests if the server cannot be reached. 
 
 The default setting is for the retry policy to be **false**. 
