@@ -16,9 +16,7 @@ It is possible for batches of insert queries to fail upon insertion. By default,
 
 If you are using the [Graql shell](../graql/graql-shell.html), batch loading is available using the `-b` option. 
 
-## Getting the LoaderClient
-
-The loader client can be found in the grakn-client package. You can access it using the following dependency: 
+To use the loader client API, add the following to your pom.xml:
 
 ```
 <dependency>
