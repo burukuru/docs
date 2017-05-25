@@ -194,8 +194,8 @@ $x isa <SPECIES>
   has name <NAME>
   has owner <OWNER>
   has sex <SEX>
-  if(BIRTH != null) do { has birth <BIRTH> }
-  if(DEATH != null) do { has death <DEATH> };
+  if(<BIRTH> != null) do { has birth <BIRTH> }
+  if(<DEATH> != null) do { has death <DEATH> };
 ```
 
 To apply the template above to the SQL query and populate the graph with the `pet` entities, we use Grakn migration script:
@@ -235,7 +235,7 @@ Note: The SQL query is entered into the command line in quotes, although in futu
 
 At this point, the SQL data has been added to a graph in Grakn, and can be queried. For example:
 
-```
+```bash
 match $x isa cat; # Get all cats
 match ($x, $y) isa occurs; $x isa cat; $y isa event has description "litter"; select $x; # Get all cats that have had litters of kittens
 
@@ -262,6 +262,7 @@ try(Connection connection = DriverManager.getConnection(jdbcDBUrl, jdbcUser, jdb
 
     // perform migration
     MigrationLoader.load(KEYSPACE, migrator);
+}
 
 ```
 
