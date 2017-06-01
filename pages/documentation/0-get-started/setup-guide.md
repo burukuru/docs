@@ -30,6 +30,11 @@ Unzip the download into your preferred location and run the following in the ter
 cd [your Grakn install directory]
 ./bin/grakn.sh start
 ```
+On macOS, you can install it using the [`brew`](https://brew.sh/) package manager. Binaries will be added to your path:
+```bash
+brew install grakn
+grakn.sh start
+```
 
 This will start:
 
