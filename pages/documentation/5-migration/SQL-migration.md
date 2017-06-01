@@ -257,11 +257,13 @@ File template = "./pet-template.gql"
 // get the JDBC connection
 try(Connection connection = DriverManager.getConnection(jdbcDBUrl, jdbcUser, jdbcPass)) {
 
+    Migrator migrator = Migrator.to(Grakn.DEFAULT_URI, graph.getKeyspace());
+
     // create migrator
-    SQLMigrator migrator = new SQLMigrator(sqlQuery, template, connection);
+    SQLMigrator sqlMigrator = new SQLMigrator(query, connection);
 
     // perform migration
-    MigrationLoader.load(KEYSPACE, migrator);
+    migrator.load(template, sqlMigrator.convert());
 }
 
 ```
