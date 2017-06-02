@@ -49,7 +49,7 @@ val
 
 ```graql
 datatype
-boolean, double, long, string
+boolean, double, long, string, date
 true, false
 ```
 

@@ -38,8 +38,8 @@ surname sub resource datatype string;
 middlename sub resource datatype string;
 picture sub resource datatype string;
 age sub resource datatype long;
-birth-date sub resource datatype string;
-death-date sub resource datatype string;
+birth-date sub resource datatype date;
+death-date sub resource datatype date;
 gender sub resource datatype string;
 ```
 
@@ -51,8 +51,8 @@ ResourceType firstname = graph.putResourceType("firstname", ResourceType.DataTyp
 ResourceType surname = graph.putResourceType("surname", ResourceType.DataType.STRING);
 ResourceType picture = graph.putResourceType("picture", ResourceType.DataType.STRING);
 ResourceType age = graph.putResourceType("age", ResourceType.DataType.LONG);
-ResourceType birthDate = graph.putResourceType("birth-date", ResourceType.DataType.STRING);
-ResourceType deathDate = graph.putResourceType("death-date", ResourceType.DataType.STRING);
+ResourceType birthDate = graph.putResourceType("birth-date", ResourceType.DataType.DATE);
+ResourceType deathDate = graph.putResourceType("death-date", ResourceType.DataType.DATE);
 ResourceType gender = graph.putResourceType("gender", ResourceType.DataType.STRING);
 ```
 

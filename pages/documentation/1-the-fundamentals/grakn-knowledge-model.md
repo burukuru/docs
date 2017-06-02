@@ -144,11 +144,11 @@ insert
   plays employer;  
   
   name sub resource, datatype string;
-  date sub resource, datatype string;
+  "date" sub resource, datatype date;
   
   employment sub relation,
     relates employee, relates employer,
-    has date; 
+    has "date";
     	
   employee sub role;
   employer sub role;

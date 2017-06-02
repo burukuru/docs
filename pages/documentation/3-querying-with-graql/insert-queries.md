@@ -29,7 +29,7 @@ In the example below, we insert additional (fictional) information for a `person
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell1">
 <pre>
-match $p has identifier "Mary Guthrie"; insert $p has middlename "Mathilda"; $p has birth-date "1902-01-01"; $p has death-date "1952-01-01"; $p has age 50;
+match $p has identifier "Mary Guthrie"; insert $p has middlename "Mathilda"; $p has birth-date 1902-01-01; $p has death-date 1952-01-01; $p has age 50;
 commit;
 </pre>
 </div>
@@ -37,8 +37,8 @@ commit;
 <pre>
 qb.match(var("p").has("identifier", "Mary Guthrie"))
     .insert(var("p").has("middlename", "Mathilda"), 
-        var("p").has("birth-date", "1902-01-01"),
-        var("p").has("death-date", "1952-01-01"),
+        var("p").has("birth-date", LocalDateTime.of(1902, 1, 1, 0, 0, 0)),
+        var("p").has("death-date", LocalDateTime.of(1952, 1, 1, 0, 0, 0)),
         var("p").has("age", 50)
     ).execute();
 graph.commit();

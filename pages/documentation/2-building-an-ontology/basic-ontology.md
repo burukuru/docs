@@ -60,8 +60,8 @@ person sub entity
   middlename sub resource datatype string;
   picture sub resource datatype string;
   age sub resource datatype long;
-  birth-date sub resource datatype string;
-  death-date sub resource datatype string;
+  birth-date sub resource datatype date;
+  death-date sub resource datatype date;
   gender sub resource datatype string;    
 ```	    
 
@@ -141,8 +141,8 @@ insert
   middlename sub resource datatype string;
   picture sub resource datatype string;
   age sub resource datatype long;
-  birth-date sub resource datatype string;
-  death-date sub resource datatype string;
+  birth-date sub resource datatype date;
+  death-date sub resource datatype date;
   gender sub resource datatype string;
 
  # Roles and Relations
