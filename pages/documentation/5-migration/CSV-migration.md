@@ -79,6 +79,12 @@ price sub resource datatype double;
 
 ```
 
+Make sure to load your ontology into the graph:
+
+```bash
+./<grakn-install-location>/bin/graql.sh -f ./ontology.gql -k grakn
+```
+
 And the Graql template, *car-migrator.gql*:   
 
 ```graql-template 
@@ -102,9 +108,9 @@ The template is applied to each row by calling the migration script:
 The resulting Graql statement, if printed out, looks as follows:
 
 ```graql
-insert $x0 isa car has name "Ford" has description "ac, abs, moon" has price 3000.0 has year "1997";
-insert $x0 isa car has name "Chevy" has price 4900.0 has year "1999";
-insert $x0 isa car has description "MUST SELL! air, moon roof, loaded" has price 4799.0 has name "Jeep" has year "1996";
+insert $x0 isa car has name "Ford-E350" has year "1997" has price 3000.0 has description "ac, abs, moon";
+insert $x0 isa car has name "Chevy-Venture" has year "1999" has price 4900.0;
+insert $x0 isa car has name "Jeep-Grand Cherokee" has year "1996" has price 4799.0 has description "MUST SELL! air, moon roof, loaded";
 ```
 
 You will note that the second Graql insert is missing the `description` resource. This is because that value is not present in the data and the template uses an `if` statement to check if it exists.
