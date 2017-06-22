@@ -63,7 +63,7 @@ As an example, let's take some JSON:
     {"id":"7", "type": "bug" },
     {"id":"8", "type": "ghost" },
     {"id":"9", "type": "steel" },
-    {"id":"10" "type": ,"fire" }]
+    {"id":"10", "type": "fire" }]
 }
 ```
 
@@ -161,14 +161,14 @@ for(<pokemon>) do {
 The resulting Graql statement, if printed out, looks as follows:
 
 ```graql
-match $1 has type-id "1"; $2 has type-id "2";
-insert $p0 has height 6 has weight 85 isa pokemon has description "Charmander" has pokedex-no "4";
-isa has-type (pokemon-with-type: $p0, type-of-pokemon: $1);
-$p1 has weight 190 has height 11 has pokedex-no "5" has description "Charmeleon" isa pokemon;
+match $2 has type-id "2"; $1 has type-id "1";
+insert $p0 isa pokemon has weight 85 has height 6 has pokedex-no 4 has description "Charmander";
+(pokemon-with-type: $p0, type-of-pokemon: $1) isa has-type;
+$p1 isa pokemon has weight 190 has height 11 has pokedex-no "5" has description "Charmeleon";
 (pokemon-with-type: $p1, type-of-pokemon: $1) isa has-type;
-$p2 has weight 905 has pokedex-no "6" has description "Charizard" isa pokemon has height 17;
-isa has-type (pokemon-with-type: $p2, type-of-pokemon: $1);
-isa has-type (pokemon-with-type: $p2, type-of-pokemon: $2);
+$p2 isa pokemon has weight 905 has height 17 has pokedex-no "6" has description "Charizard";
+(pokemon-with-type: $p2, type-of-pokemon: $1) isa has-type;
+(pokemon-with-type: $p2, type-of-pokemon: $2) isa has-type;
 ```
 
 ## Where Next?
